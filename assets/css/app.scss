@@ -1,0 +1,35 @@
+:root {
+  --app-height: 100%;
+}
+
+#wrapper {
+  overflow-x: hidden;
+}
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+// Variables
+@import 'variables';
+
+// Mixins
+@import 'mixins';
+
+// Components
+@import "components/header/header";
+
+@import "components/homepage/homepage";
+@import "components/about-page/about";
+@import "components/contact/contact";
+@import "components/default-page/default-page";
+@import "components/404/404";
+@import "components/search/search";
+
+@import "components/content/blog";
+
+@import "components/archive/category-term";
+
+@import "components/footer/footer";
