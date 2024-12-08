@@ -1,0 +1,55 @@
+.post-header {
+  margin: 20px auto;
+  max-width: 1024px;
+
+  .term {
+    color: $ww-gold;
+    font-family: $ww-inter;
+    font-weight: $ww-medium;
+    font-size: 11px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+
+  .title {
+    color: $ww-text;
+    font-family: $ww-pt;
+    font-weight: $ww-bold;
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  .excerpt {
+    color: $ww-gold;
+    font-family: $ww-pt;
+    font-weight: $ww-medium;
+    font-size: 15px;
+    border-bottom: 2px solid #cfc9c1;
+    padding-bottom: 10px;
+  }
+
+  .share-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .share {
+      cursor: pointer;
+      height: 18px;
+      display: flex;
+
+      svg {
+        height: 18px;
+      }
+    }
+
+    .author p {
+      margin-bottom: 0;
+      color: $ww-gold;
+      font-family: $ww-pt;
+      font-weight: $ww-medium;
+      font-style: italic;
+      font-size: 12px;
+    }
+  }
+}

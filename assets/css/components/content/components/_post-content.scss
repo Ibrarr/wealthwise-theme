@@ -1,0 +1,138 @@
+.post-content {
+  max-width: 1024px;
+  position: relative;
+  margin: 20px auto auto;
+
+  .top-section {
+    .img-cred p {
+      color: $ww-grey;
+      font-family: $ww-pt;
+      font-weight: $ww-medium;
+      font-style: italic;
+      font-size: 12px;
+    }
+
+    .content {
+      p {
+        color: $ww-text;
+        font-family: $ww-pt;
+        font-weight: $ww-medium;
+        font-size: 15px;
+      }
+    }
+
+    .side-quote p {
+      color: $ww-gold;
+      font-family: $ww-pt;
+      font-weight: $ww-medium;
+      font-style: italic;
+      font-size: 20px;
+      margin: 0;
+
+      svg {
+        height: 60px;
+      }
+    }
+  }
+
+  .rest-of-content {
+    h1, h2, h3, h4, h5, h6 {
+      color: $ww-gold;
+      font-family: $ww-pt;
+      font-weight: $ww-bold;
+    }
+
+    .regular-content {
+      p {
+        color: $ww-text;
+        font-family: $ww-pt;
+        font-weight: $ww-medium;
+        font-size: 15px;
+      }
+    }
+
+    .single-image {
+      img {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: $ww-grey;
+        font-family: $ww-pt;
+        font-weight: $ww-medium;
+        font-style: italic;
+        font-size: 12px;
+      }
+    }
+
+    .block-content {
+      margin-bottom: 20px;
+
+      .content {
+        background: #ece6dd;
+        padding-top: 40px;
+        position: relative;
+        padding-bottom: 40px;
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 100%;
+          width: 10%;
+          background: #ece6dd;
+        }
+
+        p {
+          max-width: 760px;
+          color: $ww-text;
+          font-family: $ww-pt;
+          font-weight: $ww-medium;
+          font-size: 15px;
+        }
+      }
+    }
+
+    .double-image {
+      img {
+        width: 100%;
+      }
+
+      p {
+        color: $ww-grey;
+        font-family: $ww-pt;
+        font-weight: $ww-medium;
+        font-style: italic;
+        font-size: 12px;
+      }
+    }
+
+    .inline-quote {
+      display: flex;
+
+      svg {
+        height: 65px;
+      }
+
+      p {
+        color: $ww-grey;
+        font-family: $ww-pt;
+        font-weight: $ww-medium;
+        font-style: italic;
+        font-size: 17px;
+        width: fit-content;
+      }
+    }
+  }
+
+  .owl {
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    svg {
+      height: 25px;
+    }
+  }
+}

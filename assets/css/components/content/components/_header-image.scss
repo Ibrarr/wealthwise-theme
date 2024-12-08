@@ -1,0 +1,19 @@
+.header-image {
+  max-width: 1024px;
+  margin: auto;
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 100%;
+    width: 100%;
+    background: $ww-gold;
+  }
+
+  img {
+    width: 100%;
+  }
+}

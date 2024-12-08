@@ -1,6 +1,7 @@
 const mix = require('laravel-mix');
 
 mix.js([
+    'assets/js/header/menu.js',
     'assets/js/header/mobile-menu.js',
     'assets/js/header/search-newsletter-switch.js',
 ], 'js/header.js');

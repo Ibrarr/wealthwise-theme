@@ -1,6 +1,33 @@
 /******/ (function() { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./assets/js/header/menu.js":
+/*!**********************************!*\
+  !*** ./assets/js/header/menu.js ***!
+  \**********************************/
+/***/ (function() {
+
+jQuery(document).ready(function ($) {
+  var lastScrollTop = 0;
+  var header = $("header");
+  var headerHeight = header.outerHeight();
+  $(window).on("scroll", function () {
+    var currentScrollTop = $(this).scrollTop();
+    if (currentScrollTop > lastScrollTop) {
+      header.stop().animate({
+        top: -headerHeight
+      }, 300);
+    } else {
+      header.stop().animate({
+        top: 0
+      }, 300);
+    }
+    lastScrollTop = currentScrollTop;
+  });
+});
+
+/***/ }),
+
 /***/ "./assets/js/header/mobile-menu.js":
 /*!*****************************************!*\
   !*** ./assets/js/header/mobile-menu.js ***!
@@ -213,6 +240,7 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
+/******/ 	__webpack_require__.O(undefined, ["css/app"], function() { return __webpack_require__("./assets/js/header/menu.js"); })
 /******/ 	__webpack_require__.O(undefined, ["css/app"], function() { return __webpack_require__("./assets/js/header/mobile-menu.js"); })
 /******/ 	__webpack_require__.O(undefined, ["css/app"], function() { return __webpack_require__("./assets/js/header/search-newsletter-switch.js"); })
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], function() { return __webpack_require__("./assets/css/app.scss"); })

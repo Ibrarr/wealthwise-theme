@@ -2,11 +2,12 @@ header {
   width: 100%;
   position: fixed;
   z-index: 99;
-  top: 30px;
+  padding-top: 30px;
+  padding-bottom: 10px;
   background: $ww-background;
 
   @include media-breakpoint-down(md) {
-    top: 10px;
+    padding-top: 10px;
   }
 
   @import "components/top-menu";
