@@ -1,0 +1,45 @@
+a {
+  text-decoration: none;
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+
+  .image-wrapper {
+    overflow: hidden;
+    margin-bottom: 10px;
+
+    img {
+      transition: $ww-transition-all;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+  }
+
+  .term {
+    @include term($ww-gold);
+    margin-bottom: 10px;
+  }
+
+  .title {
+    color: $ww-text;
+    font-family: $ww-pt;
+    font-weight: $ww-bold;
+    font-size: 26px;
+    margin-bottom: 10px;
+    line-height: 28px;
+  }
+
+  .excerpt {
+    color: $ww-text;
+    font-family: $ww-pt;
+    font-weight: $ww-medium;
+    font-size: 12px;
+    line-height: 20px;
+
+    @include media-breakpoint-down(md) {
+      display: none;
+    }
+  }
+}

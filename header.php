@@ -9,7 +9,7 @@
 <?php wp_body_open(); ?>
 <div id="wrapper" class="hfeed">
     <header id="header" role="banner">
-        <div class="container">
+        <div class="container px-4">
             <div class="top-menu">
                 <div class="main-menu">
                     <div class="hamburger"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/hamburger.svg' ) ?></div>

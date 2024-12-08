@@ -1,0 +1,8 @@
+@mixin term($color) {
+  color: $color;
+  font-family: $ww-inter;
+  font-weight: $ww-medium;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
