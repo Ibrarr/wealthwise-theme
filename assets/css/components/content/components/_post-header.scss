@@ -15,8 +15,12 @@
     color: $ww-text;
     font-family: $ww-pt;
     font-weight: $ww-bold;
-    font-size: 40px;
+    font-size: 32px;
     margin-bottom: 20px;
+
+    @include media-breakpoint-up(md) {
+      font-size: 40px;
+    }
   }
 
   .excerpt {

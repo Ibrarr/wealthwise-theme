@@ -1,0 +1,39 @@
+.post-header {
+  margin: 20px auto;
+  max-width: 1024px;
+
+  .term {
+    @include term($ww-gold);
+  }
+
+  .title-share {
+    @include media-breakpoint-up(md) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .title {
+      color: $ww-text;
+      font-family: $ww-pt;
+      font-weight: $ww-bold;
+      font-size: 32px;
+      margin-bottom: 20px;
+
+      @include media-breakpoint-up(md) {
+        margin-right: 20px;
+        font-size: 40px;
+      }
+    }
+
+    .share {
+      cursor: pointer;
+      height: 18px;
+      display: flex;
+
+      svg {
+        height: 18px;
+      }
+    }
+  }
+}

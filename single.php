@@ -5,8 +5,8 @@ if ( have_posts() ) :
 	while ( have_posts() ) : the_post();
 
 		switch ( get_post_type() ) {
-			case 'work':
-				get_template_part( 'template-parts/content', 'work' );
+			case 'video':
+				get_template_part( 'template-parts/content', 'video' );
 				break;
 			default:
 				get_template_part( 'template-parts/content', 'blog' );
