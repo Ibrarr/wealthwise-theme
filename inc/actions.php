@@ -102,17 +102,6 @@ function custom_404_redirect( $template ) {
 	return $template;
 }
 
-add_action( 'init', 'custom_modify_category_taxonomy' );
-function custom_modify_category_taxonomy() {
-	$args = array(
-		'rewrite' => array(
-			'with_front' => false,
-		),
-	);
-
-	register_taxonomy( 'category', 'post', $args );
-}
-
 /**
  * Redirect searches to search page
  */

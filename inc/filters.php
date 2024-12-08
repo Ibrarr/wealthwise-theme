@@ -90,8 +90,7 @@ add_filter( 'use_block_editor_for_post', '__return_false', 10 );
 /**
  * Fetch all Gravity Forms for ACF dropdown field
  */
-add_filter( 'acf/load_field/name=newsletter_popup_form_gravity_form_id', 'acf_populate_gf_forms_ids' );
-add_filter( 'acf/load_field/name=select_gform_form', 'acf_populate_gf_forms_ids' );
+add_filter( 'acf/load_field/name=newsletter_form', 'acf_populate_gf_forms_ids' );
 function acf_populate_gf_forms_ids( $field ) {
 	if ( class_exists( 'GFFormsModel' ) ) {
 		$choices = [];

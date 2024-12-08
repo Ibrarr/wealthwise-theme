@@ -1,10 +1,9 @@
 const mix = require('laravel-mix');
 
-// mix.js([
-//     'assets/js/header/main-menu.js',
-//     'assets/js/header/sliders.js',
-//     'assets/js/header/load-search-results.js'
-// ], 'js/header.js');
+mix.js([
+    'assets/js/header/mobile-menu.js',
+    'assets/js/header/search-newsletter-switch.js',
+], 'js/header.js');
 
 mix.sass('assets/css/app.scss', 'css/app.css')
     .options({

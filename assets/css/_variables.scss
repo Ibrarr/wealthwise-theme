@@ -1,15 +1,24 @@
 // Boostrap Override
 :root {
-  --bs-body-bg: #E5DBD4;
+  --bs-body-bg: #f7f3f1;
 }
 
-// Typography
-
-
 // Typography Sizes
+$ww-inter: 'Inter', sans-serif;
+$ww-pt: 'PT Serif', serif;
 
+$ww-light: 300;
+$ww-medium: 500;
+$ww-bold: 700;
 
 // Colors
-
+$ww-background: #f7f3f1;
+$ww-text: #181818;
+$ww-gold: #815f1f;
+$ww-gold-lightest: #eee5db;
+$ww-gold-lighter: #e2d4c2;
+$ww-gold-light: #c8ae88;
+$ww-brown: #663E3E;
 
 //Other
+$ww-transition-all: all .3s;

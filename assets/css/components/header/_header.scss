@@ -1,0 +1,19 @@
+header {
+  width: 100%;
+  position: fixed;
+  z-index: 99;
+  top: 30px;
+  background: $ww-background;
+
+  @include media-breakpoint-down(md) {
+    top: 10px;
+  }
+
+  @import "components/top-menu";
+  @import "components/bottom-menu";
+  @import "components/mobile-menu";
+}
+
+.hidden {
+  display: none !important;
+}
