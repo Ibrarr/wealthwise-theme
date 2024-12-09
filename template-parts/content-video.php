@@ -27,15 +27,61 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
             </div>
 		</section>
 
-        <section class="video">
+        <section class="video-container">
             <div class="embed-container">
-		        <?php the_field('video'); ?>
+				<?php
+				$iframe = get_field('video');
+
+				preg_match('/src="(.+?)"/', $iframe, $matches);
+				$src = $matches[1];
+
+				$base_src = add_query_arg(array(
+					'controls' => 1,
+					'hd'       => 1,
+					'autohide' => 1,
+				), $src);
+				?>
+
+                <div class="video-cover" style="background-image: url('<?php the_post_thumbnail_url() ?>');">
+                    <button class="play-button" aria-label="Play Video">
+                        <?php
+                        if ($term_name === 'Video') {
+	                        echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/share.svg' );
+                        } else {
+	                        echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/hamburger.svg' );
+                        }
+                        ?>
+                    </button>
+                </div>
             </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const videoCover = document.querySelector('.video-cover');
+                    const embedContainer = document.querySelector('.embed-container');
+
+                    if (videoCover && embedContainer) {
+                        videoCover.addEventListener('click', function () {
+                            const videoSrc = '<?php echo esc_js($base_src); ?>&autoplay=1';
+
+                            // Create iframe dynamically
+                            const iframe = document.createElement('iframe');
+                            iframe.src = videoSrc;
+                            iframe.frameBorder = '0';
+                            iframe.allowFullscreen = true;
+                            iframe.allow = 'autoplay';
+
+                            embedContainer.innerHTML = '';
+                            embedContainer.appendChild(iframe);
+                        });
+                    }
+                });
+            </script>
         </section>
+
 
 		<section class="post-content">
 			<div class="row">
-                <div class="col-lg-10 offset-lg-2">
+                <div class="col-lg-8 offset-lg-2">
                     <p class="excerpt"><?php echo esc_html(get_the_excerpt()); ?></p>
                     <div class="content"><?php the_field( 'content' ); ?></div>
                 </div>
@@ -50,17 +96,13 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
 			        'post_type' => $post_type,
 			        'posts_per_page' => 4,
 			        'post__not_in' => array(get_the_ID()),
-			        'tax_query' => array(
-				        array(
-					        'taxonomy' => $taxonomy,
-					        'field' => 'name',
-					        'terms' => $term_name,
-				        ),
-			        ),
 		        ));
 
 		        if ($related_posts->have_posts()) :
 			        while ($related_posts->have_posts()) : $related_posts->the_post();
+				        $type = get_the_terms(get_the_ID(), $taxonomy);
+				        $term_name = $type[0]->name;
+
 				        require('standard-article-card.php');
 			        endwhile;
 			        wp_reset_postdata();

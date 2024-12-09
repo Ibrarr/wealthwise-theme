@@ -1,0 +1,27 @@
+.post-content {
+  max-width: 1024px;
+  position: relative;
+  margin: 40px auto auto;
+
+    h1, h2, h3, h4, h5, h6 {
+      color: $ww-gold;
+      font-family: $ww-pt;
+      font-weight: $ww-bold;
+    }
+
+    .content {
+      p {
+        color: $ww-text;
+        font-family: $ww-pt;
+        font-weight: $ww-medium;
+        font-size: 15px;
+      }
+    }
+
+    .excerpt {
+      color: $ww-gold;
+      font-family: $ww-pt;
+      font-weight: $ww-medium;
+      font-size: 15px;
+    }
+}
