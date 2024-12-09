@@ -1,0 +1,10 @@
+.single-event {
+  article .container {
+    border-top: 2px solid #cfc9c1;
+  }
+
+  @import "components/post-header";
+  @import "components/header-image";
+  @import "components/post-content";
+  @import "components/related-content";
+}

@@ -8,6 +8,9 @@ if ( have_posts() ) :
 			case 'video':
 				get_template_part( 'template-parts/content', 'video' );
 				break;
+			case 'event':
+				get_template_part( 'template-parts/content', 'event' );
+				break;
 			default:
 				get_template_part( 'template-parts/content', 'blog' );
 				break;
