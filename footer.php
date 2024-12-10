@@ -11,6 +11,17 @@
                 </div>
                 <div class="col-lg-8">
                     <p>Investment and wealth creation are inherently long-term endeavours and, at Wealthwise, we believe intelligent coverage of the space – and the professional relationships forged within it – should aspire to a similar timeframe. Wealthwise therefore exists to build constructive, durable connections between the wealth and asset management sectors – both in person and online.</p>
+	                <div class="socials">
+                        <a href="#">
+	                        <?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/linkedin-footer.svg' ) ?>
+                        </a>
+                        <a href="#">
+			                <?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/youtube-footer.svg' ) ?>
+                        </a>
+                        <a href="#">
+			                <?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/linkedin-footer.svg' ) ?>
+                        </a>
+                    </div>
                 </div>
                 <div class="col-lg-2">
                     <span class="header">ARTICLES</span>

@@ -10,9 +10,9 @@
                 <button class="play-button" aria-label="Play Video">
                     <?php
                     if ($term_name === 'Video') {
-                        echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/share.svg' );
+                        echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/video.svg' );
                     } else {
-                        echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/hamburger.svg' );
+                        echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/podcast.svg' );
                     }
                     ?>
                 </button>

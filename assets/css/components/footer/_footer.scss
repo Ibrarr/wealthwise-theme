@@ -35,6 +35,29 @@ footer {
       margin-bottom: 0;
     }
 
+    .socials {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      a {
+        height: 20px;
+
+        &:hover path {
+          fill: $ww-gold;
+        }
+
+        svg {
+          height: 20px;
+
+          path {
+            transition: $ww-transition-all;
+          }
+        }
+      }
+    }
+
     span {
       color: $ww-gold;
       font-family: $ww-inter;

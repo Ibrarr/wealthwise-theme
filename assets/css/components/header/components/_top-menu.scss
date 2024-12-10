@@ -17,7 +17,7 @@
         height: 20px;
         width: 20px;
 
-        @include media-breakpoint-down(md) {
+        @include media-breakpoint-down(lg) {
           height: 14px;
           width: 14px;
         }
@@ -38,7 +38,7 @@
     margin: 0 auto;
 
     svg {
-      @include media-breakpoint-down(md) {
+      @include media-breakpoint-down(lg) {
         width: 160px;
       }
     }
@@ -59,7 +59,7 @@
       stroke: $ww-gold;
     }
 
-    @include media-breakpoint-down(md) {
+    @include media-breakpoint-down(lg) {
       display: none;
     }
   }
