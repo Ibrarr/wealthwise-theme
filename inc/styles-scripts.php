@@ -20,9 +20,9 @@ function add_custom_scripts() {
 //        wp_enqueue_script( 'category-term', WW_TEMPLATE_URI . '/dist/js/category-term.js', [ 'jquery' ], filemtime( WW_TEMPLATE_DIR . '/dist/js/category-term.js' ), true );
 //    }
 //
-//	if ( is_singular( 'post' ) ) {
-//		wp_enqueue_script( 'blog-single', WW_TEMPLATE_URI . '/dist/js/blog-single.js', [ 'jquery' ], filemtime( WW_TEMPLATE_DIR . '/dist/js/blog-single.js' ), true );
-//	}
+	if ( is_singular( 'event' ) ) {
+		wp_enqueue_script( 'blog-single', WW_TEMPLATE_URI . '/dist/js/content-event.js', [ 'jquery' ], filemtime( WW_TEMPLATE_DIR . '/dist/js/content-event.js' ), true );
+	}
 //
 //    if ( is_search() || is_page_template( 'page-templates/page-search.php' ) ) {
 //        wp_enqueue_script( 'search-page', WW_TEMPLATE_URI . '/dist/js/search.js', [ 'jquery' ], filemtime( WW_TEMPLATE_DIR . '/dist/js/search.js' ), true );

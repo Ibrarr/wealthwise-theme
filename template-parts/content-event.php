@@ -16,86 +16,164 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="container px-4">
 		<section class="post-header row">
-            <div class="col-lg-8 offset-lg-2">
+            <div class="info col-lg-5">
                 <p class="term">Event</p>
                 <h1 class="title"><?php the_title(); ?></h1>
+                <p class="date">Date: <?php the_field( 'date' ); ?></p>
+                <p class="location">Location: <?php the_field( 'full_address' ); ?></p>
+            </div>
+            <div class="image col-lg-7">
+                <img src="<?php the_post_thumbnail_url() ?>" alt="<?php echo esc_attr( get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true ) ); ?>"
+                     srcset="<?php echo esc_attr( $image_srcset ); ?>" sizes="(min-width: 391px) 1024px, 100vw">
             </div>
 		</section>
 
-        <section class="header-image">
-            <img src="<?php the_post_thumbnail_url() ?>" alt="<?php echo esc_attr( get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true ) ); ?>"
-                 srcset="<?php echo esc_attr( $image_srcset ); ?>" sizes="(min-width: 391px) 1024px, 100vw">
-        </section>
-
 		<section class="post-content">
 			<div class="top-section row">
-                <div class="img-cred col-lg-2"><button>Register</button></div>
-				<div class="excerpt col-lg-8">
-					<p><?php echo esc_html(get_the_excerpt()); ?></p>
+                <div class="register col-lg-2">
+                    <button>Register</button>
+                    <div class="share">
+		                <?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/share.svg' ) ?>
+                    </div>
+                </div>
+				<div class="excerpt-intro col-lg-8">
+					<p class="excerpt"><?php echo esc_html(get_the_excerpt()); ?></p>
+					<?php the_field( 'intro' ); ?>
                 </div>
                 <div class="share col-lg-2">
 	                <?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/share.svg' ) ?>
                 </div>
             </div>
 
-           <div class="rest-of-content row">
-	           <?php
-	           if( have_rows('content') ):
-		           while ( have_rows('content') ) : the_row();
+            <div class="agenda col-lg-8 offset-lg-2">
+                <div class="content">
+                    <h3><?php the_field( 'agenda_heading' ); ?></h3>
+                    <div class="accordion-container">
+	                    <?php
+	                    if( have_rows('agenda') ):
+		                    while( have_rows('agenda') ) : the_row();
+			                    $heading = get_sub_field('heading');
+			                    echo '<div class="accordion">';
+                                    echo '<h5>'.$heading.' <span class="open">-</span> <span class="closed">+</span></h5>';
+                                    echo '<div class="accordion-content">';
+                                        if( have_rows('item') ):
+                                            while( have_rows('item') ) : the_row();
+                                                $time_slot = get_sub_field('time_slot');
+                                                $heading = get_sub_field('heading');
+                                                echo '<div class="slot"><p class="time">'.$time_slot.'</p><p class="heading">'.$heading.'</p></div>';
+                                            endwhile;
+                                        endif;
+                                    echo '</div>';
+			                    echo '</div>';
+		                    endwhile;
+	                    endif;
+	                    ?>
+                    </div>
+                </div>
+            </div>
 
-			           if( get_row_layout() == 'regular_content' ):
-				           $content = get_sub_field('content');
-				           ?>
-                           <div class="regular-content col-lg-8 offset-lg-2">
-					           <?php echo $content; ?>
-                           </div>
-                       <?php
+            <div class="sponsor-logos col-lg-8 offset-lg-2">
+                <div class="splide" id="sponsorLogosSlider">
+                    <div class="splide__track">
+                        <ul class="splide__list">
+							<?php
+							$images = get_field('sponsor_logos');
+							if( $images ):
+								foreach( $images as $image ): ?>
+                                    <li class="splide__slide">
+                                        <img src="<?php echo esc_url($image['sizes']['medium']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                                    </li>
+								<?php endforeach;
+							endif; ?>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
-                       elseif( get_row_layout() == 'single_image' ):
-				           $image = get_sub_field('image');
-	                       ?>
-                           <div class="single-image col-lg-10 offset-lg-2">
-                               <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
-                               <p><?php echo esc_attr($image['alt']); ?></p>
-                           </div>
-                       <?php
+            <div class="content-speakers col-lg-8 offset-lg-2">
+                <h3>Content & Speakers</h3>
+                <?php the_field( 'content_speakers_intro' ); ?>
+                <div class="content-speakers-items">
+	                <?php
+	                if( have_rows('content_speakers') ):
+		                while( have_rows('content_speakers') ) : the_row();
+                            echo '<div class="content-speakers-item">';
+                                $heading_one = get_sub_field('heading_one');
+                                $heading_two = get_sub_field('heading_two');
+                                $content = get_sub_field('content');
+                                $speaker_image = get_sub_field('speaker_image');
+                                $speaker_name = get_sub_field('speaker_name');
+                                $speaker_job_title = get_sub_field('speaker_job_title');
+                                $speaker_company = get_sub_field('speaker_company');
+                                $speaker_about = get_sub_field('speaker_about');
+                                ?>
+                                <h4><?php echo $heading_one; ?></h4>
+                                <h4 class="heading-two"><?php echo $heading_two; ?></h4>
+                                <p class="content"><?php echo $content; ?></p>
+                                <div class="speaker">
+                                    <div class="img-container">
+                                        <img src="<?php echo $speaker_image; ?>" alt="<?php echo $speaker_name; ?>">
+                                    </div>
+                                    <div class="speaker-info">
+                                        <p class="speaker-job-title"><?php echo $speaker_job_title; ?></p>
+                                        <p class="speaker-name"><?php echo $speaker_name; ?></p>
+                                        <p class="speaker-company"><?php echo $speaker_company; ?></p>
+                                        <p class="speaker-about"><?php echo $speaker_about; ?></p>
+                                    </div>
+                                </div>
+                                <?php
+			                echo '</div>';
+		                endwhile;
+	                endif;
+	                ?>
+                </div>
+            </div>
 
-                       elseif( get_row_layout() == 'block_content' ):
-				           $content = get_sub_field('content');
-	                       ?>
-                           <div class="block-content col-lg-10 offset-lg-2">
-		                       <div class="content"><?php echo $content; ?></div>
-                           </div>
-                       <?php
+            <div class="location col-lg-10 offset-lg-2">
+                <h3>Location</h3>
+	            <p><?php the_field( 'full_address' ); ?>, <?php the_field( 'postcode' ); ?></p>
+	            <p>For Sat Navs use: <?php the_field( 'postcode' ); ?></p>
+                <div class="img-container">
+                    <img src="<?php the_field( 'map_location' ); ?>" alt="<?php the_field( 'postcode' ); ?>">
+                </div>
+            </div>
 
-                       elseif( get_row_layout() == 'two_image' ):
-				           $image_one = get_sub_field('image_one');
-				           $image_two = get_sub_field('image_two');
-	                       ?>
-                           <div class="double-image col-md-6">
-                               <img src="<?php echo esc_url($image_one['url']); ?>" alt="<?php echo esc_attr($image_one['alt']); ?>">
-                               <p><?php echo esc_attr($image_one['alt']); ?></p>
-                           </div>
-                           <div class="double-image col-md-6">
-                               <img src="<?php echo esc_url($image_two['url']); ?>" alt="<?php echo esc_attr($image_two['alt']); ?>">
-                               <p><?php echo esc_attr($image_two['alt']); ?></p>
-                           </div>
+            <div class="faq col-lg-8 offset-lg-2">
+                <h3>Frequently asked questions</h3>
+                <p><?php the_field( 'contact_intro' ); ?></p>
+                <div class="accordion-container">
+		            <?php
+		            if( have_rows('faq') ):
+			            while( have_rows('faq') ) : the_row();
+				            $heading = get_sub_field('question');
+				            $answer = get_sub_field('answer');
+				            echo '<div class="accordion">';
+				            echo '<h5>'.$heading.' <span class="open">-</span> <span class="closed">+</span></h5>';
+				            echo '<div class="accordion-content">';
+				            echo '<p>'.$answer.'</p>';
+				            echo '</div>';
+				            echo '</div>';
+			            endwhile;
+		            endif;
+		            ?>
+                </div>
+            </div>
 
-                       <?php
-
-                       elseif( get_row_layout() == 'inline_quote' ):
-				           $quote = get_sub_field('quote');
-	                       ?>
-                           <div class="inline-quote col-lg-8 offset-lg-2">
-                               <?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/quote-two.svg' ) ?>
-                               <p><?php echo $quote; ?>“</p>
-                           </div>
-                       <?php
-			           endif;
-		           endwhile;
-	           endif;
-	           ?>
-           </div>
+            <div class="contact col-lg-8 offset-lg-2">
+                <h3>Contact us</h3>
+                <p><?php the_field( 'contact_intro' ); ?></p>
+                <div class="contact-person">
+                    <div class="img-container">
+                        <img src="<?php the_field( 'contact_image' ); ?>" alt="<?php the_field( 'contact_name' ); ?>">
+                    </div>
+                    <div class="speaker-info">
+                        <p class="name"><?php the_field( 'contact_name' ); ?></p>
+                        <p class="job-title"><?php the_field( 'contact_job_title' ); ?></p>
+                        <p class="email"><a href="mailto:<?php the_field( 'contact_email' ); ?>"><?php the_field( 'contact_email' ); ?></a></p>
+                        <p class="phone"><a href="tel:<?php the_field( 'contact_phone' ); ?>"><?php the_field( 'contact_phone' ); ?></a></p>
+                    </div>
+                </div>
+            </div>
 		</section>
 
         <section class="related-content">
