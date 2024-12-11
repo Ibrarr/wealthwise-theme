@@ -13784,6 +13784,127 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   display: none !important;
 }
 
+.page-template-page-about .container.page-content {
+  border-top: 2px solid #cfc9c1;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.page-template-page-about .container.page-content section {
+  max-width: 1024px;
+  margin: auto;
+}
+.page-template-page-about .container.page-content section h1, .page-template-page-about .container.page-content section .h1, .page-template-page-about .container.page-content section h2, .page-template-page-about .container.page-content section .h2, .page-template-page-about .container.page-content section h3, .page-template-page-about .container.page-content section .h3, .page-template-page-about .container.page-content section h4, .page-template-page-about .container.page-content section .h4, .page-template-page-about .container.page-content section h5, .page-template-page-about .container.page-content section .h5, .page-template-page-about .container.page-content section h6, .page-template-page-about .container.page-content section .h6 {
+  color: #815f1f;
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+}
+.page-template-page-about .container.page-content section h1, .page-template-page-about .container.page-content section .h1 {
+  color: #181818;
+  margin-bottom: 20px;
+}
+.page-template-page-about .container.page-content section .intro {
+  color: #815f1f;
+}
+.page-template-page-about .container.page-content section p {
+  color: #181818;
+  font-family: "PT Serif", serif;
+  font-weight: 500;
+  font-size: 15px;
+}
+.page-template-page-about .container.page-content section img {
+  width: 100vw;
+  height: 450px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.page-template-page-about .container.page-content section .team, .page-template-page-about .container.page-content section .img {
+  margin-top: 40px;
+}
+
+.page-template-default .container.page-content {
+  border-top: 2px solid #cfc9c1;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.page-template-default .container.page-content section {
+  max-width: 1024px;
+  margin: auto;
+}
+.page-template-default .container.page-content section h1, .page-template-default .container.page-content section .h1, .page-template-default .container.page-content section h2, .page-template-default .container.page-content section .h2, .page-template-default .container.page-content section h3, .page-template-default .container.page-content section .h3, .page-template-default .container.page-content section h4, .page-template-default .container.page-content section .h4, .page-template-default .container.page-content section h5, .page-template-default .container.page-content section .h5, .page-template-default .container.page-content section h6, .page-template-default .container.page-content section .h6 {
+  color: #815f1f;
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+}
+.page-template-default .container.page-content section h1, .page-template-default .container.page-content section .h1 {
+  color: #181818;
+  margin-bottom: 20px;
+}
+.page-template-default .container.page-content section h3, .page-template-default .container.page-content section .h3 {
+  border-top: 2px solid #cfc9c1;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+.page-template-default .container.page-content section p {
+  color: #181818;
+  font-family: "PT Serif", serif;
+  font-weight: 500;
+  font-size: 15px;
+}
+.page-template-default .container.page-content section .gform-newsletter-form_wrapper form.gform-newsletter-form .gfield_required {
+  display: none;
+}
+.page-template-default .container.page-content section .gform-newsletter-form_wrapper form.gform-newsletter-form .gform_fields .gfield {
+  grid-row-gap: 20px !important;
+  line-height: 0 !important;
+}
+.page-template-default .container.page-content section .gform-newsletter-form_wrapper form.gform-newsletter-form .gform_fields {
+  border-bottom: 2px solid #cfc9c1;
+  padding-bottom: 40px;
+}
+.page-template-default .container.page-content section .gform-newsletter-form_wrapper form.gform-newsletter-form .gform_footer {
+  margin: 0;
+}
+.page-template-default .container.page-content section .gform-newsletter-form_wrapper form.gform-newsletter-form label {
+  color: #181818;
+  font-family: "PT Serif", serif;
+  font-weight: 500;
+  font-size: 15px;
+}
+.page-template-default .container.page-content section .gform-newsletter-form_wrapper form.gform-newsletter-form input {
+  border: 0;
+  border-radius: 8px;
+}
+.page-template-default .container.page-content section .gform-newsletter-form_wrapper form.gform-newsletter-form input:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.page-template-default .container.page-content section .gform-newsletter-form_wrapper form.gform-newsletter-form input[type=text] {
+  padding: 25px;
+}
+.page-template-default .container.page-content section .gform-newsletter-form_wrapper form.gform-newsletter-form input[type=submit] {
+  padding: 15px 50px;
+  color: #ffffff;
+  font-family: "PT Serif", serif;
+  font-weight: 500;
+  font-size: 14px;
+  background: #815f1f;
+  border-radius: 25px;
+}
+.page-template-default .container.page-content section .gform-newsletter-form_wrapper form.gform-newsletter-form input[type=submit]:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border: none;
+}
+.page-template-default .container.page-content section .gform-newsletter-form_wrapper form.gform-newsletter-form .gform_confirmation_message {
+  color: #815f1f;
+  font-family: "PT Serif", serif;
+  font-weight: 500;
+  font-size: 15px;
+}
+.page-template-default .container.page-content section .gform-newsletter-form_wrapper form.gform-newsletter-form [data-js-spinner-id] {
+  display: none !important;
+}
+
 .single-post article .container {
   border-top: 2px solid #cfc9c1;
 }

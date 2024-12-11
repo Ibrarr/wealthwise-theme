@@ -1,0 +1,105 @@
+.page-template-default {
+
+  .container.page-content {
+    border-top: 2px solid #cfc9c1;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    section {
+      max-width: 1024px;
+      margin: auto;
+
+      h1, h2, h3, h4, h5, h6 {
+        color: $ww-gold;
+        font-family: $ww-pt;
+        font-weight: $ww-bold;
+      }
+
+      h1 {
+        color: $ww-text;
+        margin-bottom: 20px;
+      }
+
+      h3 {
+        border-top: 2px solid #cfc9c1;
+        padding-top: 20px;
+        margin-top: 20px;
+      }
+
+      p {
+        color: $ww-text;
+        font-family: $ww-pt;
+        font-weight: $ww-medium;
+        font-size: 15px;
+      }
+
+      .gform-newsletter-form_wrapper {
+        form.gform-newsletter-form {
+          .gfield_required {
+            display: none;
+          }
+
+          .gform_fields .gfield {
+            grid-row-gap: 20px !important;
+            line-height: 0 !important;
+          }
+
+          .gform_fields {
+            border-bottom: 2px solid #cfc9c1;
+            padding-bottom: 40px;
+          }
+
+          .gform_footer {
+            margin: 0;
+          }
+
+          label {
+            color: $ww-text;
+            font-family: $ww-pt;
+            font-weight: $ww-medium;
+            font-size: 15px;
+          }
+
+          input {
+            border: 0;
+            border-radius: 8px;
+
+            &:focus {
+              box-shadow: none;
+            }
+          }
+
+          input[type="text"] {
+            padding: 25px;
+          }
+
+          input[type="submit"] {
+            padding: 15px 50px;
+            color: #ffffff;
+            font-family: $ww-pt;
+            font-weight: $ww-medium;
+            font-size: 14px;
+            background: $ww-gold;
+            border-radius: 25px;
+
+            &:focus {
+              box-shadow: none;
+              border: none;
+            }
+          }
+
+          .gform_confirmation_message {
+            color: $ww-gold;
+            font-family: $ww-pt;
+            font-weight: $ww-medium;
+            font-size: 15px;
+          }
+
+          [data-js-spinner-id] {
+            display: none !important;
+          }
+        }
+      }
+    }
+  }
+}

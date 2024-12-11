@@ -1,0 +1,45 @@
+.page-template-page-about {
+
+  .container.page-content {
+    border-top: 2px solid #cfc9c1;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    section {
+      max-width: 1024px;
+      margin: auto;
+
+      h1, h2, h3, h4, h5, h6 {
+        color: $ww-gold;
+        font-family: $ww-pt;
+        font-weight: $ww-bold;
+      }
+
+      h1 {
+        color: $ww-text;
+        margin-bottom: 20px;
+      }
+
+      .intro {
+        color: $ww-gold;
+      }
+
+      p {
+        color: $ww-text;
+        font-family: $ww-pt;
+        font-weight: $ww-medium;
+        font-size: 15px;
+      }
+
+      img {
+        width: 100vw;
+        height: 450px;
+        object-fit: cover;
+      }
+
+      .team, .img {
+        margin-top: 40px;
+      }
+    }
+  }
+}
