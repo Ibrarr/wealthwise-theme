@@ -42,10 +42,12 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
 				<div class="content col-lg-8">
 					<?php the_field( 'first_section' ); ?>
                 </div>
-                <div class="side-quote col-lg-2">
-                    <p>“<?php the_field( 'side_quote' ); ?></p>
-	                <?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/quote.svg' ) ?>
-                </div>
+                <?php if ( get_field( 'side_quote' )) { ?>
+                    <div class="side-quote col-lg-2">
+                        <p>“<?php the_field( 'side_quote' ); ?></p>
+                        <?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/quote.svg' ) ?>
+                    </div>
+                <?php } ?>
             </div>
 
            <div class="rest-of-content row">

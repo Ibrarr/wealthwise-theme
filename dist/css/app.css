@@ -13940,6 +13940,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 }
 .single-post .post-content .rest-of-content .inline-quote svg {
   height: 65px;
+  margin-right: 20px;
 }
 .single-post .post-content .rest-of-content .inline-quote p {
   color: #717171;

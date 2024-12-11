@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="71" height="118" viewBox="0 0 71 118">
-  <g id="Group_6423" data-name="Group 6423" transform="translate(1100 1285) rotate(180)">
-    <text id="_" data-name="”" transform="translate(1029 1167)" fill="#7e5f1f" font-size="94" font-family="Merriweather-Bold, Merriweather" font-weight="700"><tspan x="0" y="92">”</tspan></text>
-    <circle id="Ellipse_7" data-name="Ellipse 7" cx="9" cy="9" r="9" transform="translate(1036 1178)" fill="#7e5f1f"/>
-    <circle id="Ellipse_8" data-name="Ellipse 8" cx="9" cy="9" r="9" transform="translate(1062 1178)" fill="#7e5f1f"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="47.191" height="42.505" viewBox="0 0 47.191 42.505"><defs><clipPath id="a"><rect width="47.191" height="42.505" fill="#7e5f1f"/></clipPath></defs><g transform="translate(0 0)" clip-path="url(#a)"><path d="M11.561,23.852c-.172,0-.338.017-.508.025a14.473,14.473,0,0,1-.385-3.485,21.265,21.265,0,0,1,2.078-9.866,22.181,22.181,0,0,1,4.437-6.184V3.02L13.878,0h-.094A22.711,22.711,0,0,0,7.648,5.428a34.242,34.242,0,0,0-5.429,9.346A31.239,31.239,0,0,0,0,26.529a21.246,21.246,0,0,0,1.369,7.647,14.973,14.973,0,0,0,3.776,5.806A8.742,8.742,0,0,0,7.7,41.662a9.323,9.323,0,1,0,3.858-17.81" transform="translate(0 0)" fill="#7e5f1f"/><path d="M41.568,23.852c-.191,0-.378.018-.566.029a14.5,14.5,0,0,1-.385-3.489,21.276,21.276,0,0,1,2.077-9.866,22.2,22.2,0,0,1,4.437-6.184V3.02L43.921,0h-.095A20.937,20.937,0,0,0,37.69,5.381a35.078,35.078,0,0,0-5.429,9.393,31.238,31.238,0,0,0-2.218,11.755,21.264,21.264,0,0,0,1.369,7.647,15.277,15.277,0,0,0,3.729,5.806,8.336,8.336,0,0,0,2.728,1.756,9.326,9.326,0,1,0,3.7-17.886" transform="translate(-3.703 0)" fill="#7e5f1f"/></g></svg>

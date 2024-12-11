@@ -165,7 +165,7 @@ function partner_content_post_type() {
 		'label'               => __( 'Partner content', 'ww' ),
 		'description'         => __( 'Post Type Description', 'ww' ),
 		'labels'              => $labels,
-		'supports'            => array( 'title', 'thumbnail' ),
+		'supports'            => array( 'title', 'thumbnail', 'excerpt' ),
 		'taxonomies'          => array( 'partner' ),
 		'hierarchical'        => false,
 		'public'              => true,
