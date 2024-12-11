@@ -4403,6 +4403,33 @@ jQuery(document).ready(function ($) {
   $('.accordion h5 .closed').first().hide();
 });
 }();
+// This entry needs to be wrapped in an IIFE because it needs to be isolated against other entry modules.
+!function() {
+/*!******************************************!*\
+  !*** ./assets/js/content-event/share.js ***!
+  \******************************************/
+jQuery(document).ready(function ($) {
+  var tooltipVisible = false;
+  $('.share').on('click', function (e) {
+    e.stopPropagation(); // Prevent event bubbling
+    if (!tooltipVisible) {
+      $('.share-tooltip').fadeIn();
+      tooltipVisible = true;
+    }
+  });
+  $(document).on('click', function () {
+    if (tooltipVisible) {
+      $('.share-tooltip').fadeOut();
+      tooltipVisible = false;
+    }
+  });
+  $('.share-tooltip a').on('click', function (e) {
+    e.stopPropagation();
+    $('.share-tooltip').fadeOut();
+    tooltipVisible = false;
+  });
+});
+}();
 // This entry needs to be wrapped in an IIFE because it needs to be in strict mode.
 !function() {
 "use strict";

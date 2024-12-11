@@ -6,10 +6,12 @@ jQuery(document).ready(function($) {
     $(window).on("scroll", function () {
         const currentScrollTop = $(this).scrollTop();
 
-        if (currentScrollTop > lastScrollTop) {
-            header.stop().animate({ top: -headerHeight }, 300);
+        if (currentScrollTop === 0) {
+            header.removeClass("active").stop().animate({ top: 0 }, 300);
+        } else if (currentScrollTop > lastScrollTop) {
+            header.removeClass("active").stop().animate({ top: -headerHeight }, 300);
         } else {
-            header.stop().animate({ top: 0 }, 300);
+            header.addClass("active").stop().animate({ top: 0 }, 300);
         }
 
         lastScrollTop = currentScrollTop;

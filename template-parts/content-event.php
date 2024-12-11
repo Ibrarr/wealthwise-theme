@@ -34,6 +34,14 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
                     <button>Register</button>
                     <div class="share">
 		                <?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/share.svg' ) ?>
+                        <div class="share-tooltip">
+                            <a class="mail-icon"
+                               href="mailto:?subject=<?php echo rawurlencode( get_the_title() ); ?>&body=Check out this <?php echo $term_name; ?> post from Wealthwise <?php echo rawurlencode( get_permalink() ); ?>"
+                               target="_blank"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/email-share.svg' ) ?> Copy Link</a>
+                            <a class="linkedin-icon" rel="nofollow"
+                               href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo rawurlencode( get_permalink() ); ?>&title=<?php echo rawurlencode( get_the_title() ); ?>"
+                               target="_blank"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/linkedin-share.svg' ) ?> Share on LinkedIn</a>
+                        </div>
                     </div>
                 </div>
 				<div class="excerpt-intro col-lg-8">
@@ -42,6 +50,14 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
                 </div>
                 <div class="share col-lg-2">
 	                <?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/share.svg' ) ?>
+                    <div class="share-tooltip">
+                        <a class="mail-icon"
+                           href="mailto:?subject=<?php echo rawurlencode( get_the_title() ); ?>&body=Check out this <?php echo $term_name; ?> post from Wealthwise <?php echo rawurlencode( get_permalink() ); ?>"
+                           target="_blank"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/email-share.svg' ) ?> Copy Link</a>
+                        <a class="linkedin-icon" rel="nofollow"
+                           href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo rawurlencode( get_permalink() ); ?>&title=<?php echo rawurlencode( get_the_title() ); ?>"
+                           target="_blank"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/linkedin-share.svg' ) ?> Share on LinkedIn</a>
+                    </div>
                 </div>
             </div>
 

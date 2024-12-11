@@ -7,7 +7,10 @@
   }
 
   .title-share {
-    @include media-breakpoint-up(md) {
+    border-bottom: 1px solid $ww-grey;
+    padding-bottom: 20px;
+
+    @include media-breakpoint-up(lg) {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -20,9 +23,10 @@
       font-size: 32px;
       margin-bottom: 20px;
 
-      @include media-breakpoint-up(md) {
+      @include media-breakpoint-up(lg) {
         margin-right: 20px;
         font-size: 40px;
+        margin-bottom: 0;
       }
     }
 
@@ -30,9 +34,54 @@
       cursor: pointer;
       height: 18px;
       display: flex;
+      position: relative;
 
-      svg {
+      > svg {
         height: 18px;
+      }
+
+      .share-tooltip {
+        background: white;
+        position: absolute;
+        z-index: 1;
+        top: 24px;
+        left: -20px;
+        box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+        display: none;
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 20%;
+          margin-left: -10px;
+          border-width: 10px;
+          border-style: solid;
+          border-color: #ffffff transparent transparent transparent;
+          transform: rotate(180deg);
+          transform-origin: top;
+        }
+
+        a {
+          &:first-child {
+            border-bottom: 1px solid $ww-grey;
+          }
+
+          color: $ww-grey;
+          font-family: $ww-pt;
+          font-weight: $ww-medium;
+          font-size: 11px;
+          display: flex;
+          align-items: center;
+          padding: 10px 15px;
+          white-space: nowrap;
+          text-decoration: none;
+
+          svg {
+            height: 15px;
+            margin-right: 10px;
+          }
+        }
       }
     }
   }

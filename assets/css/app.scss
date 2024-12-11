@@ -29,6 +29,15 @@ main#content {
   }
 }
 
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}
+
+.no-click {
+  pointer-events: none;
+}
+
 // Components
 @import "components/header/header";
 

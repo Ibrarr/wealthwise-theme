@@ -20,8 +20,16 @@ function add_custom_scripts() {
 //        wp_enqueue_script( 'category-term', WW_TEMPLATE_URI . '/dist/js/category-term.js', [ 'jquery' ], filemtime( WW_TEMPLATE_DIR . '/dist/js/category-term.js' ), true );
 //    }
 //
+    if ( is_singular( 'post' ) ) {
+        wp_enqueue_script( 'content-blog', WW_TEMPLATE_URI . '/dist/js/content-blog.js', [ 'jquery' ], filemtime( WW_TEMPLATE_DIR . '/dist/js/content-blog.js' ), true );
+    }
+
+    if ( is_singular( 'video' ) ) {
+        wp_enqueue_script( 'content-blog', WW_TEMPLATE_URI . '/dist/js/content-video.js', [ 'jquery' ], filemtime( WW_TEMPLATE_DIR . '/dist/js/content-video.js' ), true );
+    }
+
 	if ( is_singular( 'event' ) ) {
-		wp_enqueue_script( 'blog-single', WW_TEMPLATE_URI . '/dist/js/content-event.js', [ 'jquery' ], filemtime( WW_TEMPLATE_DIR . '/dist/js/content-event.js' ), true );
+		wp_enqueue_script( 'content-event', WW_TEMPLATE_URI . '/dist/js/content-event.js', [ 'jquery' ], filemtime( WW_TEMPLATE_DIR . '/dist/js/content-event.js' ), true );
 	}
 //
 //    if ( is_search() || is_page_template( 'page-templates/page-search.php' ) ) {

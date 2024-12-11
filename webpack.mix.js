@@ -8,8 +8,17 @@ mix.js([
 
 mix.js([
     'assets/js/content-event/agenda.js',
+    'assets/js/content-event/share.js',
     'assets/js/content-event/sponsor-logos.js',
 ], 'js/content-event.js');
+
+mix.js([
+    'assets/js/content-blog/share.js',
+], 'js/content-blog.js');
+
+mix.js([
+    'assets/js/content-video/share.js',
+], 'js/content-video.js');
 
 mix.sass('assets/css/app.scss', 'css/app.css')
     .options({
