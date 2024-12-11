@@ -15388,6 +15388,11 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 footer {
   position: relative;
 }
+@media (max-width: 991.98px) {
+  footer {
+    text-align: center;
+  }
+}
 footer .first {
   background-color: #c8ae88;
   padding: 30px 0;
@@ -15404,6 +15409,11 @@ footer .first .logo {
   -ms-flex-align: center;
   align-items: center;
   width: 230px;
+}
+@media (max-width: 991.98px) {
+  footer .first .logo {
+    margin: auto;
+  }
 }
 footer .first .logo span {
   color: #815f1f;
@@ -15434,6 +15444,14 @@ footer .first .socials {
   -ms-flex-align: center;
   align-items: center;
   gap: 20px;
+}
+@media (max-width: 991.98px) {
+  footer .first .socials {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
 }
 footer .first .socials a {
   height: 20px;
