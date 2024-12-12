@@ -65,4 +65,26 @@
             </div>
         </div>
     </header>
+    <div class="search-popup">
+        <div class="container px-4">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-2">
+                    <div class="search">
+                        <span>Search</span>
+                        <form action="/" method="get">
+                            <input type="text" name="s" id="search" value="<?php the_search_query(); ?>" />
+                            <input type="image" src="<?php echo get_template_directory_uri() . '/assets/images/icons/search.svg'; ?>" alt="Search" />
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="sponsor">
+                        <span>Sponsored by:</span>
+                        <img src="<?php the_field( 'sponsor_logo', 'option' ); ?>" alt="sponsor-logo">
+                    </div>
+                </div>
+                <div class="close"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/menu-cross.svg' ) ?></div>
+            </div>
+        </div>
+    </div>
     <main id="content" role="main">

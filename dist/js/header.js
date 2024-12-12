@@ -29,6 +29,24 @@ jQuery(document).ready(function ($) {
     lastScrollTop = currentScrollTop;
   });
 });
+jQuery(document).ready(function ($) {
+  $('.top-menu .search').click(function (event) {
+    event.stopPropagation();
+    $('.search-popup').slideToggle();
+    $('body').toggleClass('no-scroll no-click');
+  });
+  $('.search-popup .container .row .close').click(function (event) {
+    event.stopPropagation();
+    $('.search-popup').slideUp();
+    $('body').removeClass('no-scroll no-click');
+  });
+  $(document).click(function (event) {
+    if (!$(event.target).closest('.top-menu .search').length && !$(event.target).closest('.search-popup').length) {
+      $('.search-popup').slideUp();
+      $('body').removeClass('no-scroll no-click');
+    }
+  });
+});
 
 /***/ }),
 
@@ -39,7 +57,8 @@ jQuery(document).ready(function ($) {
 /***/ (function() {
 
 jQuery(document).ready(function ($) {
-  $('.top-menu .main-menu .hamburger').on('click', function () {
+  $('.top-menu .main-menu .hamburger').on('click', function (event) {
+    event.stopPropagation();
     // Open the mobile menu
     $('.mobile-menu').css({
       display: 'block'
@@ -50,7 +69,8 @@ jQuery(document).ready(function ($) {
     // Add a class to the body to prevent scrolling and interactions
     $('body').addClass('no-scroll no-click');
   });
-  $('.mobile-menu .content .cross').on('click', function () {
+  $('.mobile-menu .content .cross').on('click', function (event) {
+    event.stopPropagation();
     var windowWidth = $(window).width();
     var leftValue = windowWidth < 768 ? '-100vw' : '-390px';
 
@@ -69,6 +89,7 @@ jQuery(document).ready(function ($) {
 
   // Close the menu when clicking outside of it
   $(document).on('click', function (event) {
+    event.stopPropagation();
     if (!$(event.target).closest('.mobile-menu, .hamburger').length) {
       var windowWidth = $(window).width();
       var leftValue = windowWidth < 768 ? '-100vw' : '-390px';

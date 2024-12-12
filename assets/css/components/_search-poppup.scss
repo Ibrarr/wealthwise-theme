@@ -1,0 +1,96 @@
+.search-popup {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  background: $ww-gold;
+  opacity: 95%;
+  z-index: 999;
+  height: 300px;
+  display: none;
+  pointer-events: auto;
+
+  .container {
+    height: 100%;
+
+    .row {
+      max-width: 1024px;
+      margin: auto;
+      height: 100%;
+      align-items: center;
+      position: relative;
+
+      .search {
+        span {
+          color: #ffffff;
+          font-family: $ww-pt;
+          font-weight: $ww-bold;
+          font-size: 32px;
+          margin-bottom: 20px;
+
+          @include media-breakpoint-up(md) {
+            font-size: 40px;
+          }
+        }
+
+        form {
+          position: relative;
+
+          label {
+            width: 100%;
+          }
+
+          input[type="text"] {
+            width: 100%;
+            border: none;
+            border-radius: 25px;
+            padding: 8px 20px;
+          }
+
+          input[type="image"] {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 20px;
+          }
+        }
+      }
+
+      .sponsor {
+        color: #ffffff;
+        font-family: $ww-pt;
+        font-weight: $ww-medium;
+        font-style: italic;
+        font-size: 11px;
+        padding: 0;
+
+        img {
+          max-height: 35px;
+          margin-top: 10px;
+        }
+      }
+
+      .close {
+        position: absolute;
+        top: 42px;
+        right: -43px;
+        cursor: pointer;
+        width: fit-content;
+
+        @include media-breakpoint-down(lg) {
+          top: 26px;
+          right: 0;
+        }
+
+        svg {
+          height: 18px;
+          width: 18px;
+
+          @include media-breakpoint-down(lg) {
+            height: 12px;
+            width: 12px;
+          }
+        }
+      }
+    }
+  }
+}

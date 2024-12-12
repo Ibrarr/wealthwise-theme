@@ -13405,6 +13405,7 @@ textarea.form-control-lg {
 
 #wrapper {
   overflow-x: hidden;
+  position: relative;
 }
 
 main#content {
@@ -13419,6 +13420,7 @@ main#content {
 .no-scroll {
   overflow: hidden;
   height: 100%;
+  pointer-events: none;
 }
 
 .no-click {
@@ -13782,6 +13784,99 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 
 .hidden {
   display: none !important;
+}
+
+.search-popup {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  background: #815f1f;
+  opacity: 95%;
+  z-index: 999;
+  height: 300px;
+  display: none;
+  pointer-events: auto;
+}
+.search-popup .container {
+  height: 100%;
+}
+.search-popup .container .row {
+  max-width: 1024px;
+  margin: auto;
+  height: 100%;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+}
+.search-popup .container .row .search span {
+  color: #ffffff;
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+  .search-popup .container .row .search span {
+    font-size: 40px;
+  }
+}
+.search-popup .container .row .search form {
+  position: relative;
+}
+.search-popup .container .row .search form label {
+  width: 100%;
+}
+.search-popup .container .row .search form input[type=text] {
+  width: 100%;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 20px;
+}
+.search-popup .container .row .search form input[type=image] {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 20px;
+}
+.search-popup .container .row .sponsor {
+  color: #ffffff;
+  font-family: "PT Serif", serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 11px;
+  padding: 0;
+}
+.search-popup .container .row .sponsor img {
+  max-height: 35px;
+  margin-top: 10px;
+}
+.search-popup .container .row .close {
+  position: absolute;
+  top: 42px;
+  right: -43px;
+  cursor: pointer;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+@media (max-width: 991.98px) {
+  .search-popup .container .row .close {
+    top: 26px;
+    right: 0;
+  }
+}
+.search-popup .container .row .close svg {
+  height: 18px;
+  width: 18px;
+}
+@media (max-width: 991.98px) {
+  .search-popup .container .row .close svg {
+    height: 12px;
+    width: 12px;
+  }
 }
 
 .page-template-page-about .container.page-content {

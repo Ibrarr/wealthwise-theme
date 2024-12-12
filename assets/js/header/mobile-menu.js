@@ -1,5 +1,6 @@
 jQuery(document).ready(function($) {
-    $('.top-menu .main-menu .hamburger').on('click', function() {
+    $('.top-menu .main-menu .hamburger').on('click', function(event) {
+        event.stopPropagation();
         // Open the mobile menu
         $('.mobile-menu').css({
             display: 'block'
@@ -11,7 +12,8 @@ jQuery(document).ready(function($) {
         $('body').addClass('no-scroll no-click');
     });
 
-    $('.mobile-menu .content .cross').on('click', function() {
+    $('.mobile-menu .content .cross').on('click', function(event) {
+        event.stopPropagation();
         let windowWidth = $(window).width();
         let leftValue = windowWidth < 768 ? '-100vw' : '-390px';
 
@@ -30,6 +32,7 @@ jQuery(document).ready(function($) {
 
     // Close the menu when clicking outside of it
     $(document).on('click', function(event) {
+        event.stopPropagation();
         if (!$(event.target).closest('.mobile-menu, .hamburger').length) {
             let windowWidth = $(window).width();
             let leftValue = windowWidth < 768 ? '-100vw' : '-390px';

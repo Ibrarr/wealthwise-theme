@@ -19,6 +19,7 @@
 
 #wrapper {
   overflow-x: hidden;
+  position: relative;
 }
 
 main#content {
@@ -32,6 +33,7 @@ main#content {
 .no-scroll {
   overflow: hidden;
   height: 100%;
+  pointer-events: none;
 }
 
 .no-click {
@@ -40,6 +42,8 @@ main#content {
 
 // Components
 @import "components/header/header";
+
+@import "components/search-poppup";
 
 @import "components/homepage/homepage";
 @import "components/about-page/about";
