@@ -9,6 +9,7 @@ mix.js([
 mix.js([
     'assets/js/content-event/agenda.js',
     'assets/js/content-event/share.js',
+    'assets/js/content-event/register.js',
     'assets/js/content-event/sponsor-logos.js',
 ], 'js/content-event.js');
 

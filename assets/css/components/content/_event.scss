@@ -3,6 +3,7 @@
     border-top: 2px solid #cfc9c1;
   }
 
+  @import "components/event-popup";
   @import "components/event-header";
   @import "components/event-content";
   @import "components/related-content";

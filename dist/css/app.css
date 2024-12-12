@@ -14680,6 +14680,63 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 .single-event article .container {
   border-top: 2px solid #cfc9c1;
 }
+.single-event .event-registration-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  max-width: 900px;
+  background-color: #663E3E;
+  border-radius: 25px;
+  overflow: hidden;
+  display: none;
+  pointer-events: auto;
+}
+.single-event .event-registration-popup .close {
+  position: absolute;
+  right: 25px;
+  top: 10px;
+}
+.single-event .event-registration-popup .close svg path {
+  fill: #ffffff;
+}
+.single-event .event-registration-popup h3, .single-event .event-registration-popup .h3 {
+  color: #ffffff;
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-size: 32px;
+  margin: 40px 40px 20px 40px;
+}
+@media (min-width: 768px) {
+  .single-event .event-registration-popup h3, .single-event .event-registration-popup .h3 {
+    font-size: 40px;
+  }
+}
+.single-event .event-registration-popup .date {
+  color: #ffffff;
+  font-family: "PT Serif", serif;
+  font-weight: 500;
+  font-size: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #947877;
+  margin: 0 40px 10px 40px;
+}
+.single-event .event-registration-popup .location {
+  color: #ffffff;
+  font-family: "PT Serif", serif;
+  font-weight: 500;
+  font-size: 15px;
+  margin: 0 40px 0 40px;
+}
+.single-event .event-registration-popup img {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
 .single-event .post-header {
   margin: 20px auto;
   max-width: 1024px;

@@ -12,7 +12,15 @@ $term_name    = $terms[0]->name;
 $thumbnail_id = get_post_thumbnail_id( get_the_ID() );
 $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
 ?>
-
+<div class="event-registration-popup">
+    <div class="close"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/menu-cross.svg' ) ?></div>
+    <h3>Event registration</h3>
+    <p class="date">Date: <?php the_field( 'date' ); ?></p>
+    <p class="location">Location: <?php the_field( 'full_address' ); ?></p>
+    <?php echo do_shortcode( '[gravityform id="' . get_field( 'event_signup_form' ) . '" title="false" description="false" ajax="true"]' ); ?>
+    <img src="<?php the_post_thumbnail_url() ?>" alt="<?php echo esc_attr( get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true ) ); ?>"
+         srcset="<?php echo esc_attr( $image_srcset ); ?>" sizes="(min-width: 391px) 1024px, 100vw">
+</div>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="container px-4">
 		<section class="post-header row">
