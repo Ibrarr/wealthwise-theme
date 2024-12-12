@@ -57,24 +57,20 @@ jQuery(document).ready(function ($) {
 /***/ (function() {
 
 jQuery(document).ready(function ($) {
+  // Mobile menu functionality
   $('.top-menu .main-menu .hamburger').on('click', function (event) {
     event.stopPropagation();
-    // Open the mobile menu
     $('.mobile-menu').css({
       display: 'block'
     }).animate({
       left: '0'
     }, 300);
-
-    // Add a class to the body to prevent scrolling and interactions
     $('body').addClass('no-scroll no-click');
   });
   $('.mobile-menu .content .cross').on('click', function (event) {
     event.stopPropagation();
     var windowWidth = $(window).width();
     var leftValue = windowWidth < 768 ? '-100vw' : '-390px';
-
-    // Close the mobile menu
     $('.mobile-menu').animate({
       left: leftValue
     }, 300, function () {
@@ -82,12 +78,8 @@ jQuery(document).ready(function ($) {
         display: 'none'
       });
     });
-
-    // Remove the class from the body to allow scrolling and interactions
     $('body').removeClass('no-scroll no-click');
   });
-
-  // Close the menu when clicking outside of it
   $(document).on('click', function (event) {
     event.stopPropagation();
     if (!$(event.target).closest('.mobile-menu, .hamburger').length) {
@@ -100,6 +92,38 @@ jQuery(document).ready(function ($) {
           display: 'none'
         });
       });
+      $('body').removeClass('no-scroll no-click');
+    }
+  });
+
+  // Search functionality in the mobile menu
+  $('header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .search-box').click(function (event) {
+    event.stopPropagation();
+
+    // Close the mobile menu
+    var windowWidth = $(window).width();
+    var leftValue = windowWidth < 768 ? '-100vw' : '-390px';
+    $('.mobile-menu').animate({
+      left: leftValue
+    }, 300, function () {
+      $(this).css({
+        display: 'none'
+      });
+    });
+    $('body').removeClass('no-scroll no-click');
+
+    // Slide down the search popup
+    $('.search-popup').slideDown();
+    $('body').addClass('no-scroll no-click');
+  });
+  $('.search-popup .container .row .close').click(function (event) {
+    event.stopPropagation();
+    $('.search-popup').slideUp();
+    $('body').removeClass('no-scroll no-click');
+  });
+  $(document).click(function (event) {
+    if (!$(event.target).closest('.search-popup, header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .search-box').length) {
+      $('.search-popup').slideUp();
       $('body').removeClass('no-scroll no-click');
     }
   });
