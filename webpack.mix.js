@@ -7,6 +7,10 @@ mix.js([
 ], 'js/header.js');
 
 mix.js([
+    'assets/js/home/search-hero.js',
+], 'js/home.js');
+
+mix.js([
     'assets/js/content-event/agenda.js',
     'assets/js/content-event/share.js',
     'assets/js/content-event/register.js',
