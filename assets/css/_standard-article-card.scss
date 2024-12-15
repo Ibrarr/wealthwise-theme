@@ -78,4 +78,13 @@ a {
       display: none;
     }
   }
+
+  .length {
+    @include term($ww-gold);
+    font-family: $ww-pt;
+    font-weight: $ww-bold;
+    font-style: italic;
+    text-transform: lowercase;
+    margin-top: 10px;
+  }
 }

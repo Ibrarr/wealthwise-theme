@@ -1,0 +1,44 @@
+a {
+  text-decoration: none;
+
+  .title {
+    color: $ww-text;
+    font-family: $ww-pt;
+    font-weight: $ww-bold;
+    font-size: 26px;
+    margin-bottom: 10px;
+    line-height: 28px;
+  }
+
+  .excerpt {
+    color: $ww-text;
+    font-family: $ww-pt;
+    font-weight: $ww-medium;
+    font-size: 12px;
+    line-height: 20px;
+    margin-bottom: 5px;
+  }
+
+  .length {
+    @include term($ww-gold);
+    font-family: $ww-pt;
+    font-weight: $ww-bold;
+    font-style: italic;
+    text-transform: lowercase;
+    display: flex;
+    align-items: center;
+
+    span {
+      margin-left: -15px;
+      margin-right: -8px;
+
+      svg {
+        height: 30px;
+
+        path {
+          fill: $ww-gold;
+        }
+      }
+    }
+  }
+}

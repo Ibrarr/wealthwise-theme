@@ -1,0 +1,26 @@
+.videos {
+  background: #eee4db;
+  padding: 15px 0;
+
+  h3 {
+    color: $ww-gold;
+    font-family: $ww-inter;
+    font-weight: $ww-medium;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .standard-article-card {
+    @include media-breakpoint-down(md) {
+      &:not(:last-child) {
+        border-bottom: 1px solid #d5d2d1;
+        padding-bottom: 10px;
+      }
+    }
+
+    @import "../../../standard-article-card";
+  }
+}

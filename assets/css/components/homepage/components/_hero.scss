@@ -1,4 +1,9 @@
 .hero {
+  .row {
+    border-bottom: 1px solid #d5d2d1;
+    padding-bottom: 20px;
+  }
+
   .left {
     @include media-breakpoint-up(lg) {
         border-right: 1px solid #d5d2d1;

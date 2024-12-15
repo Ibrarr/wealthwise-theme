@@ -1,0 +1,54 @@
+a {
+  text-decoration: none;
+
+  &:hover img {
+    transform: scale(1.1);
+  }
+
+  .event-card {
+    background: #dddddd;
+
+    .image-wrapper {
+      overflow: hidden;
+      margin-bottom: 10px;
+      position: relative;
+
+      img {
+        transition: $ww-transition-all;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+    }
+
+    .content {
+      padding: 0 20px 20px 20px;
+    }
+
+    .term {
+      @include term($ww-gold);
+      margin-bottom: 10px;
+    }
+
+    .title {
+      color: $ww-text;
+      font-family: $ww-pt;
+      font-weight: $ww-bold;
+      font-size: 32px;
+      margin-bottom: 10px;
+      line-height: 34px;
+    }
+
+    .excerpt, .date-location {
+      color: $ww-text;
+      font-family: $ww-pt;
+      font-weight: $ww-medium;
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    .date-location {
+      font-style: italic;
+    }
+  }
+}

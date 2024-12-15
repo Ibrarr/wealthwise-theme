@@ -23,7 +23,7 @@
 		<div class="content">
             <p class="term"><?php echo $term_name; ?></p>
             <p class="title"><?php the_title(); ?></p>
-            <p class="excerpt"><?php echo esc_html(get_the_excerpt()); ?></p>
+            <p class="excerpt"><?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?></p>
         </div>
 	</a>
 </div>

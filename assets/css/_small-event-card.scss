@@ -1,0 +1,26 @@
+a {
+  text-decoration: none;
+
+  .event-card {
+    .title {
+      color: $ww-brown;
+      font-family: $ww-pt;
+      font-weight: $ww-bold;
+      font-size: 26px;
+      margin-bottom: 10px;
+      line-height: 28px;
+    }
+
+    .excerpt, .date-location {
+      color: $ww-text;
+      font-family: $ww-pt;
+      font-weight: $ww-medium;
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    .date-location {
+      font-style: italic;
+    }
+  }
+}
