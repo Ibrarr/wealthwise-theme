@@ -1,8 +1,8 @@
 .home.page {
   @import "components/hero";
   @import "components/analysis";
-  @import "components/partner-zone";
-  @import "components/videos";
-  @import "components/choice-words";
+  @import "../archive/components/partner-zone";
+  @import "../archive/components/videos";
+  @import "../archive/components/choice-words";
   @import "components/event-podcast";
 }

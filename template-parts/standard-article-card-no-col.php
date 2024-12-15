@@ -19,7 +19,9 @@
         <img src="<?php the_post_thumbnail_url() ?>" alt="<?php the_title(); ?>"
              srcset="<?php echo esc_attr( $image_srcset ); ?>" sizes="(min-width: 391px) 1024px, 100vw">
     </div>
-    <p class="term"><?php echo $term_name; ?></p>
-    <p class="title"><?php the_title(); ?></p>
-    <p class="excerpt"><?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?></p>
+    <div class="content">
+        <p class="term"><?php echo $term_name; ?></p>
+        <p class="title"><?php the_title(); ?></p>
+        <p class="excerpt"><?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?></p>
+    </div>
 </a>
