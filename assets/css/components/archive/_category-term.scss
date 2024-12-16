@@ -67,6 +67,12 @@
       }
     }
 
+    @include media-breakpoint-up(lg) {
+      .second-third:nth-child(2) {
+        border-right: 1px solid #d5d2d1;
+      }
+    }
+
     @include media-breakpoint-down(lg) {
       .not-main {
         padding-right: 0;
@@ -119,12 +125,22 @@
     }
 
     .partner-zone-side {
+      @include media-breakpoint-up(lg) {
+        border-left: 1px solid #d5d2d1;
+      }
+
       @import "../../partner-zone-sidebar";
       margin-bottom: 20px;
     }
 
     .bottom-row {
       .standard-article-card {
+        @include media-breakpoint-up(lg) {
+          &:not(:last-child) {
+            border-right: 1px solid #d5d2d1;
+          }
+        }
+
         @include media-breakpoint-down(lg) {
           &:not(:last-child) .content {
             border-bottom: 1px solid #d5d2d1;

@@ -120,15 +120,14 @@
       }
     }
 
-    @include media-breakpoint-down(lg) {
-      .not-main {
-        padding-right: 0;
+    .not-main {
+      padding-right: 0;
 
-        > div {
-          padding-right: 0;
-        }
+      > div {
+        padding-right: 0;
       }
     }
+
 
     .second {
       @include media-breakpoint-up(lg) {
@@ -176,12 +175,22 @@
     }
 
     .partner-zone-side {
+      @include media-breakpoint-up(lg) {
+        border-left: 1px solid #d5d2d1;
+      }
+
       @import "../../partner-zone-sidebar";
       margin-bottom: 20px;
     }
 
     .bottom-row {
       .standard-article-card {
+        @include media-breakpoint-up(lg) {
+          &:not(:last-child) {
+            border-right: 1px solid #d5d2d1;
+          }
+        }
+
         @include media-breakpoint-down(lg) {
           &:not(:last-child) .content {
             border-bottom: 1px solid #d5d2d1;

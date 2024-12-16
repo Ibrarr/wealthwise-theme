@@ -64,6 +64,10 @@
       }
     }
     .partner-zone-side {
+      @include media-breakpoint-up(lg) {
+        border-left: 1px solid #d5d2d1;
+      }
+
       @import "../../partner-zone-sidebar";
       margin-bottom: 20px;
     }

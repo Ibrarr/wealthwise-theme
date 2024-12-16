@@ -57,17 +57,33 @@
       }
     }
 
+    .second-row:nth-child(3), .second-row:nth-child(4) {
+      @include media-breakpoint-up(lg) {
+        border-right: 1px solid #d5d2d1;
+      }
+    }
+
     .standard-article-card {
       @import "../../standard-article-card";
     }
 
     .partner-zone-side {
+      @include media-breakpoint-up(lg) {
+        border-left: 1px solid #d5d2d1;
+      }
+
       @import "../../partner-zone-sidebar";
       margin-bottom: 20px;
     }
 
     .bottom-row {
       .standard-article-card {
+        @include media-breakpoint-up(lg) {
+          &:not(:last-child) {
+            border-right: 1px solid #d5d2d1;
+          }
+        }
+
         @include media-breakpoint-down(lg) {
           &:not(:last-child) .content {
             border-bottom: 1px solid #d5d2d1;

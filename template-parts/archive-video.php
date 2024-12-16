@@ -31,7 +31,7 @@ get_header();
                                 require get_template_directory() . '/template-parts/standard-video-card-no-col.php';
                                 echo '</div>';
                             } elseif ($post_count === 3 || $post_count === 4 || $post_count === 5) {
-                                echo '<div class="col-lg-4 mb-4 standard-article-card">';
+                                echo '<div class="col-lg-4 mb-4 standard-article-card second-row">';
                                 require get_template_directory() . '/template-parts/standard-video-card-no-col.php';
                                 echo '</div>';
                             }
