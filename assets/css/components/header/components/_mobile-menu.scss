@@ -204,26 +204,27 @@
           background: #e2d4c2;
           position: relative;
 
-          .search-box {
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            background: white;
-            border-radius: 25px;
-            align-items: center;
-            padding: 10px 20px;
+          form {
+            position: relative;
 
-            span {
-              color: $ww-text;
-              font-family: $ww-pt;
-              font-weight: $ww-medium;
-              text-transform: capitalize;
-              font-size: 14px;
-              padding: 0;
+            label {
+              width: 100%;
             }
 
-            svg path {
-              stroke: $ww-brown;
+            input[type="text"] {
+              width: 100%;
+              border: none;
+              border-radius: 25px;
+              padding: 8px 20px;
+              display: block !important;
+              font-family: $ww-pt;
+            }
+
+            input[type="image"] {
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              right: 20px;
             }
           }
 

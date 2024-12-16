@@ -50,10 +50,10 @@
                             </div>
                             <div class="search">
                                 <br>
-                                <div class="search-box">
-                                    <span>Search</span>
-                                    <div class="icon"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/search.svg' ) ?></div>
-                                </div>
+                                <form action="/" method="get">
+                                    <input type="text" name="s" id="searchbox" placeholder="Search" value="<?php the_search_query(); ?>" />
+                                    <input type="image" src="<?php echo get_template_directory_uri() . '/assets/images/icons/search.svg'; ?>" alt="Search" />
+                                </form>
                                 <div class="sponsor">
                                     <span>Sponsored by:</span>
                                     <img src="<?php the_field( 'sponsor_logo', 'option' ); ?>" alt="sponsor-logo">
@@ -72,7 +72,7 @@
                     <div class="search">
                         <span>Search</span>
                         <form action="/" method="get">
-                            <input type="text" name="s" id="search" value="<?php the_search_query(); ?>" />
+                            <input type="text" name="s" id="search" placeholder="Enter search" value="<?php the_search_query(); ?>" />
                             <input type="image" src="<?php echo get_template_directory_uri() . '/assets/images/icons/search.svg'; ?>" alt="Search" />
                         </form>
                     </div>
