@@ -53,6 +53,70 @@
     margin: 0 40px 0 40px;
   }
 
+  form {
+    margin: 30px 40px;
+    .gfield_required {
+      display: none;
+    }
+
+    .gform_fields .gfield {
+      grid-row-gap: 20px !important;
+      line-height: 0 !important;
+    }
+
+    .gform_fields {
+      border-bottom: 2px solid #cfc9c1;
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+
+    .gform_footer {
+      margin: 0;
+    }
+
+    label {
+      color: #ffffff;
+      font-family: $ww-pt !important;
+      font-weight: $ww-medium !important;
+      font-size: 15px;
+    }
+
+    input {
+      border: 0;
+      border-radius: 8px;
+
+      &:focus {
+        box-shadow: none;
+      }
+    }
+
+    input[type="submit"] {
+      padding: 15px 50px !important;
+      color: $ww-brown !important;
+      font-family: $ww-pt !important;
+      font-weight: $ww-medium !important;
+      font-size: 14px !important;
+      background: #bfb5b7 !important;
+      border-radius: 25px !important;
+
+      &:focus {
+        box-shadow: none !important;
+        border: none !important;
+      }
+    }
+
+    .gform_confirmation_message {
+      color: $ww-gold;
+      font-family: $ww-pt;
+      font-weight: $ww-medium;
+      font-size: 15px;
+    }
+
+    [data-js-spinner-id] {
+      display: none !important;
+    }
+  }
+
   img {
     width: 100%;
     height: 200px;

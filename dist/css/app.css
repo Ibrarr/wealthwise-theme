@@ -15872,6 +15872,61 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   font-size: 15px;
   margin: 0 40px 0 40px;
 }
+.single-event .event-registration-popup form {
+  margin: 30px 40px;
+}
+.single-event .event-registration-popup form .gfield_required {
+  display: none;
+}
+.single-event .event-registration-popup form .gform_fields .gfield {
+  grid-row-gap: 20px !important;
+  line-height: 0 !important;
+}
+.single-event .event-registration-popup form .gform_fields {
+  border-bottom: 2px solid #cfc9c1;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.single-event .event-registration-popup form .gform_footer {
+  margin: 0;
+}
+.single-event .event-registration-popup form label {
+  color: #ffffff;
+  font-family: "PT Serif", serif !important;
+  font-weight: 500 !important;
+  font-size: 15px;
+}
+.single-event .event-registration-popup form input {
+  border: 0;
+  border-radius: 8px;
+}
+.single-event .event-registration-popup form input:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.single-event .event-registration-popup form input[type=submit] {
+  padding: 15px 50px !important;
+  color: #663E3E !important;
+  font-family: "PT Serif", serif !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  background: #bfb5b7 !important;
+  border-radius: 25px !important;
+}
+.single-event .event-registration-popup form input[type=submit]:focus {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+.single-event .event-registration-popup form .gform_confirmation_message {
+  color: #815f1f;
+  font-family: "PT Serif", serif;
+  font-weight: 500;
+  font-size: 15px;
+}
+.single-event .event-registration-popup form [data-js-spinner-id] {
+  display: none !important;
+}
 .single-event .event-registration-popup img {
   width: 100%;
   height: 200px;
