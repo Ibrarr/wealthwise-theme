@@ -13,6 +13,14 @@
     background: $ww-gold;
   }
 
+  &.podcast:hover svg path {
+    fill: $ww-gold;
+  }
+
+  &.video:hover svg path:first-child {
+    fill: $ww-gold;
+  }
+
   .video-cover {
     position: absolute;
     top: 0;
@@ -50,8 +58,22 @@
     justify-content: center;
 
     svg {
-      width: 25px;
-      height: 25px;
+      width: 50px;
+      height: 50px;
+
+      path {
+        transition: $ww-transition-all;
+      }
+    }
+
+    @include media-breakpoint-down(lg) {
+      width: 30px;
+      height: 30px;
+
+      svg {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 

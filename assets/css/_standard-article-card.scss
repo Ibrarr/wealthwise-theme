@@ -5,6 +5,14 @@ a {
     transform: scale(1.1);
   }
 
+  &:hover .podcast svg path {
+    fill: $ww-gold;
+  }
+
+  &:hover .video svg path:first-child {
+    fill: $ww-gold;
+  }
+
   .image-wrapper {
     overflow: hidden;
     margin-bottom: 10px;
@@ -28,8 +36,8 @@ a {
       position: absolute;
       bottom: 10px;
       right: 10px;
-      width: 30px;
-      height: 30px;
+      width: 50px;
+      height: 50px;
       background-color: #f7f4f1;
       border: none;
       border-radius: 50%;
@@ -40,8 +48,22 @@ a {
       justify-content: center;
 
       svg {
-        width: 17px;
-        height: 17px;
+        width: 50px;
+        height: 50px;
+
+        path {
+          transition: $ww-transition-all;
+        }
+      }
+
+      @include media-breakpoint-down(lg) {
+        width: 30px;
+        height: 30px;
+
+        svg {
+          width: 30px;
+          height: 30px;
+        }
       }
     }
 

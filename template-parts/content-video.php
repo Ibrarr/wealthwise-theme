@@ -35,7 +35,7 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
             </div>
 		</section>
 
-        <section class="video-container">
+        <section class="video-container <?php echo strtolower($term_name) ?>">
             <div class="embed-container">
 				<?php
 				$iframe = get_field('video');
