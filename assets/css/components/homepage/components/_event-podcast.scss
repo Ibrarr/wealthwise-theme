@@ -1,17 +1,17 @@
 .event-podcast {
   padding: 15px 0;
 
-  .events {
-    h3 {
-      color: $ww-brown;
-      font-family: $ww-inter;
-      font-weight: $ww-medium;
-      font-size: 18px;
-      margin-bottom: 20px;
-      text-align: center;
-      text-transform: uppercase;
-    }
+  .event-heading {
+    color: $ww-brown;
+    font-family: $ww-inter;
+    font-weight: $ww-medium;
+    font-size: 18px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+  }
 
+  .events {
     .main-event-card {
       @import "../../../main-event-card";
     }
@@ -27,15 +27,6 @@
   }
 
   .podcasts {
-    @include media-breakpoint-up(lg) {
-      border-left: 1px solid #d5d2d1;
-    }
-
-    div:not(:last-child) {
-      padding-bottom: 20px;
-      border-bottom: 1px solid #d5d2d1;
-    }
-
     h3 {
       color: $ww-gold;
       font-family: $ww-inter;
@@ -45,38 +36,49 @@
       text-transform: uppercase;
     }
 
-    .small-podcast-card {
-      @import "../../../small-podcast-card";
-    }
-  }
-
-  .word-to-wise {
-    position: relative;
-
-    a {
-      text-decoration: none;
-
-      .term {
-        @include term($ww-gold);
-        margin-bottom: 10px;
+    .content {
+      @include media-breakpoint-up(lg) {
+        border-left: 1px solid #d5d2d1;
       }
 
-      .title {
-        color: $ww-text;
-        font-family: $ww-pt;
-        font-weight: $ww-bold;
-        font-size: 26px;
-        margin-bottom: 10px;
-        line-height: 28px;
+      div:not(:last-child) {
+        padding-bottom: 20px;
+        border-bottom: 1px solid #d5d2d1;
       }
 
-      .click-here {
-        @include term($ww-gold);
-        font-family: $ww-pt;
-        font-style: italic;
-        text-transform: unset;
-        font-weight: $ww-bold;
-        margin-top: 10px;
+      .small-podcast-card {
+        @import "../../../small-podcast-card";
+      }
+
+      .word-to-wise {
+        position: relative;
+
+        a {
+          text-decoration: none;
+
+          .term {
+            @include term($ww-gold);
+            margin-bottom: 10px;
+          }
+
+          .title {
+            color: $ww-text;
+            font-family: $ww-pt;
+            font-weight: $ww-bold;
+            font-size: 26px;
+            margin-bottom: 10px;
+            line-height: 28px;
+          }
+
+          .click-here {
+            @include term($ww-gold);
+            font-family: $ww-pt;
+            font-style: italic;
+            text-transform: unset;
+            font-weight: $ww-bold;
+            margin-top: 10px;
+          }
+        }
       }
     }
   }

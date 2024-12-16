@@ -14953,7 +14953,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 .home.page .event-podcast {
   padding: 15px 0;
 }
-.home.page .event-podcast .events h3, .home.page .event-podcast .events .h3 {
+.home.page .event-podcast .event-heading {
   color: #663E3E;
   font-family: "Inter", sans-serif;
   font-weight: 500;
@@ -15046,15 +15046,6 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 .home.page .event-podcast .events .small-event-card a .event-card .date-location {
   font-style: italic;
 }
-@media (min-width: 992px) {
-  .home.page .event-podcast .podcasts {
-    border-left: 1px solid #d5d2d1;
-  }
-}
-.home.page .event-podcast .podcasts div:not(:last-child) {
-  padding-bottom: 20px;
-  border-bottom: 1px solid #d5d2d1;
-}
 .home.page .event-podcast .podcasts h3, .home.page .event-podcast .podcasts .h3 {
   color: #815f1f;
   font-family: "Inter", sans-serif;
@@ -15063,10 +15054,19 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   margin-bottom: 20px;
   text-transform: uppercase;
 }
-.home.page .event-podcast .podcasts .small-podcast-card a {
+@media (min-width: 992px) {
+  .home.page .event-podcast .podcasts .content {
+    border-left: 1px solid #d5d2d1;
+  }
+}
+.home.page .event-podcast .podcasts .content div:not(:last-child) {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #d5d2d1;
+}
+.home.page .event-podcast .podcasts .content .small-podcast-card a {
   text-decoration: none;
 }
-.home.page .event-podcast .podcasts .small-podcast-card a .title {
+.home.page .event-podcast .podcasts .content .small-podcast-card a .title {
   color: #181818;
   font-family: "PT Serif", serif;
   font-weight: 700;
@@ -15074,7 +15074,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   margin-bottom: 10px;
   line-height: 28px;
 }
-.home.page .event-podcast .podcasts .small-podcast-card a .excerpt {
+.home.page .event-podcast .podcasts .content .small-podcast-card a .excerpt {
   color: #181818;
   font-family: "PT Serif", serif;
   font-weight: 500;
@@ -15082,7 +15082,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   line-height: 20px;
   margin-bottom: 5px;
 }
-.home.page .event-podcast .podcasts .small-podcast-card a .length {
+.home.page .event-podcast .podcasts .content .small-podcast-card a .length {
   color: #815f1f;
   font-family: "Inter", sans-serif;
   font-weight: 500;
@@ -15100,23 +15100,23 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   -ms-flex-align: center;
   align-items: center;
 }
-.home.page .event-podcast .podcasts .small-podcast-card a .length span {
+.home.page .event-podcast .podcasts .content .small-podcast-card a .length span {
   margin-left: -15px;
   margin-right: -8px;
 }
-.home.page .event-podcast .podcasts .small-podcast-card a .length span svg {
+.home.page .event-podcast .podcasts .content .small-podcast-card a .length span svg {
   height: 30px;
 }
-.home.page .event-podcast .podcasts .small-podcast-card a .length span svg path {
+.home.page .event-podcast .podcasts .content .small-podcast-card a .length span svg path {
   fill: #815f1f;
 }
-.home.page .event-podcast .word-to-wise {
+.home.page .event-podcast .podcasts .content .word-to-wise {
   position: relative;
 }
-.home.page .event-podcast .word-to-wise a {
+.home.page .event-podcast .podcasts .content .word-to-wise a {
   text-decoration: none;
 }
-.home.page .event-podcast .word-to-wise a .term {
+.home.page .event-podcast .podcasts .content .word-to-wise a .term {
   color: #815f1f;
   font-family: "Inter", sans-serif;
   font-weight: 500;
@@ -15125,7 +15125,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   margin-bottom: 0;
   margin-bottom: 10px;
 }
-.home.page .event-podcast .word-to-wise a .title {
+.home.page .event-podcast .podcasts .content .word-to-wise a .title {
   color: #181818;
   font-family: "PT Serif", serif;
   font-weight: 700;
@@ -15133,7 +15133,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   margin-bottom: 10px;
   line-height: 28px;
 }
-.home.page .event-podcast .word-to-wise a .click-here {
+.home.page .event-podcast .podcasts .content .word-to-wise a .click-here {
   color: #815f1f;
   font-family: "Inter", sans-serif;
   font-weight: 500;

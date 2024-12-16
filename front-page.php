@@ -250,105 +250,111 @@ $event_ids = [];
 <section class="event-podcast">
     <div class="container px-4">
         <div class="row">
-            <div class="col-lg-6 events">
-                <h3>Events</h3>
-                <?php
-                $event_query = new WP_Query(array(
-                    'post_type' => 'event',
-                    'posts_per_page' => 1,
-                    'post_status'    => 'publish',
-                    'post__not_in'   => $event_ids,
-                ));
+            <div class="col-lg-9">
+                <h3 class="col-lg-8 event-heading">Events</h3>
+                <div class="row">
+                    <div class="col-lg-8 events">
+                        <?php
+                        $event_query = new WP_Query(array(
+                            'post_type' => 'event',
+                            'posts_per_page' => 1,
+                            'post_status'    => 'publish',
+                            'post__not_in'   => $event_ids,
+                        ));
 
-                if ($event_query->have_posts()) :
-                    while ($event_query->have_posts()) : $event_query->the_post();
-                        $event_ids[] = get_the_ID();
-                        echo '<div class="mb-4 main-event-card">';
-                        require('template-parts/main-event-card-no-col.php');
-                        echo '</div>';
-                    endwhile;
-                endif;
-                wp_reset_postdata();
-                ?>
-            </div>
-            <div class="col-lg-3 events">
-<!--                <p class="heading-term">Events</p>-->
-	            <?php
-	            $event_query = new WP_Query(array(
-		            'post_type' => 'event',
-		            'posts_per_page' => 3,
-		            'post_status'    => 'publish',
-		            'post__not_in'   => $event_ids,
-	            ));
+                        if ($event_query->have_posts()) :
+                            while ($event_query->have_posts()) : $event_query->the_post();
+                                $event_ids[] = get_the_ID();
+                                echo '<div class="mb-4 main-event-card">';
+                                require('template-parts/main-event-card-no-col.php');
+                                echo '</div>';
+                            endwhile;
+                        endif;
+                        wp_reset_postdata();
+                        ?>
+                    </div>
+                    <div class="col-lg-4 events">
+                        <!--                <p class="heading-term">Events</p>-->
+                        <?php
+                        $event_query = new WP_Query(array(
+                            'post_type' => 'event',
+                            'posts_per_page' => 3,
+                            'post_status'    => 'publish',
+                            'post__not_in'   => $event_ids,
+                        ));
 
-	            if ($event_query->have_posts()) :
-		            while ($event_query->have_posts()) : $event_query->the_post();
-			            $event_ids[] = get_the_ID();
-			            echo '<div class="mb-4 small-event-card">';
-			            require('template-parts/small-event-card-no-col.php');
-			            echo '</div>';
-		            endwhile;
-	            endif;
-	            wp_reset_postdata();
-	            ?>
+                        if ($event_query->have_posts()) :
+                            while ($event_query->have_posts()) : $event_query->the_post();
+                                $event_ids[] = get_the_ID();
+                                echo '<div class="mb-4 small-event-card">';
+                                require('template-parts/small-event-card-no-col.php');
+                                echo '</div>';
+                            endwhile;
+                        endif;
+                        wp_reset_postdata();
+                        ?>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-3 podcasts">
                 <h3>Podcasts</h3>
-	            <?php
-	            $videos_query = new WP_Query(array(
-		            'post_type' => 'video',
-		            'posts_per_page' => 2,
-		            'post_status'    => 'publish',
-		            'post__not_in'   => $video_ids,
-		            'tax_query' => array(
-			            array(
-				            'taxonomy' => 'type',
-				            'field' => 'name',
-				            'terms' => 'Podcast',
-			            ),
-		            ),
-	            ));
+	            <div class="row content">
+                    <?php
+                    $videos_query = new WP_Query(array(
+                        'post_type' => 'video',
+                        'posts_per_page' => 2,
+                        'post_status'    => 'publish',
+                        'post__not_in'   => $video_ids,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'type',
+                                'field' => 'name',
+                                'terms' => 'Podcast',
+                            ),
+                        ),
+                    ));
 
-	            if ($videos_query->have_posts()) :
-		            while ($videos_query->have_posts()) : $videos_query->the_post();
-			            $video_ids[] = get_the_ID();
-			            echo '<div class="mb-4 small-podcast-card">';
-			            require('template-parts/small-podcast-card-no-col.php');
-			            echo '</div>';
-		            endwhile;
-	            endif;
-	            wp_reset_postdata();
-	            ?>
-                <div class="word-to-wise">
-	                <?php
-	                $videos_query = new WP_Query(array(
-		                'post_type' => 'post',
-		                'posts_per_page' => 1,
-		                'post_status'    => 'publish',
-		                 // 'post__not_in'   => $post_ids,
-		                'tax_query' => array(
-			                array(
-				                'taxonomy' => 'category',
-				                'field' => 'slug',
-				                'terms' => 'word-to-the-wise',
-			                ),
-		                ),
-	                ));
-
-	                if ($videos_query->have_posts()) :
-		                while ($videos_query->have_posts()) : $videos_query->the_post();
-			                ?>
-                            <a href="<?php the_permalink(); ?>">
-                                <p class="term">Word to the wise</p>
-                                <p class="title"><?php the_title(); ?></p>
-                                <p class="click-here">Click here</p>
-                                <div class="two-owls"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/two-owls.svg' ) ?></div>
-                            </a>
+                    if ($videos_query->have_posts()) :
+                        while ($videos_query->have_posts()) : $videos_query->the_post();
+                            $video_ids[] = get_the_ID();
+                            echo '<div class="mb-4 small-podcast-card">';
+                            require('template-parts/small-podcast-card-no-col.php');
+                            echo '</div>';
+                        endwhile;
+                    endif;
+                    wp_reset_postdata();
+                    ?>
+                    <div class="word-to-wise">
                         <?php
-		                endwhile;
-	                endif;
-	                wp_reset_postdata();
-	                ?>
+                        $videos_query = new WP_Query(array(
+                            'post_type' => 'post',
+                            'posts_per_page' => 1,
+                            'post_status'    => 'publish',
+                            // 'post__not_in'   => $post_ids,
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'category',
+                                    'field' => 'slug',
+                                    'terms' => 'word-to-the-wise',
+                                ),
+                            ),
+                        ));
+
+                        if ($videos_query->have_posts()) :
+                            while ($videos_query->have_posts()) : $videos_query->the_post();
+                                ?>
+                                <a href="<?php the_permalink(); ?>">
+                                    <p class="term">Word to the wise</p>
+                                    <p class="title"><?php the_title(); ?></p>
+                                    <p class="click-here">Click here</p>
+                                    <div class="two-owls"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/two-owls.svg' ) ?></div>
+                                </a>
+                            <?php
+                            endwhile;
+                        endif;
+                        wp_reset_postdata();
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>
