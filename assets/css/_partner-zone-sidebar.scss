@@ -39,7 +39,7 @@
     background: white;
     border-radius: 25px;
     align-items: center;
-    padding: 7px 20px;
+    padding: 6px 20px;
 
     span {
       color: $ww-text;
@@ -60,6 +60,10 @@
     align-items: center;
     margin-top: 20px;
     margin-left: 20px;
+
+    @include media-breakpoint-between(lg, xl) {
+      display: block
+    }
 
     span {
       color: $ww-brown;

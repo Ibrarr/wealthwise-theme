@@ -1,16 +1,17 @@
-.event-registration-popup {
+.newsletter-popup {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999;
-  max-width: 730px;
+  max-width: 370px;
   max-height: 93vh;
-  background-color: $ww-brown;
-  border-radius: 25px;
+  background-color: #7E5F1F;
+  border-radius: 18px;
   overflow-y: auto;
-  display: none;
   pointer-events: auto;
+  padding: 30px;
+  display: none;
 
   @include media-breakpoint-down(lg) {
     top: 67px;
@@ -38,38 +39,23 @@
     font-family: $ww-pt;
     font-weight: $ww-bold;
     font-size: 32px;
-    margin: 40px 40px 20px 40px;
+    margin-bottom: 20px;
+
+    span {
+      color: #E2D4C2;
+    }
 
     @include media-breakpoint-up(md) {
       font-size: 40px;
     }
   }
 
-  .date {
-    color: #ffffff;
-    font-family: $ww-pt;
-    font-weight: $ww-medium;
-    font-size: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #947877;
-    margin: 0 40px 10px 40px;
-  }
-
-  .location {
-    color: #ffffff;
-    font-family: $ww-pt;
-    font-weight: $ww-medium;
-    font-size: 15px;
-    margin: 0 40px 0 40px;
-  }
-
   .gform-theme.gform-theme--foundation.gform-theme--framework form {
-    margin: 30px 40px;
     .gfield_required {
       display: none;
     }
 
-    .gform_fields .gfield {
+    .gform_fields {
       grid-row-gap: 20px !important;
       line-height: 0 !important;
     }
@@ -107,15 +93,20 @@
     fieldset.gfield--type-consent {
       display: flex;
       align-items: flex-end;
+      color: #ffffff !important;
+
+      label {
+        font-size: 12px !important;
+      }
     }
 
     input[type="submit"] {
       padding: 13px 35px !important;
-      color: $ww-brown !important;
+      color: $ww-gold !important;
       font-family: $ww-pt !important;
       font-weight: $ww-medium !important;
       font-size: 16px !important;
-      background: #bfb5b7 !important;
+      background: #e2d4c2 !important;
       border-radius: 25px !important;
 
       &:focus {
@@ -124,15 +115,8 @@
       }
 
       &:hover {
-        background: lighten(#bfb5b7, 10%) !important;
+        background: lighten(#e2d4c2, 10%) !important;
       }
-    }
-
-    .gform_confirmation_message {
-      color: $ww-gold;
-      font-family: $ww-pt;
-      font-weight: $ww-medium;
-      font-size: 15px;
     }
 
     [data-js-spinner-id] {
@@ -140,9 +124,10 @@
     }
   }
 
-  img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+  .gform_confirmation_message {
+    color: #ffffff !important;
+    font-family: $ww-pt !important;
+    font-weight: $ww-medium !important;
+    font-size: 15px !important;
   }
 }

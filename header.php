@@ -85,4 +85,9 @@
             </div>
         </div>
     </div>
+    <div class="newsletter-popup">
+        <div class="close"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/menu-cross.svg' ) ?></div>
+        <h3>Sign-up<br><span>to receive our Newsletters</span></h3>
+	    <?php echo do_shortcode( '[gravityform id="' . get_field( 'newsletter_form_popup', 'option' ) . '" title="false" description="false" ajax="true"]' ); ?>
+    </div>
     <main id="content" role="main">

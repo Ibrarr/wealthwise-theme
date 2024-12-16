@@ -8,6 +8,7 @@ mix.js([
 
 mix.js([
     'assets/js/global/search.js',
+    'assets/js/global/signup-popup.js',
 ], 'js/global.js');
 
 mix.js([
