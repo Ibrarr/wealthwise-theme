@@ -13717,6 +13717,9 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .newslett
   box-shadow: none;
   border: none;
 }
+header .mobile-menu .content .secondary-menu .search-newsletter-switch .newsletter-form form input[type=submit]:hover {
+  background: rgb(170.11875, 125.28125, 40.88125);
+}
 header .mobile-menu .content .secondary-menu .search-newsletter-switch .newsletter-form form .gform_confirmation_message {
   color: #815f1f;
   font-family: "PT Serif", serif;
@@ -15255,6 +15258,9 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   box-shadow: none;
   border: none;
 }
+.page-template-default .container.page-content section .gform-newsletter-form_wrapper form.gform-newsletter-form input[type=submit]:hover {
+  background: rgb(170.11875, 125.28125, 40.88125);
+}
 .page-template-default .container.page-content section .gform-newsletter-form_wrapper form.gform-newsletter-form .gform_confirmation_message {
   color: #815f1f;
   font-family: "PT Serif", serif;
@@ -16118,6 +16124,9 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   box-shadow: none !important;
   border: none !important;
 }
+.single-event .event-registration-popup form input[type=submit]:hover {
+  background: rgb(214.652173913, 208.347826087, 209.6086956522) !important;
+}
 .single-event .event-registration-popup form .gform_confirmation_message {
   color: #815f1f;
   font-family: "PT Serif", serif;
@@ -16270,11 +16279,16 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   font-family: "PT Serif", serif;
   font-weight: 500;
   font-size: 15px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 @media (min-width: 992px) {
   .single-event .post-content .top-section .register button {
     width: 100%;
   }
+}
+.single-event .post-content .top-section .register button:hover {
+  background: rgb(84.1381578947, 102.8355263158, 118.8618421053);
 }
 .single-event .post-content .top-section .register .share {
   cursor: pointer;

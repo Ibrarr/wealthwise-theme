@@ -26,9 +26,14 @@
         font-family: $ww-pt;
         font-weight: $ww-medium;
         font-size: 15px;
+        transition: $ww-transition-all;
 
         @include media-breakpoint-up(lg) {
           width: 100%;
+        }
+
+        &:hover {
+          background: lighten(#3f4d59, 10%);
         }
       }
 

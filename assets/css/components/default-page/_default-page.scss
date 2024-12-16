@@ -86,6 +86,10 @@
               box-shadow: none;
               border: none;
             }
+
+            &:hover {
+              background: lighten($ww-gold, 10%);
+            }
           }
 
           .gform_confirmation_message {

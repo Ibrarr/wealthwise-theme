@@ -103,6 +103,10 @@
         box-shadow: none !important;
         border: none !important;
       }
+
+      &:hover {
+        background: lighten(#bfb5b7, 10%) !important;
+      }
     }
 
     .gform_confirmation_message {
