@@ -1,4 +1,13 @@
 .single-event {
+  .top-menu .logo svg g g path:nth-of-type(1),
+  .top-menu .logo svg g g path:nth-of-type(8),
+  .top-menu .logo svg g g path:nth-of-type(9),
+  .top-menu .logo svg g g path:nth-of-type(10),
+  .top-menu .logo svg g g path:nth-of-type(11),
+  .top-menu .logo svg g g path:nth-of-type(12) {
+    fill: $ww-brown;
+  }
+
   article .container {
     border-top: 2px solid #cfc9c1;
   }

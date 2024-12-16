@@ -55,6 +55,16 @@
       .excerpt {
         display: none;
       }
+
+      .title {
+        font-size: 40px !important;
+        line-height: 38px !important;
+
+        @include media-breakpoint-down(lg) {
+          font-size: 32px;
+          line-height: 30px;
+        }
+      }
     }
 
     @include media-breakpoint-down(lg) {
@@ -143,6 +153,16 @@
       .pagination-arrow {
         display: flex;
         align-items: center;
+
+        svg path {
+          transition: $ww-transition-all;
+        }
+
+        &:hover {
+          svg path {
+            fill: $ww-text;
+          }
+        }
       }
 
       .pagination-text {
@@ -162,7 +182,6 @@
   }
 
   @import "components/partner-zone";
-  @import "components/videos";
-  @import "components/choice-words";
+  @import "components/events";
   @import "components/recommended";
 }

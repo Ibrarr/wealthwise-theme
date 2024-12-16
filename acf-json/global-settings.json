@@ -69,8 +69,8 @@
                 "id": ""
             },
             "choices": {
-                "1": "Newsletter sign-up",
-                "2": "Newsletter sign-up (1)"
+                "2": "event",
+                "1": "Newsletter sign-up"
             },
             "default_value": false,
             "return_format": "value",
@@ -79,6 +79,60 @@
             "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_67609724eb024",
+            "label": "Instagram",
+            "name": "instagram",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_67609733eb025",
+            "label": "LinkedIn",
+            "name": "linkedin",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_6760973beb026",
+            "label": "YouTube",
+            "name": "youtube",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
             "placeholder": ""
         }
     ],
@@ -100,5 +154,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1734367134
+    "modified": 1734383454
 }

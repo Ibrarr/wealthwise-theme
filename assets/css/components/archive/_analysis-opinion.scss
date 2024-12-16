@@ -108,9 +108,14 @@
           color: #E2D4C2;
           font-family: $ww-pt;
           font-weight: $ww-bold;
-          font-size: 26px;
+          font-size: 38px;
           margin-bottom: 10px;
-          line-height: 28px;
+          line-height: 34px;
+
+          @include media-breakpoint-down(lg) {
+            font-size: 32px;
+            line-height: 36px;
+          }
         }
       }
     }
@@ -205,6 +210,16 @@
       .pagination-arrow {
         display: flex;
         align-items: center;
+
+        svg path {
+          transition: $ww-transition-all;
+        }
+
+        &:hover {
+          svg path {
+            fill: $ww-text;
+          }
+        }
       }
 
       .pagination-text {

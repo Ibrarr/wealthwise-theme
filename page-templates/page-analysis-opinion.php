@@ -299,7 +299,7 @@ get_header();
 <?php } else { ?>
 	<section class="main rest-of-pages">
 		<div class="container px-4">
-			<h1>Analysis & Opinion</h1>
+            <h1><span>Analysis & Opinion</span></h1>
 			<div class="row posts">
 				<?php
 				$query = new WP_Query(array(

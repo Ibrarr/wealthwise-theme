@@ -1,6 +1,14 @@
 .post-type-archive-event {
-  .main {
+  .top-menu .logo svg g g path:nth-of-type(1),
+  .top-menu .logo svg g g path:nth-of-type(8),
+  .top-menu .logo svg g g path:nth-of-type(9),
+  .top-menu .logo svg g g path:nth-of-type(10),
+  .top-menu .logo svg g g path:nth-of-type(11),
+  .top-menu .logo svg g g path:nth-of-type(12) {
+    fill: $ww-brown;
+  }
 
+  .main {
     h1 {
       color: $ww-gold;
       font-family: $ww-inter;
@@ -68,11 +76,21 @@
       .pagination-arrow {
         display: flex;
         align-items: center;
+
+        svg path {
+          transition: $ww-transition-all;
+        }
+
+        &:hover {
+          svg path {
+            fill: $ww-text;
+          }
+        }
       }
 
       .pagination-text {
         padding: 0 10px;
-        color: $ww-gold;
+        color: $ww-brown;
         font-family: $ww-inter;
         font-weight: $ww-medium;
         font-size: 12px;

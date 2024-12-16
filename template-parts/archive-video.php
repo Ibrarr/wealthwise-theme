@@ -177,7 +177,7 @@ get_header();
                     while ($choice_query->have_posts()) : $choice_query->the_post();
                         $post_ids[] = get_the_ID();
                         $term_name = $terms[0]->name;
-                        echo '<div class="col-lg-6 main-event-card">';
+                        echo '<div class="col-lg-4 main-event-card">';
                         require get_template_directory() . '/template-parts/main-event-card-no-col.php';
                         echo '</div>';
                     endwhile;

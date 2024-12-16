@@ -97,6 +97,16 @@
       .pagination-arrow {
         display: flex;
         align-items: center;
+
+        svg path {
+          transition: $ww-transition-all;
+        }
+
+        &:hover {
+          svg path {
+            fill: $ww-text;
+          }
+        }
       }
 
       .pagination-text {

@@ -187,97 +187,28 @@ get_header();
         </div>
     </section>
 
-    <section class="videos">
+    <section class="events">
         <div class="container px-4">
             <div class="row">
-                <h3>Videos</h3>
-                <?php
-                $videos_query = new WP_Query(array(
-                    'post_type' => 'video',
-                    'posts_per_page' => 3,
-                    'post_status'    => 'publish',
-                ));
+                <h3>Events</h3>
+				<?php
+				$choice_query = new WP_Query(array(
+					'post_type' => 'event',
+					'posts_per_page' => 3,
+					'post_status'    => 'publish',
+				));
 
-                if ($videos_query->have_posts()) :
-                    while ($videos_query->have_posts()) : $videos_query->the_post();
-                        $video_ids[] = get_the_ID();
-                        $terms     = get_the_terms(get_the_ID(), 'type');
-                        $term_name = $terms[0]->name;
-                        echo '<div class="col-lg-4 col-12 mb-4 standard-article-card">';
-                        require get_template_directory() . '/template-parts/standard-video-card-no-col.php';
-                        echo '</div>';
-                    endwhile;
-                endif;
-                wp_reset_postdata();
-                ?>
-            </div>
-        </div>
-    </section>
-
-    <section class="choice-words">
-        <div class="container px-4">
-            <div class="row">
-                <h3>Choice words</h3>
-                <?php
-                $choice_query = new WP_Query(array(
-                    'post_type' => 'post',
-                    'posts_per_page' => 3,
-                    'post_status'    => 'publish',
-                    'tax_query' => array(
-                        array(
-                            'taxonomy' => 'category',
-                            'field' => 'name',
-                            'terms' => 'Choice words',
-                        ),
-                    ),
-                ));
-
-                if ($choice_query->have_posts()) :
-                    while ($choice_query->have_posts()) : $choice_query->the_post();
-                        $post_ids[] = get_the_ID();
-                        $terms     = get_the_terms(get_the_ID(), 'category');
-                        $term_name = $terms[0]->name;
-                        ?>
-                        <?php require get_template_directory() . '/template-parts/standard-article-card.php'; ?>
-                    <?php
-                    endwhile;
-                endif;
-                wp_reset_postdata();
-                ?>
-                <div class="col-lg-3 col-md-6 col-12 mb-4 video-choice">
-                    <p class="heading-term">More choice words videos</p>
-                    <?php
-                    $choice_query = new WP_Query(array(
-                        'post_type' => 'video',
-                        'posts_per_page' => 3,
-                        'post_status'    => 'publish',
-                        'post__not_in'   => $video_ids,
-                        'tax_query' => array(
-                            array(
-                                'taxonomy' => 'category',
-                                'field' => 'name',
-                                'terms' => 'Choice words',
-                            ),
-                        ),
-                    ));
-
-                    if ($choice_query->have_posts()) :
-                        while ($choice_query->have_posts()) : $choice_query->the_post();
-                            $video_ids[] = get_the_ID();
-                            ?>
-                            <a href="<?php the_permalink(); ?>">
-                                <p class="title"><span>Watch: </span><?php the_title(); ?></p>
-                            </a>
-                        <?php
-                        endwhile;
-                    endif;
-                    wp_reset_postdata();
-                    ?>
-                    <div class="sponsor">
-                        <span>Sponsored by:</span>
-                        <img src="<?php the_field( 'sponsor_logo_dark', 'option' ); ?>" alt="sponsor-logo">
-                    </div>
-                </div>
+				if ($choice_query->have_posts()) :
+					while ($choice_query->have_posts()) : $choice_query->the_post();
+						$post_ids[] = get_the_ID();
+						$term_name = $terms[0]->name;
+						echo '<div class="col-lg-4 main-event-card">';
+						require get_template_directory() . '/template-parts/main-event-card-no-col.php';
+						echo '</div>';
+					endwhile;
+				endif;
+				wp_reset_postdata();
+				?>
             </div>
         </div>
     </section>
