@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
     // Mobile menu functionality
-    $('.top-menu .main-menu .hamburger').on('click', function(event) {
+    $('.top-menu .hamburger').on('click', function(event) {
         event.stopPropagation();
         $('.mobile-menu').css({
             display: 'block'

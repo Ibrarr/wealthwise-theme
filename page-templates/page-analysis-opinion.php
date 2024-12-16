@@ -10,7 +10,7 @@ get_header();
 <?php if ($paged === 1) { ?>
 	<section class="main">
 		<div class="container px-4">
-			<h1>Analysis & Opinion</h1>
+			<h1><span>Analysis & Opinion</span></h1>
 			<div class="row">
 				<div class="col-lg-9">
 					<div class="row">

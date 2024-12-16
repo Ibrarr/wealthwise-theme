@@ -11,9 +11,7 @@
     <header id="header" role="banner">
         <div class="container px-4">
             <div class="top-menu">
-                <div class="main-menu">
-                    <div class="hamburger"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/hamburger.svg' ) ?></div>
-                </div>
+                <div class="hamburger"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/hamburger.svg' ) ?></div>
                 <div class="logo">
                     <a href="/"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/logos/logo.svg' ) ?></a>
                 </div>

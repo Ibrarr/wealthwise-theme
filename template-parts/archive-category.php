@@ -8,7 +8,7 @@ get_header();
 <?php if ($paged === 1) { ?>
     <section class="main">
         <div class="container px-4">
-            <h1><?php echo $term->name ?></h1>
+            <h1><span><?php echo $term->name ?></span></h1>
             <div class="row">
                 <div class="col-lg-9">
                     <div class="row">
@@ -311,7 +311,7 @@ get_header();
 <?php } else { ?>
     <section class="main rest-of-pages">
         <div class="container px-4">
-            <h1><?php echo $term->name ?></h1>
+            <h1><span><?php echo $term->name ?></span></h1>
             <div class="row posts">
                 <?php
                 $query = new WP_Query(array(

@@ -14,9 +14,15 @@
 
   .term {
     margin-bottom: 20px !important;
+    font-style: italic;
   }
 
   @import "standard-article-card";
+
+  .title {
+    color: #4E4E4E !important;
+  }
+
 }
 
 .search {

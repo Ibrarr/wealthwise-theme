@@ -23,7 +23,7 @@ get_header();
 
 <section class="main">
     <div class="container px-4">
-        <h1>Partner Zone</h1>
+        <h1><span>Partner Zone</span></h1>
         <div class="row">
             <div class="col-lg-9">
                 <div class="row">
