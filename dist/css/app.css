@@ -16234,7 +16234,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   align-items: flex-end;
 }
 .single-event .event-registration-popup .gform-theme.gform-theme--foundation.gform-theme--framework form input[type=submit] {
-  padding: 10px 35px !important;
+  padding: 13px 35px !important;
   color: #663E3E !important;
   font-family: "PT Serif", serif !important;
   font-weight: 500 !important;
@@ -21155,11 +21155,14 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   background-color: #ffffff;
   padding: 20px 0;
 }
-.archive.tax-partner .main .heading img {
+.archive.tax-partner .main .heading .image-wrapper {
+  margin-bottom: 20px;
+}
+.archive.tax-partner .main .heading .image-wrapper img {
   max-width: 200px;
 }
 .archive.tax-partner .main .heading p {
-  color: #181818;
+  color: #654B3E;
   font-family: "PT Serif", serif;
   font-weight: 500;
   font-size: 18px;

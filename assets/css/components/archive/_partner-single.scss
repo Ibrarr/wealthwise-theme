@@ -19,12 +19,17 @@
       background-color: #ffffff;
       padding: 20px 0;
 
-      img {
-        max-width: 200px;
+      .image-wrapper {
+        margin-bottom: 20px;
+
+        img {
+          max-width: 200px;
+        }
+
       }
 
       p {
-        color: $ww-text;
+        color: #654B3E;
         font-family: $ww-pt;
         font-weight: $ww-medium;
         font-size: 18px;
