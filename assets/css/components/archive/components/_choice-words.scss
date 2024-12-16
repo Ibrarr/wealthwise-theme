@@ -30,13 +30,6 @@
       }
     }
 
-    @include media-breakpoint-down(md) {
-      &:not(:last-child) {
-        border-bottom: 1px solid #d5d2d1;
-        padding-bottom: 10px;
-      }
-    }
-
     .excerpt {
       display: none;
     }

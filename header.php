@@ -48,7 +48,7 @@
                                 <p>Newsletter sign-up</p>
 		                        <?php echo do_shortcode( '[gravityform id="' . get_field( 'newsletter_form', 'option' ) . '" title="false" description="false" ajax="true"]' ); ?>
                             </div>
-                            <div class="search">
+                            <div class="search inline">
                                 <br>
                                 <form action="/" method="get">
                                     <input type="text" name="s" id="searchbox" placeholder="Search" value="<?php the_search_query(); ?>" />
@@ -56,7 +56,7 @@
                                 </form>
                                 <div class="sponsor">
                                     <span>Sponsored by:</span>
-                                    <img src="<?php the_field( 'sponsor_logo', 'option' ); ?>" alt="sponsor-logo">
+                                    <img src="<?php the_field( 'sponsor_logo_dark', 'option' ); ?>" alt="sponsor-logo">
                                 </div>
                             </div>
                         </div>
@@ -80,7 +80,7 @@
                 <div class="col-lg-2">
                     <div class="sponsor">
                         <span>Sponsored by:</span>
-                        <img src="<?php the_field( 'sponsor_logo', 'option' ); ?>" alt="sponsor-logo">
+                        <img src="<?php the_field( 'sponsor_logo_light', 'option' ); ?>" alt="sponsor-logo">
                     </div>
                 </div>
                 <div class="close"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/menu-cross.svg' ) ?></div>

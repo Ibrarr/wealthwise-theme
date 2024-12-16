@@ -4,8 +4,34 @@
     "fields": [
         {
             "key": "field_675ede24f5fb5",
-            "label": "Sponsor logo",
-            "name": "sponsor_logo",
+            "label": "Sponsor logo dark",
+            "name": "sponsor_logo_dark",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_6760578484ab8",
+            "label": "Sponsor logo light",
+            "name": "sponsor_logo_light",
             "aria-label": "",
             "type": "image",
             "instructions": "",
@@ -74,5 +100,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1734348682
+    "modified": 1734367134
 }

@@ -55,7 +55,7 @@ get_header();
                     wp_reset_postdata();
                     ?>
 
-                    <div class="search">
+                    <div class="search inline">
                         <br>
                         <div class="search-box">
                             <span>Search</span>
@@ -63,7 +63,7 @@ get_header();
                         </div>
                         <div class="sponsor">
                             <span>Sponsored by:</span>
-                            <img src="<?php the_field( 'sponsor_logo', 'option' ); ?>" alt="sponsor-logo">
+                            <img src="<?php the_field( 'sponsor_logo_dark', 'option' ); ?>" alt="sponsor-logo">
                         </div>
                     </div>
                 </div>

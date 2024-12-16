@@ -7,8 +7,8 @@ mix.js([
 ], 'js/header.js');
 
 mix.js([
-    'assets/js/home/search-hero.js',
-], 'js/home.js');
+    'assets/js/global/search.js',
+], 'js/global.js');
 
 mix.js([
     'assets/js/content-event/agenda.js',
