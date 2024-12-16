@@ -68,7 +68,7 @@
     <div class="search-popup">
         <div class="container px-4">
             <div class="row">
-                <div class="col-lg-6 offset-lg-2">
+                <div class="col-lg-8 offset-lg-2">
                     <div class="search">
                         <span>Search</span>
                         <form action="/" method="get">

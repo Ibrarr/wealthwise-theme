@@ -12,12 +12,23 @@
   .container {
     height: 100%;
 
+    @include media-breakpoint-down(lg) {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+
     .row {
       max-width: 1024px;
       margin: auto;
       height: 100%;
       align-items: center;
       position: relative;
+
+      @include media-breakpoint-down(lg) {
+        height: auto;
+        width: 100%;
+      }
 
       .search {
         span {
@@ -27,7 +38,7 @@
           font-size: 32px;
           margin-bottom: 20px;
 
-          @include media-breakpoint-up(md) {
+          @include media-breakpoint-up(lg) {
             font-size: 40px;
           }
         }
@@ -64,6 +75,10 @@
         font-size: 11px;
         padding: 0;
 
+        @include media-breakpoint-down(lg) {
+          margin-top: 20px;
+        }
+
         img {
           max-height: 35px;
           margin-top: 10px;
@@ -78,7 +93,7 @@
         width: fit-content;
 
         @include media-breakpoint-down(lg) {
-          top: 26px;
+          top: 0;
           right: 0;
         }
 
