@@ -342,6 +342,7 @@ $event_ids = [];
                                 <p class="term">Word to the wise</p>
                                 <p class="title"><?php the_title(); ?></p>
                                 <p class="click-here">Click here</p>
+                                <div class="two-owls"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/two-owls.svg' ) ?></div>
                             </a>
                         <?php
 		                endwhile;

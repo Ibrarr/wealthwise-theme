@@ -14970,6 +14970,9 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 .home.page .event-podcast .podcasts .small-podcast-card a .length span svg path {
   fill: #815f1f;
 }
+.home.page .event-podcast .word-to-wise {
+  position: relative;
+}
 .home.page .event-podcast .word-to-wise a {
   text-decoration: none;
 }
