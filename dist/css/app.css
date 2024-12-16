@@ -13950,6 +13950,9 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
     right: 0;
   }
 }
+.search-popup .container .row .close:hover svg path {
+  fill: #ffffff;
+}
 .search-popup .container .row .close svg {
   height: 18px;
   width: 18px;
@@ -13959,6 +13962,10 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
     height: 12px;
     width: 12px;
   }
+}
+.search-popup .container .row .close svg path {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 .newsletter-popup {
@@ -13986,6 +13993,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
     -ms-transform: none;
     transform: none;
     width: 100%;
+    max-width: 100%;
     border-radius: 0;
   }
 }
