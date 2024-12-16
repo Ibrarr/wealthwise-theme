@@ -269,6 +269,33 @@ get_header();
             </div>
         </div>
     </section>
+
+    <section class="recommended">
+        <div class="container px-4">
+            <div class="row">
+                <h3>Recommended</h3>
+                <?php
+                $analysis_query = new WP_Query(array(
+                    'post_type' => 'post',
+                    'posts_per_page' => 4,
+                    'post_status'    => 'publish',
+                ));
+
+                if ($analysis_query->have_posts()) :
+                    while ($analysis_query->have_posts()) : $analysis_query->the_post();
+                        $post_ids[] = get_the_ID();
+                        $terms     = get_the_terms(get_the_ID(), 'category');
+                        $term_name = $terms[0]->name;
+                        ?>
+                        <?php require get_template_directory() . '/template-parts/standard-article-card.php'; ?>
+                    <?php
+                    endwhile;
+                endif;
+                wp_reset_postdata();
+                ?>
+            </div>
+        </div>
+    </section>
 <?php } else { ?>
 	<section class="main rest-of-pages">
 		<div class="container px-4">
@@ -294,40 +321,66 @@ get_header();
 					echo '</div>';
 				endwhile;
 				?>
-			</div>
 			<?php
 			endif;
 			wp_reset_postdata();
 			?>
+                <div class="col-12">
+                    <nav class="pagination">
+                        <?php
+                        $total_pages = $query->max_num_pages;
+                        $current_page = max(1, get_query_var('paged'));
 
-            <div class="col-12">
-                <nav class="pagination">
-					<?php
-					$total_pages = $query->max_num_pages;
-					$current_page = max(1, get_query_var('paged'));
+                        if ($current_page > 1) {
+                            echo '<a href="' . get_pagenum_link($current_page - 1) . '" class="pagination-arrow">'
+                                . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-left.svg') . '</a>';
+                        } else {
+                            echo '<span class="pagination-arrow disabled">'
+                                . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-left.svg') . '</span>';
+                        }
 
-					if ($current_page > 1) {
-						echo '<a href="' . get_pagenum_link($current_page - 1) . '" class="pagination-arrow">'
-						     . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-left.svg') . '</a>';
-					} else {
-						echo '<span class="pagination-arrow disabled">'
-						     . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-left.svg') . '</span>';
-					}
+                        echo '<span class="pagination-text">PAGE ' . esc_html($current_page) . ' <span>of</span> ' . esc_html($total_pages) . '</span>';
 
-					echo '<span class="pagination-text">PAGE ' . esc_html($current_page) . ' <span>of</span> ' . esc_html($total_pages) . '</span>';
-
-					if ($current_page < $total_pages) {
-						echo '<a href="' . get_pagenum_link($current_page + 1) . '" class="pagination-arrow">'
-						     . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-right.svg') . '</a>';
-					} else {
-						echo '<span class="pagination-arrow disabled">'
-						     . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-right.svg') . '</span>';
-					}
-					?>
-                </nav>
+                        if ($current_page < $total_pages) {
+                            echo '<a href="' . get_pagenum_link($current_page + 1) . '" class="pagination-arrow">'
+                                . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-right.svg') . '</a>';
+                        } else {
+                            echo '<span class="pagination-arrow disabled">'
+                                . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-right.svg') . '</span>';
+                        }
+                        ?>
+                    </nav>
+                </div>
             </div>
 		</div>
 	</section>
+
+    <section class="recommended">
+        <div class="container px-4">
+            <div class="row">
+                <h3>Recommended</h3>
+                <?php
+                $analysis_query = new WP_Query(array(
+                    'post_type' => 'post',
+                    'posts_per_page' => 4,
+                    'post_status'    => 'publish',
+                ));
+
+                if ($analysis_query->have_posts()) :
+                    while ($analysis_query->have_posts()) : $analysis_query->the_post();
+                        $post_ids[] = get_the_ID();
+                        $terms     = get_the_terms(get_the_ID(), 'category');
+                        $term_name = $terms[0]->name;
+                        ?>
+                        <?php require get_template_directory() . '/template-parts/standard-article-card.php'; ?>
+                    <?php
+                    endwhile;
+                endif;
+                wp_reset_postdata();
+                ?>
+            </div>
+        </div>
+    </section>
 <?php } ?>
 
 <?php

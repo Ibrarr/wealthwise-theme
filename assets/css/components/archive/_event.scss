@@ -1,0 +1,55 @@
+.post-type-archive-event {
+  .main {
+
+    h1 {
+      color: $ww-gold;
+      font-family: $ww-inter;
+      font-weight: $ww-medium;
+      font-size: 24px;
+      margin-bottom: 20px;
+      line-height: 28px;
+      text-transform: uppercase;
+    }
+
+    .main-event-card {
+      @import "../../main-event-card";
+      margin-bottom: 20px;
+
+      .event-card {
+        height: 100%;
+      }
+    }
+    .partner-zone-side {
+      @import "../../partner-zone-sidebar";
+      margin-bottom: 20px;
+    }
+
+    .pagination {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+
+      .pagination-arrow {
+        display: flex;
+        align-items: center;
+      }
+
+      .pagination-text {
+        padding: 0 10px;
+        color: $ww-gold;
+        font-family: $ww-inter;
+        font-weight: $ww-medium;
+        font-size: 12px;
+        margin-bottom: 0;
+
+        span {
+          font-family: $ww-pt;
+          font-style: italic;
+        }
+      }
+    }
+  }
+
+  @import "components/partner-zone";
+  @import "components/recommended";
+}

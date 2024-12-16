@@ -1,5 +1,10 @@
 .page-template-page-analysis-opinion {
   .main {
+
+    > .container > .row {
+      border-bottom: 1px solid #d5d2d1;
+    }
+
     h1 {
       color: $ww-gold;
       font-family: $ww-inter;
@@ -7,7 +12,9 @@
       font-size: 24px;
       margin-bottom: 20px;
       line-height: 28px;
+      text-transform: uppercase;
     }
+
     .featured-article-card {
       a {
         text-decoration: none;
@@ -129,10 +136,7 @@
 
     .partner-zone-side {
       @import "../../partner-zone-sidebar";
-
-      @include media-breakpoint-down(lg) {
-        margin-bottom: 20px;
-      }
+      margin-bottom: 20px;
     }
 
     .bottom-row {
@@ -184,6 +188,6 @@
   }
 
   @import "components/partner-zone";
-  @import "components/videos";
   @import "components/choice-words";
+  @import "components/recommended";
 }

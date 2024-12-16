@@ -1,4 +1,4 @@
-.archive.category {
+.post-type-archive-video {
   .main {
 
     > .container > .row {
@@ -18,52 +18,6 @@
     .featured {
       .excerpt {
         display: none;
-      }
-    }
-
-    @include media-breakpoint-down(lg) {
-      .not-main {
-        padding-right: 0;
-
-        > div {
-          padding-right: 0;
-        }
-      }
-    }
-
-    .second-third {
-      @include media-breakpoint-down(lg) {
-        .standard-article-card {
-          border-bottom: 1px solid #d5d2d1;
-        }
-      }
-    }
-
-    .other {
-      @include media-breakpoint-up(lg) {
-        a {
-          display: flex;
-          flex-direction: row-reverse;
-        }
-
-        .content {
-          margin-right: 40px;
-        }
-      }
-
-      .excerpt {
-        display: block !important;
-      }
-
-      .standard-article-card:first-child {
-        border-bottom: 1px solid #d5d2d1;
-        margin-bottom: 20px;
-      }
-
-      @include media-breakpoint-down(lg) {
-        .standard-article-card {
-          border-bottom: 1px solid #d5d2d1;
-        }
       }
     }
 
@@ -126,7 +80,6 @@
   }
 
   @import "components/partner-zone";
-  @import "components/videos";
-  @import "components/choice-words";
+  @import "components/events";
   @import "components/recommended";
 }

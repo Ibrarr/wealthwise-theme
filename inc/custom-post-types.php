@@ -176,9 +176,9 @@ function partner_content_post_type() {
 		'show_in_admin_bar'   => true,
 		'show_in_nav_menus'   => true,
 		'can_export'          => true,
-		'has_archive'         => 'partner_content',
+		'has_archive'         => 'partner-zone',
 		'rewrite'             => array(
-			'slug'       => 'partner-content',
+			'slug'       => 'partner-zone',
 			'with_front' => false,
 		),
 		'exclude_from_search' => false,

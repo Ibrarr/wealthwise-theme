@@ -54,20 +54,17 @@ function ww_image_insert_override( $sizes ) {
  */
 add_filter( 'use_block_editor_for_post', '__return_false', 10 );
 
-/**
- * WILL NEED THIS FOR PARTNER CONTENT
- */
-//add_filter( 'post_type_link', 'modify_news_post_link', 10, 2 );
-//function modify_news_post_link( $url, $post ) {
-//	if ( $post->post_type == 'news' ) {
-//		$news_link = get_post_meta( $post->ID, 'news_link', true );
-//		if ( $news_link ) {
-//			return $news_link;
-//		}
-//	}
-//
-//	return $url;
-//}
+add_filter( 'post_type_link', 'modify_partner_post_link', 10, 2 );
+function modify_partner_post_link( $url, $post ) {
+    if ( $post->post_type == 'partner_content' ) {
+        $news_link = get_post_meta( $post->ID, 'link_to_content', true );
+        if ( $news_link ) {
+            return $news_link;
+        }
+    }
+
+    return $url;
+}
 
 /**
  * Add body classes

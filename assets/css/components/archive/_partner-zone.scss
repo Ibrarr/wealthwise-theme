@@ -1,0 +1,42 @@
+.post-type-archive-partner_content {
+  .main {
+
+    > .container > .row {
+      border-bottom: 1px solid #d5d2d1;
+    }
+
+    h1 {
+      color: $ww-gold;
+      font-family: $ww-inter;
+      font-weight: $ww-medium;
+      font-size: 24px;
+      margin-bottom: 20px;
+      line-height: 28px;
+      text-transform: uppercase;
+    }
+
+    .standard-article-card {
+      @import "../../standard-article-card";
+
+    }
+
+    .partner-zone-side {
+      @import "../../partner-zone-sidebar";
+      margin-bottom: 20px;
+    }
+
+    .bottom-row {
+      .standard-article-card {
+        @include media-breakpoint-down(lg) {
+          &:not(:last-child) .content {
+            border-bottom: 1px solid #d5d2d1;
+          }
+        }
+      }
+    }
+  }
+
+  @import "components/partner-zone";
+  @import "components/events";
+  @import "components/recommended";
+}

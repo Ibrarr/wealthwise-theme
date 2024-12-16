@@ -1,0 +1,27 @@
+.events {
+  padding: 15px 0;
+
+  .row {
+    border-bottom: 1px solid #d5d2d1;
+  }
+
+  h3 {
+    color: $ww-gold;
+    font-family: $ww-inter;
+    font-weight: $ww-medium;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .main-event-card {
+    @import "../../../main-event-card";
+    margin-bottom: 20px;
+
+    .event-card {
+      height: 100%;
+    }
+  }
+}
