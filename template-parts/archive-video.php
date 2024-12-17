@@ -2,6 +2,7 @@
 $term = get_queried_object();
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
 $video_ids = [];
+$partner_post_ids = [];
 get_header();
 ?>
 

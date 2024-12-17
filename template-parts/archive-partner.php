@@ -18,6 +18,7 @@ $query = get_terms(array(
 $first_section = array_slice($query, 0, 6); // First 6 terms
 $second_section = array_slice($query, 6);  // Remaining terms
 
+$partner_post_ids = [];
 get_header();
 ?>
 

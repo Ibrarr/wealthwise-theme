@@ -10,6 +10,7 @@ $post_ids = [];
 $video_ids = [];
 $podcast_ids = [];
 $event_ids = [];
+$partner_post_ids = [];
 ?>
 
 <section class="hero">
