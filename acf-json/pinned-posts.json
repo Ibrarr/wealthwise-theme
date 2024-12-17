@@ -784,7 +784,7 @@
             ],
             "return_format": "object",
             "min": "",
-            "max": 3,
+            "max": 2,
             "allow_in_bindings": 0,
             "elements": [
                 "featured_image"
@@ -811,5 +811,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1734454374
+    "modified": 1734455209
 }
