@@ -15,21 +15,46 @@ get_header();
 				<div class="col-lg-9">
 					<div class="row">
 						<?php
-						$query = new WP_Query(array(
-							'post_type' => 'post',
-							'category_name' => 'analysis,opinion',
-							'posts_per_page' => 8,
-							'post_status'    => 'publish',
-							'paged' => $paged,
-						));
+                        $pinned_post = get_field('pinned_post');
+                        $pinned_post_id = null;
+
+                        if ($pinned_post && is_array($pinned_post)) {
+                            $pinned_post = reset($pinned_post);
+                        }
+
+                        if ($pinned_post && is_a($pinned_post, 'WP_Post')) {
+                            $pinned_post_id = $pinned_post->ID;
+                            global $post;
+                            $post = $pinned_post;
+
+                            setup_postdata($post);
+                            $terms     = get_the_terms(get_the_ID(), 'category');
+                            $term_name = $terms[0]->name;
+                            echo '<div class="col-lg-12 mb-4 featured-article-card">';
+                            require get_template_directory() . '/template-parts/featured-article-card-block.php';
+                            echo '</div>';
+                            echo '<div class="row not-main">';
+                            wp_reset_postdata();
+                        }
+
+                        $query = new WP_Query(array(
+                            'post_type'      => 'post',
+                            'category_name'  => 'analysis,opinion',
+                            'posts_per_page' => 8,
+                            'post_status'    => 'publish',
+                            'paged'          => $paged,
+                            'post__not_in'   => $pinned_post_id ? [$pinned_post_id] : [],
+                        ));
 
 						if ($query->have_posts()) :
-							$post_count = 0;
+                            $post_count = $pinned_post_id ? 1 : 0;
+
 							while ($query->have_posts()) : $query->the_post();
 								$post_count++;
 								$terms     = get_the_terms(get_the_ID(), 'category');
 								$term_name = $terms[0]->name;
-								if ($post_count === 1) {
+
+								if ($post_count === 1 && !$pinned_post_id) {
 									echo '<div class="col-lg-12 mb-4 featured-article-card">';
 									require get_template_directory() . '/template-parts/featured-article-card-block.php';
 									echo '</div>';

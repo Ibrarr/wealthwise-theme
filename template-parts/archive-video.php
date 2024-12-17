@@ -13,36 +13,90 @@ get_header();
                 <div class="col-lg-9">
                     <div class="row">
                         <?php
+                        // Step 1: Fetch videos from the ACF relationship field 'video_posts_archive'
+                        $acf_videos = get_field('video_posts_archive', 'option') ?? [];
+                        $acf_video_ids = []; // Array to track ACF video IDs
+                        $post_count = 0;
+
+                        // Collect ACF video IDs
+                        if (!empty($acf_videos)) {
+                            foreach ($acf_videos as $acf_video) {
+                                if (is_a($acf_video, 'WP_Post')) {
+                                    $acf_video_ids[] = $acf_video->ID;
+                                }
+                            }
+                        }
+
+                        // Step 2: Display ACF videos in the first two slots
+                        if (!empty($acf_videos)) {
+                            foreach ($acf_videos as $acf_video) {
+                                if (is_a($acf_video, 'WP_Post')) {
+                                    global $post;
+                                    $post = $acf_video;
+                                    setup_postdata($post);
+
+                                    $post_count++;
+                                    $terms     = get_the_terms(get_the_ID(), 'type');
+                                    $term_name = $terms[0]->name ?? '';
+
+                                    echo '<div class="col-lg-6 mb-4 standard-article-card featured">';
+                                    require get_template_directory() . '/template-parts/standard-video-card-no-col.php';
+                                    echo '</div>';
+
+                                    if ($post_count >= 2) {
+                                        break; // Stop after replacing up to two slots
+                                    }
+                                    wp_reset_postdata();
+                                }
+                            }
+                        }
+
+                        // Step 3: Prepare the main query to fill remaining slots
+                        $remaining_slots = 2 - $post_count; // Calculate how many slots are left
                         $query = new WP_Query(array(
-                            'post_type' => 'video',
+                            'post_type'      => 'video',
                             'posts_per_page' => 9,
                             'post_status'    => 'publish',
-                            'paged' => $paged,
+                            'paged'          => $paged,
+                            'post__not_in'   => $acf_video_ids, // Exclude ACF videos already displayed
                         ));
 
-                        if ($query->have_posts()) :
-                        $post_count = 0;
-                        while ($query->have_posts()) : $query->the_post();
-                            $post_count++;
-                            $terms     = get_the_terms(get_the_ID(), 'type');
-                            $term_name = $terms[0]->name;
-                            if ($post_count === 1 || $post_count === 2) {
+                        // Fill remaining slots in the first row, if any
+                        if ($remaining_slots > 0 && $query->have_posts()) {
+                            while ($query->have_posts() && $remaining_slots > 0) {
+                                $query->the_post();
+                                $post_count++;
+                                $remaining_slots--;
+                                $terms     = get_the_terms(get_the_ID(), 'type');
+                                $term_name = $terms[0]->name ?? '';
+
                                 echo '<div class="col-lg-6 mb-4 standard-article-card featured">';
                                 require get_template_directory() . '/template-parts/standard-video-card-no-col.php';
                                 echo '</div>';
-                            } elseif ($post_count === 3 || $post_count === 4 || $post_count === 5) {
-                                echo '<div class="col-lg-4 mb-4 standard-article-card second-row">';
-                                require get_template_directory() . '/template-parts/standard-video-card-no-col.php';
-                                echo '</div>';
                             }
-                        endwhile;
+                        }
+
+                        // Step 4: Display remaining posts for the second row
+                        if ($query->have_posts()) :
+                            while ($query->have_posts()) : $query->the_post();
+                                $post_count++;
+
+                                $terms     = get_the_terms(get_the_ID(), 'type');
+                                $term_name = $terms[0]->name ?? '';
+
+                                if ($post_count === 3 || $post_count === 4 || $post_count === 5) {
+                                    echo '<div class="col-lg-4 mb-4 standard-article-card second-row">';
+                                    require get_template_directory() . '/template-parts/standard-video-card-no-col.php';
+                                    echo '</div>';
+                                }
+                            endwhile;
+                        endif;
+
+                        wp_reset_postdata();
                         ?>
                     </div>
-                    <?php
-                    endif;
-                    wp_reset_postdata();
-                    ?>
                 </div>
+
                 <div class="col-lg-3 partner-zone-side">
                     <p class="zone-header">Partner zone</p>
                     <?php

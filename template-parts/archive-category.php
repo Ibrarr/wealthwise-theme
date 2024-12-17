@@ -13,60 +13,82 @@ get_header();
                 <div class="col-lg-9">
                     <div class="row">
                         <?php
+                        $pinned_post = get_field('pinned_post', $term);
+                        $pinned_post_id = null;
+
+                        if ($pinned_post && is_array($pinned_post)) {
+                            $pinned_post = reset($pinned_post);
+                        }
+
+                        if ($pinned_post && is_a($pinned_post, 'WP_Post')) {
+                            $pinned_post_id = $pinned_post->ID;
+                        }
+
                         $query = new WP_Query(array(
-                            'post_type' => 'post',
-                            'category_name' => $term->slug,
+                            'post_type'      => 'post',
+                            'category_name'  => $term->slug,
                             'posts_per_page' => 9,
-                            'post_status' => 'publish',
-                            'paged' => $paged,
+                            'post_status'    => 'publish',
+                            'paged'          => $paged,
+                            'post__not_in'   => $pinned_post_id ? [$pinned_post_id] : [],
                         ));
 
                         if ($query->have_posts()) :
                             $post_count = 0;
 
-                            echo '<div class="col-lg-8">'; // Start the col-lg-8 container
-                            echo '<div class="row">'; // Nested row for posts 1-3
+                            echo '<div class="col-lg-8">';
+                            echo '<div class="row">';
+
+                            if ($pinned_post_id) {
+                                global $post;
+                                $post = $pinned_post;
+                                setup_postdata($post);
+                                $terms     = get_the_terms(get_the_ID(), 'category');
+                                $term_name = $terms[0]->name;
+                                echo '<div class="col-lg-12 mb-4 standard-article-card featured">';
+                                require get_template_directory() . '/template-parts/standard-article-card-no-col.php';
+                                echo '</div>';
+
+                                $post_count++;
+                                wp_reset_postdata();
+                            }
 
                             while ($query->have_posts()) : $query->the_post();
                                 $post_count++;
                                 $terms     = get_the_terms(get_the_ID(), 'category');
                                 $term_name = $terms[0]->name;
+                                if ($post_count === 1 && $pinned_post_id) {
+                                    continue;
+                                }
 
-                                if ($post_count === 1) {
-                                    // First Post in col-lg-12
+                                if ($post_count === 1 && !$pinned_post_id) {
                                     echo '<div class="col-lg-12 mb-4 standard-article-card featured">';
                                     require get_template_directory() . '/template-parts/standard-article-card-no-col.php';
                                     echo '</div>';
                                 } elseif ($post_count === 2 || $post_count === 3) {
-                                    // Second and Third Posts in col-lg-6
                                     echo '<div class="col-lg-6 mb-4 standard-article-card second-third">';
                                     require get_template_directory() . '/template-parts/standard-article-card-no-col.php';
                                     echo '</div>';
                                 }
 
-                                // Close col-lg-8 and row, and start col-lg-4 for posts 4-5
                                 if ($post_count === 3) {
-                                    echo '</div>'; // Close nested row
-                                    echo '</div>'; // Close col-lg-8 container
-
-                                    echo '<div class="col-lg-4">'; // Start col-lg-4 for posts 4-5
+                                    echo '</div>';
+                                    echo '</div>';
+                                    echo '<div class="col-lg-4">';
                                 }
 
                                 if ($post_count === 4 || $post_count === 5) {
-                                    // Fourth and Fifth Posts in col-lg-4
                                     echo '<div class="mb-4 standard-article-card">';
                                     require get_template_directory() . '/template-parts/standard-article-card-no-col.php';
                                     echo '</div>';
                                 }
                             endwhile;
 
-                            echo '</div>'; // Close col-lg-4 container
+                            echo '</div>';
+                            echo '</div>';
+                        endif;
+                        wp_reset_postdata();
                         ?>
-                    </div>
-                    <?php
-                    endif;
-                    wp_reset_postdata();
-                    ?>
                 </div>
                 <div class="col-lg-3 partner-zone-side">
                     <p class="zone-header">Partner zone</p>
