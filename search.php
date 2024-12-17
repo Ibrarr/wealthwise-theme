@@ -7,6 +7,7 @@ $args = array(
 	's' => $term,
 	'posts_per_page' => 8,
 	'paged' => $paged,
+	'post_type' => ['post', 'video'],
 );
 $query = new WP_Query($args);
 ?>
@@ -44,7 +45,7 @@ $query = new WP_Query($args);
 			<?php
 			if ($query->have_posts()) :
 				while ($query->have_posts()) : $query->the_post();
-					$terms     = get_the_terms(get_the_ID(), 'category');
+					$terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
 					$term_name = $terms[0]->name;
 					echo '<div class="col-lg-3 mb-4 standard-article-card">';
 					require get_template_directory() . '/template-parts/standard-article-card-no-col.php';
