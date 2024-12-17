@@ -191,24 +191,59 @@ get_header();
         <div class="container px-4">
             <div class="row">
                 <h3>Events</h3>
-				<?php
-				$choice_query = new WP_Query(array(
-					'post_type' => 'event',
-					'posts_per_page' => 3,
-					'post_status'    => 'publish',
-				));
+                <?php
+                $acf_event_posts = get_field('event_posts_archive', 'option') ?? [];
+                $event_archive_ids = [];
 
-				if ($choice_query->have_posts()) :
-					while ($choice_query->have_posts()) : $choice_query->the_post();
-						$post_ids[] = get_the_ID();
-						$term_name = $terms[0]->name;
-						echo '<div class="col-lg-4 main-event-card">';
-						require get_template_directory() . '/template-parts/main-event-card-no-col.php';
-						echo '</div>';
-					endwhile;
-				endif;
-				wp_reset_postdata();
-				?>
+                if (!empty($acf_event_posts)) {
+                    foreach ($acf_event_posts as $acf_event) {
+                        if (is_a($acf_event, 'WP_Post')) {
+                            global $post;
+                            $post = $acf_event;
+                            setup_postdata($post);
+
+                            $post_ids[] = $post->ID;
+                            $event_archive_ids[] = $post->ID;
+
+                            echo '<div class="col-lg-4 main-event-card">';
+                            require get_template_directory() . '/template-parts/main-event-card-no-col.php';
+                            echo '</div>';
+
+                            wp_reset_postdata();
+
+                            if (count($event_archive_ids) >= 3) {
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                $remaining_events = 3 - count($event_archive_ids);
+
+                if ($remaining_events > 0) {
+                    $fallback_event_query = new WP_Query(array(
+                        'post_type'      => 'event',
+                        'posts_per_page' => $remaining_events,
+                        'post_status'    => 'publish',
+                        'meta_key'       => 'date',
+                        'orderby'        => 'meta_value',
+                        'order'          => 'ASC',
+                        'meta_type'      => 'DATE',
+                    ));
+
+                    if ($fallback_event_query->have_posts()) :
+                        while ($fallback_event_query->have_posts()) : $fallback_event_query->the_post();
+                            $post_ids[] = get_the_ID();
+                            $event_archive_ids[] = get_the_ID();
+
+                            echo '<div class="col-lg-4 main-event-card">';
+                            require get_template_directory() . '/template-parts/main-event-card-no-col.php';
+                            echo '</div>';
+                        endwhile;
+                    endif;
+                    wp_reset_postdata();
+                }
+                ?>
             </div>
         </div>
     </section>
@@ -218,23 +253,51 @@ get_header();
             <div class="row">
                 <h3>Recommended</h3>
                 <?php
-                $analysis_query = new WP_Query(array(
-                    'post_type' => 'post',
-                    'posts_per_page' => 4,
-                    'post_status'    => 'publish',
-                ));
+                $acf_recommended_posts = get_field('recommended_posts', 'option') ?? [];
+                $recommended_post_ids = [];
 
-                if ($analysis_query->have_posts()) :
-                    while ($analysis_query->have_posts()) : $analysis_query->the_post();
-                        $post_ids[] = get_the_ID();
-                        $terms     = get_the_terms(get_the_ID(), 'category');
-                        $term_name = $terms[0]->name;
-                        ?>
-                        <?php require get_template_directory() . '/template-parts/standard-article-card.php'; ?>
-                    <?php
-                    endwhile;
-                endif;
-                wp_reset_postdata();
+                if (!empty($acf_recommended_posts)) {
+                    foreach ($acf_recommended_posts as $acf_post) {
+                        if (is_a($acf_post, 'WP_Post')) {
+                            global $post;
+                            $post = $acf_post;
+                            setup_postdata($post);
+
+                            $post_ids[] = $post->ID;
+                            $recommended_post_ids[] = $post->ID;
+                            $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                            $term_name = $terms[0]->name;
+                            require get_template_directory() . '/template-parts/standard-article-card.php';
+                            wp_reset_postdata();
+
+                            if (count($recommended_post_ids) >= 4) {
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                $remaining_posts = 4 - count($recommended_post_ids);
+
+                if ($remaining_posts > 0) {
+                    $recommended_query = new WP_Query(array(
+                        'post_type'      => 'post',
+                        'posts_per_page' => $remaining_posts,
+                        'post_status'    => 'publish',
+                        'post__not_in'   => $post_ids,
+                    ));
+
+                    if ($recommended_query->have_posts()) :
+                        while ($recommended_query->have_posts()) : $recommended_query->the_post();
+                            $post_ids[] = get_the_ID();
+                            $recommended_post_ids[] = get_the_ID();
+                            $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                            $term_name = $terms[0]->name;
+                            require get_template_directory() . '/template-parts/standard-article-card.php';
+                        endwhile;
+                    endif;
+                    wp_reset_postdata();
+                }
                 ?>
             </div>
         </div>
@@ -303,23 +366,51 @@ get_header();
             <div class="row">
                 <h3>Recommended</h3>
                 <?php
-                $analysis_query = new WP_Query(array(
-                    'post_type' => 'post',
-                    'posts_per_page' => 4,
-                    'post_status'    => 'publish',
-                ));
+                $acf_recommended_posts = get_field('recommended_posts', 'option') ?? [];
+                $recommended_post_ids = [];
 
-                if ($analysis_query->have_posts()) :
-                    while ($analysis_query->have_posts()) : $analysis_query->the_post();
-                        $post_ids[] = get_the_ID();
-                        $terms     = get_the_terms(get_the_ID(), 'category');
-                        $term_name = $terms[0]->name;
-                        ?>
-                        <?php require get_template_directory() . '/template-parts/standard-article-card.php'; ?>
-                    <?php
-                    endwhile;
-                endif;
-                wp_reset_postdata();
+                if (!empty($acf_recommended_posts)) {
+                    foreach ($acf_recommended_posts as $acf_post) {
+                        if (is_a($acf_post, 'WP_Post')) {
+                            global $post;
+                            $post = $acf_post;
+                            setup_postdata($post);
+
+                            $post_ids[] = $post->ID;
+                            $recommended_post_ids[] = $post->ID;
+                            $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                            $term_name = $terms[0]->name;
+                            require get_template_directory() . '/template-parts/standard-article-card.php';
+                            wp_reset_postdata();
+
+                            if (count($recommended_post_ids) >= 4) {
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                $remaining_posts = 4 - count($recommended_post_ids);
+
+                if ($remaining_posts > 0) {
+                    $recommended_query = new WP_Query(array(
+                        'post_type'      => 'post',
+                        'posts_per_page' => $remaining_posts,
+                        'post_status'    => 'publish',
+                        'post__not_in'   => $post_ids,
+                    ));
+
+                    if ($recommended_query->have_posts()) :
+                        while ($recommended_query->have_posts()) : $recommended_query->the_post();
+                            $post_ids[] = get_the_ID();
+                            $recommended_post_ids[] = get_the_ID();
+                            $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                            $term_name = $terms[0]->name;
+                            require get_template_directory() . '/template-parts/standard-article-card.php';
+                        endwhile;
+                    endif;
+                    wp_reset_postdata();
+                }
                 ?>
             </div>
         </div>

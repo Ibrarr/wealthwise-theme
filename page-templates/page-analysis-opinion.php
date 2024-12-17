@@ -179,25 +179,61 @@ get_header();
         <div class="container px-4">
             <div class="row">
                 <h3>Videos</h3>
-				<?php
-				$videos_query = new WP_Query(array(
-					'post_type' => 'video',
-					'posts_per_page' => 3,
-					'post_status'    => 'publish',
-				));
+                <?php
+                $acf_videos_posts = get_field('videos_section', 'option') ?? [];
+                $video_ids = [];
 
-				if ($videos_query->have_posts()) :
-					while ($videos_query->have_posts()) : $videos_query->the_post();
-						$video_ids[] = get_the_ID();
-						$terms     = get_the_terms(get_the_ID(), 'type');
-						$term_name = $terms[0]->name;
-						echo '<div class="col-lg-4 col-12 mb-4 standard-article-card">';
-						require get_template_directory() . '/template-parts/standard-video-card-no-col.php';
-						echo '</div>';
-					endwhile;
-				endif;
-				wp_reset_postdata();
-				?>
+                if (!empty($acf_videos_posts)) {
+                    foreach ($acf_videos_posts as $acf_video) {
+                        if (is_a($acf_video, 'WP_Post')) {
+                            global $post;
+                            $post = $acf_video;
+                            setup_postdata($post);
+
+                            $video_ids[] = $post->ID;
+
+                            $terms = get_the_terms($post->ID, 'type');
+                            $term_name = $terms[0]->name ?? '';
+
+                            echo '<div class="col-lg-4 col-12 mb-4 standard-article-card">';
+                            require get_template_directory() . '/template-parts/standard-video-card-no-col.php';
+                            echo '</div>';
+
+                            wp_reset_postdata();
+
+                            if (count($video_ids) >= 3) {
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                $remaining_videos = 3 - count($video_ids);
+
+                if ($remaining_videos > 0) {
+                    $videos_query = new WP_Query(array(
+                        'post_type'      => 'video',
+                        'posts_per_page' => $remaining_videos,
+                        'post_status'    => 'publish',
+                        'post__not_in'   => $video_ids,
+                    ));
+
+                    if ($videos_query->have_posts()) :
+                        while ($videos_query->have_posts()) : $videos_query->the_post();
+                            $video_ids[] = get_the_ID();
+
+                            $terms = get_the_terms(get_the_ID(), 'type');
+                            $term_name = $terms[0]->name ?? '';
+
+                            echo '<div class="col-lg-4 col-12 mb-4 standard-article-card">';
+                            require get_template_directory() . '/template-parts/standard-video-card-no-col.php';
+                            echo '</div>';
+                        endwhile;
+                    endif;
+
+                    wp_reset_postdata();
+                }
+                ?>
             </div>
         </div>
     </section>
@@ -205,65 +241,124 @@ get_header();
     <section class="choice-words">
         <div class="container px-4">
             <div class="row">
-                <h3>Choice words</h3>
-				<?php
-				$choice_query = new WP_Query(array(
-					'post_type' => 'post',
-					'posts_per_page' => 3,
-					'post_status'    => 'publish',
-					'tax_query' => array(
-						array(
-							'taxonomy' => 'category',
-							'field' => 'name',
-							'terms' => 'Choice words',
-						),
-					),
-				));
+                <h3>Choice Words</h3>
+                <?php
+                $acf_choice_posts = get_field('choice_words_posts', 'option') ?? [];
+                $choice_post_ids = [];
 
-				if ($choice_query->have_posts()) :
-					while ($choice_query->have_posts()) : $choice_query->the_post();
-						$post_ids[] = get_the_ID();
-						$terms     = get_the_terms(get_the_ID(), 'category');
-						$term_name = $terms[0]->name;
-						?>
-						<?php require get_template_directory() . '/template-parts/standard-article-card.php'; ?>
-					<?php
-					endwhile;
-				endif;
-				wp_reset_postdata();
-				?>
+                if (!empty($acf_choice_posts)) {
+                    foreach ($acf_choice_posts as $acf_post) {
+                        if (is_a($acf_post, 'WP_Post')) {
+                            global $post;
+                            $post = $acf_post;
+                            setup_postdata($post);
+
+                            $post_ids[] = $post->ID;
+                            $choice_post_ids[] = $post->ID;
+
+                            require get_template_directory() . '/template-parts/standard-article-card.php';
+                            wp_reset_postdata();
+
+                            if (count($choice_post_ids) >= 3) {
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                $remaining_posts = 3 - count($choice_post_ids);
+
+                if ($remaining_posts > 0) {
+                    $choice_query = new WP_Query(array(
+                        'post_type'      => 'post',
+                        'posts_per_page' => $remaining_posts,
+                        'post_status'    => 'publish',
+                        'post__not_in'   => $post_ids,
+                        'tax_query' => array(
+                            array(
+                                'taxonomy' => 'category',
+                                'field'    => 'name',
+                                'terms'    => 'Choice words',
+                            ),
+                        ),
+                    ));
+
+                    if ($choice_query->have_posts()) :
+                        while ($choice_query->have_posts()) : $choice_query->the_post();
+                            $post_ids[] = get_the_ID();
+                            $choice_post_ids[] = get_the_ID();
+                            require get_template_directory() . '/template-parts/standard-article-card.php';
+                        endwhile;
+                    endif;
+                    wp_reset_postdata();
+                }
+                ?>
+
                 <div class="col-lg-3 col-md-6 col-12 mb-4 video-choice">
                     <p class="heading-term">More choice words videos</p>
-					<?php
-					$choice_query = new WP_Query(array(
-						'post_type' => 'video',
-						'posts_per_page' => 3,
-						'post_status'    => 'publish',
-						'post__not_in'   => $video_ids,
-						'tax_query' => array(
-							array(
-								'taxonomy' => 'category',
-								'field' => 'name',
-								'terms' => 'Choice words',
-							),
-						),
-					));
+                    <?php
+                    $acf_choice_videos = get_field('choice_words_videos', 'option') ?? [];
+                    $choice_video_ids = [];
 
-					if ($choice_query->have_posts()) :
-						while ($choice_query->have_posts()) : $choice_query->the_post();
-							$video_ids[] = get_the_ID();
-							?>
-                            <a href="<?php the_permalink(); ?>">
-                                <p class="title"><span>Watch: </span><?php the_title(); ?></p>
-                            </a>
-						<?php
-						endwhile;
-					endif;
-					wp_reset_postdata();
-					?>
+                    if (!empty($acf_choice_videos)) {
+                        foreach ($acf_choice_videos as $acf_video) {
+                            if (is_a($acf_video, 'WP_Post')) {
+                                global $post;
+                                $post = $acf_video;
+                                setup_postdata($post);
+
+                                $video_ids[] = $post->ID;
+                                $choice_video_ids[] = $post->ID;
+
+                                ?>
+                                <a href="<?php the_permalink(); ?>">
+                                    <p class="title"><span>Watch: </span><?php the_title(); ?></p>
+                                </a>
+                                <?php
+                                wp_reset_postdata();
+
+                                if (count($choice_video_ids) >= 3) {
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+
+                    $remaining_videos = 3 - count($choice_video_ids);
+
+                    if ($remaining_videos > 0) {
+                        $choice_videos_query = new WP_Query(array(
+                            'post_type'      => 'video',
+                            'posts_per_page' => $remaining_videos,
+                            'post_status'    => 'publish',
+                            'post__not_in'   => $video_ids,
+                            'tax_query' => array(
+                                array(
+                                    'taxonomy' => 'category',
+                                    'field'    => 'name',
+                                    'terms'    => 'Choice words',
+                                ),
+                            ),
+                        ));
+
+                        if ($choice_videos_query->have_posts()) :
+                            while ($choice_videos_query->have_posts()) : $choice_videos_query->the_post();
+                                $video_ids[] = get_the_ID();
+                                $choice_video_ids[] = get_the_ID();
+                                ?>
+                                <a href="<?php the_permalink(); ?>">
+                                    <p class="title"><span>Watch: </span><?php the_title(); ?></p>
+                                </a>
+                            <?php
+                            endwhile;
+                        endif;
+                        wp_reset_postdata();
+                    }
+                    ?>
                     <div class="sponsor">
                         <span>Sponsored by:</span>
-                        <img src="<?php the_field( 'sponsor_logo_dark', 'option' ); ?>" alt="sponsor-logo">
+                        <img src="<?php the_field('sponsor_logo_dark', 'option'); ?>" alt="sponsor-logo">
                     </div>
                 </div>
             </div>
@@ -275,23 +370,51 @@ get_header();
             <div class="row">
                 <h3>Recommended</h3>
                 <?php
-                $analysis_query = new WP_Query(array(
-                    'post_type' => 'post',
-                    'posts_per_page' => 4,
-                    'post_status'    => 'publish',
-                ));
+                $acf_recommended_posts = get_field('recommended_posts', 'option') ?? [];
+                $recommended_post_ids = [];
 
-                if ($analysis_query->have_posts()) :
-                    while ($analysis_query->have_posts()) : $analysis_query->the_post();
-                        $post_ids[] = get_the_ID();
-                        $terms     = get_the_terms(get_the_ID(), 'category');
-                        $term_name = $terms[0]->name;
-                        ?>
-                        <?php require get_template_directory() . '/template-parts/standard-article-card.php'; ?>
-                    <?php
-                    endwhile;
-                endif;
-                wp_reset_postdata();
+                if (!empty($acf_recommended_posts)) {
+                    foreach ($acf_recommended_posts as $acf_post) {
+                        if (is_a($acf_post, 'WP_Post')) {
+                            global $post;
+                            $post = $acf_post;
+                            setup_postdata($post);
+
+                            $post_ids[] = $post->ID;
+                            $recommended_post_ids[] = $post->ID;
+                            $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                            $term_name = $terms[0]->name;
+                            require get_template_directory() . '/template-parts/standard-article-card.php';
+                            wp_reset_postdata();
+
+                            if (count($recommended_post_ids) >= 4) {
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                $remaining_posts = 4 - count($recommended_post_ids);
+
+                if ($remaining_posts > 0) {
+                    $recommended_query = new WP_Query(array(
+                        'post_type'      => 'post',
+                        'posts_per_page' => $remaining_posts,
+                        'post_status'    => 'publish',
+                        'post__not_in'   => $post_ids,
+                    ));
+
+                    if ($recommended_query->have_posts()) :
+                        while ($recommended_query->have_posts()) : $recommended_query->the_post();
+                            $post_ids[] = get_the_ID();
+                            $recommended_post_ids[] = get_the_ID();
+                            $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                            $term_name = $terms[0]->name;
+                            require get_template_directory() . '/template-parts/standard-article-card.php';
+                        endwhile;
+                    endif;
+                    wp_reset_postdata();
+                }
                 ?>
             </div>
         </div>
@@ -360,23 +483,51 @@ get_header();
             <div class="row">
                 <h3>Recommended</h3>
                 <?php
-                $analysis_query = new WP_Query(array(
-                    'post_type' => 'post',
-                    'posts_per_page' => 4,
-                    'post_status'    => 'publish',
-                ));
+                $acf_recommended_posts = get_field('recommended_posts', 'option') ?? [];
+                $recommended_post_ids = [];
 
-                if ($analysis_query->have_posts()) :
-                    while ($analysis_query->have_posts()) : $analysis_query->the_post();
-                        $post_ids[] = get_the_ID();
-                        $terms     = get_the_terms(get_the_ID(), 'category');
-                        $term_name = $terms[0]->name;
-                        ?>
-                        <?php require get_template_directory() . '/template-parts/standard-article-card.php'; ?>
-                    <?php
-                    endwhile;
-                endif;
-                wp_reset_postdata();
+                if (!empty($acf_recommended_posts)) {
+                    foreach ($acf_recommended_posts as $acf_post) {
+                        if (is_a($acf_post, 'WP_Post')) {
+                            global $post;
+                            $post = $acf_post;
+                            setup_postdata($post);
+
+                            $post_ids[] = $post->ID;
+                            $recommended_post_ids[] = $post->ID;
+                            $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                            $term_name = $terms[0]->name;
+                            require get_template_directory() . '/template-parts/standard-article-card.php';
+                            wp_reset_postdata();
+
+                            if (count($recommended_post_ids) >= 4) {
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                $remaining_posts = 4 - count($recommended_post_ids);
+
+                if ($remaining_posts > 0) {
+                    $recommended_query = new WP_Query(array(
+                        'post_type'      => 'post',
+                        'posts_per_page' => $remaining_posts,
+                        'post_status'    => 'publish',
+                        'post__not_in'   => $post_ids,
+                    ));
+
+                    if ($recommended_query->have_posts()) :
+                        while ($recommended_query->have_posts()) : $recommended_query->the_post();
+                            $post_ids[] = get_the_ID();
+                            $recommended_post_ids[] = get_the_ID();
+                            $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                            $term_name = $terms[0]->name;
+                            require get_template_directory() . '/template-parts/standard-article-card.php';
+                        endwhile;
+                    endif;
+                    wp_reset_postdata();
+                }
                 ?>
             </div>
         </div>
