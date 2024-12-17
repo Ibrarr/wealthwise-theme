@@ -58,37 +58,7 @@ get_header();
                 </div>
             </div>
             <div class="col-lg-3 partner-zone-side">
-                <p class="zone-header">Partner zone</p>
-                <?php
-                $right_query = new WP_Query(array(
-                    'post_type' => 'partner_content',
-                    'posts_per_page' => 4,
-                    'post_status'    => 'publish',
-                ));
-
-                if ($right_query->have_posts()) :
-                    while ($right_query->have_posts()) : $right_query->the_post();
-                        $terms     = get_the_terms(get_the_ID(), 'partner');
-                        $term_name = $terms[0]->name;
-                        ?>
-                        <?php require get_template_directory() . '/template-parts/archive-partner-card-short.php'; ?>
-                    <?php
-                    endwhile;
-                endif;
-                wp_reset_postdata();
-                ?>
-
-                <div class="search inline">
-                    <br>
-                    <div class="search-box">
-                        <span>Search</span>
-                        <div class="icon"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/search.svg' ) ?></div>
-                    </div>
-                    <div class="sponsor">
-                        <span>Sponsored by:</span>
-                        <img src="<?php the_field( 'sponsor_logo_dark', 'option' ); ?>" alt="sponsor-logo">
-                    </div>
-                </div>
+	            <?php require get_template_directory() . '/template-parts/partner-zone-sidebar.php'; ?>
             </div>
             <div class="col-12">
                 <div class="row bottom-row">
@@ -138,60 +108,7 @@ get_header();
     </div>
 </section>
 
-<section class="recommended">
-    <div class="container px-4">
-        <div class="row">
-            <h3>Recommended</h3>
-            <?php
-            $acf_recommended_posts = get_field('recommended_posts', 'option') ?? [];
-            $recommended_post_ids = [];
-
-            if (!empty($acf_recommended_posts)) {
-                foreach ($acf_recommended_posts as $acf_post) {
-                    if (is_a($acf_post, 'WP_Post')) {
-                        global $post;
-                        $post = $acf_post;
-                        setup_postdata($post);
-
-                        $post_ids[] = $post->ID;
-                        $recommended_post_ids[] = $post->ID;
-                        $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
-                        $term_name = $terms[0]->name;
-                        require get_template_directory() . '/template-parts/standard-article-card.php';
-                        wp_reset_postdata();
-
-                        if (count($recommended_post_ids) >= 4) {
-                            break;
-                        }
-                    }
-                }
-            }
-
-            $remaining_posts = 4 - count($recommended_post_ids);
-
-            if ($remaining_posts > 0) {
-                $recommended_query = new WP_Query(array(
-                    'post_type'      => 'post',
-                    'posts_per_page' => $remaining_posts,
-                    'post_status'    => 'publish',
-                    'post__not_in'   => $post_ids,
-                ));
-
-                if ($recommended_query->have_posts()) :
-                    while ($recommended_query->have_posts()) : $recommended_query->the_post();
-                        $post_ids[] = get_the_ID();
-                        $recommended_post_ids[] = get_the_ID();
-                        $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
-                        $term_name = $terms[0]->name;
-                        require get_template_directory() . '/template-parts/standard-article-card.php';
-                    endwhile;
-                endif;
-                wp_reset_postdata();
-            }
-            ?>
-        </div>
-    </div>
-</section>
+<?php require get_template_directory() . '/template-parts/section-recommended.php'; ?>
 
 <?php
 get_footer();

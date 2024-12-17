@@ -1,8 +1,12 @@
 {
     "choice_words_posts": "",
     "choice_words_videos": "",
+    "eighth_position_partner": false,
     "event_posts_archive": "",
     "events_posts": "",
+    "fifth_position_partner": false,
+    "first_position_partner": false,
+    "fourth_position_partner": false,
     "fourth_post_top": false,
     "instagram": "http:\/\/wealthwise.test\/wp-admin\/admin.php?page=site-settings",
     "lead_post_top": {
@@ -37,9 +41,13 @@
     "podcast_posts": "",
     "posts_second": "",
     "recommended_posts": "",
+    "second_position_partner": 13,
     "second_post_top": false,
+    "seventh_position_partner": false,
+    "sixth_position_partner": 15,
     "sponsor_logo_dark": false,
     "sponsor_logo_light": false,
+    "third_position_partner": false,
     "third_post_top": false,
     "video_posts_archive": "",
     "videos_section": [

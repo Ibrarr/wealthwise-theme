@@ -83,3 +83,23 @@ function load_acf_option_page_fields() {
 		}
 	}
 }
+
+add_filter('acf/fields/relationship/query/name=pinned_post_partner_content', 'filter_pinned_posts_by_current_term', 10, 3);
+function filter_pinned_posts_by_current_term($args, $field, $post_id) {
+	if (strpos($post_id, 'term_') !== false) {
+		$term_id = str_replace('term_', '', $post_id);
+		$term_id = intval($term_id);
+
+		if ($term_id) {
+			$args['tax_query'] = array(
+				array(
+					'taxonomy' => 'partner',
+					'field'    => 'term_id',
+					'terms'    => $term_id,
+				)
+			);
+		}
+	}
+
+	return $args;
+}
