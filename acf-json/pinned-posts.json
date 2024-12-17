@@ -798,7 +798,7 @@
             {
                 "param": "options_page",
                 "operator": "==",
-                "value": "pinned-posts"
+                "value": "manage-pinned-posts"
             }
         ]
     ],
@@ -811,5 +811,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1734455209
+    "modified": 1734465635
 }
