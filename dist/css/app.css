@@ -14231,6 +14231,12 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   border-bottom: 1px solid #d5d2d1;
 }
 @media (min-width: 992px) {
+  .home.page .hero .middle .archive-standard-article-card:first-child .title {
+    font-size: 40px;
+    line-height: 38px;
+  }
+}
+@media (min-width: 992px) {
   .home.page .hero .middle .archive-standard-article-card:last-child a {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -14376,6 +14382,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 .home.page .hero .right .archive-partner-card-short .term {
   margin-bottom: 20px !important;
   font-style: italic;
+  font-family: "PT Serif", serif !important;
 }
 .home.page .hero .right .archive-partner-card-short a {
   text-decoration: none;
@@ -17798,6 +17805,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 .page-template-page-analysis-opinion .main .partner-zone-side .archive-partner-card-short .term {
   margin-bottom: 20px !important;
   font-style: italic;
+  font-family: "PT Serif", serif !important;
 }
 .page-template-page-analysis-opinion .main .partner-zone-side .archive-partner-card-short a {
   text-decoration: none;
@@ -18878,6 +18886,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 .archive.category .main .partner-zone-side .archive-partner-card-short .term {
   margin-bottom: 20px !important;
   font-style: italic;
+  font-family: "PT Serif", serif !important;
 }
 .archive.category .main .partner-zone-side .archive-partner-card-short a {
   text-decoration: none;
@@ -19660,6 +19669,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 .post-type-archive-video .main .partner-zone-side .archive-partner-card-short .term {
   margin-bottom: 20px !important;
   font-style: italic;
+  font-family: "PT Serif", serif !important;
 }
 .post-type-archive-video .main .partner-zone-side .archive-partner-card-short a {
   text-decoration: none;
@@ -20384,6 +20394,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 .post-type-archive-event .main .partner-zone-side .archive-partner-card-short .term {
   margin-bottom: 20px !important;
   font-style: italic;
+  font-family: "PT Serif", serif !important;
 }
 .post-type-archive-event .main .partner-zone-side .archive-partner-card-short a {
   text-decoration: none;
@@ -21067,6 +21078,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 .post-type-archive-partner_content .main .partner-zone-side .archive-partner-card-short .term {
   margin-bottom: 20px !important;
   font-style: italic;
+  font-family: "PT Serif", serif !important;
 }
 .post-type-archive-partner_content .main .partner-zone-side .archive-partner-card-short a {
   text-decoration: none;
