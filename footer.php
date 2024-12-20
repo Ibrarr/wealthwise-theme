@@ -37,7 +37,6 @@
                     <div class="menu">
                         <a href="/contact-us">Contact us</a>
                         <a href="/about-us">About us</a>
-                        <span id="newsletter">Newsletter Signup</span>
                     </div>
                 </div>
             </div>
@@ -51,7 +50,7 @@
 			        'theme_location' => 'footer-menu',
 		        ) ); ?>
             </nav>
-            <p>© 2024 wealthwise media. Wealthwise is a financial news website aimed at wealth managers , investment IFAs and other professional fund pickers and asset allocators in the UK and Channel Islands. No news, articles or content may be reproduced in part or in full without express permission of Fintel group plc. <span>Website design & build: Today Creative</span></p>
+            <p>© 2024 wealthwise media. Wealthwise is a financial news website aimed at wealth managers , investment IFAs and other professional fund pickers and asset allocators in the UK and Channel Islands. No news, articles or content may be reproduced in part or in full without express permission of Fintel group plc. <span>Brand development, website design & build by Today Creative</span></p>
         </div>
     </div>
 </footer>

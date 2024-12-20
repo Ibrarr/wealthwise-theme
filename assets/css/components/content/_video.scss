@@ -1,4 +1,8 @@
 .single-video {
+  article .container {
+    border-top: 1px solid #cfc9c1;
+  }
+
   @import "components/post-header-video";
   @import "components/header-video";
   @import "components/video-content";

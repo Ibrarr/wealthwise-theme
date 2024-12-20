@@ -75,7 +75,7 @@ $query = new WP_Query($args);
 					}
 
 					// Page X of Y
-					echo '<span class="pagination-text">Page ' . esc_html($current_page) . ' of ' . esc_html($total_pages) . '</span>';
+					echo '<span class="pagination-text">Page ' . esc_html($current_page) . ' <span>of</span> ' . esc_html($total_pages) . '</span>';
 
 					if ($current_page < $total_pages) {
 						echo '<a href="' . get_pagenum_link($current_page + 1) . '" class="pagination-arrow">'

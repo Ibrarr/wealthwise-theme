@@ -3,7 +3,7 @@
   .top-search {
     .container {
       .row.search-box {
-        border-top: 2px solid #cfc9c1;
+        border-top: 1px solid #cfc9c1;
         padding-top: 40px;
 
         @include media-breakpoint-up(lg) {

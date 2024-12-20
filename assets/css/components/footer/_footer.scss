@@ -53,6 +53,10 @@ footer {
       @include media-breakpoint-down(lg) {
         justify-content: center;
         margin-top: 10px;
+
+        a:not(:last-child) {
+          margin-right: 20px;
+        }
       }
 
       a {
@@ -97,6 +101,11 @@ footer {
           font-size: 12px;
           font-family: $ww-pt;
           font-weight: $ww-medium;
+          transition: $ww-transition-all;
+
+          &:hover {
+            color: #ffffff;
+          }
         }
       }
     }
@@ -109,6 +118,11 @@ footer {
       font-family: $ww-pt;
       font-weight: $ww-medium;
       cursor: pointer;
+      transition: $ww-transition-all;
+
+      &:hover {
+        color: #ffffff;
+      }
     }
 
     .header {
@@ -144,6 +158,11 @@ footer {
           font-size: 10px;
           font-family: $ww-pt;
           font-weight: $ww-bold;
+          transition: $ww-transition-all;
+
+          &:hover {
+            color: $ww-gold;
+          }
         }
       }
     }

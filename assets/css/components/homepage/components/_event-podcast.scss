@@ -36,11 +36,11 @@
       text-transform: uppercase;
     }
 
-    .content {
-      @include media-breakpoint-up(lg) {
-        border-left: 1px solid #d5d2d1;
-      }
+    @include media-breakpoint-up(lg) {
+      border-left: 1px solid #d5d2d1;
+    }
 
+    .content {
       div:not(:last-child) {
         padding-bottom: 20px;
         border-bottom: 1px solid #d5d2d1;
@@ -78,6 +78,10 @@
             font-weight: $ww-bold;
             margin-top: 10px;
           }
+        }
+
+        .two-owls {
+          border-bottom: 1px solid #d5d2d1;
         }
       }
     }

@@ -7,7 +7,7 @@
       height: 20px;
       width: 20px;
       left: 0;
-      bottom: -10px;
+      bottom: 0;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -16,7 +16,7 @@
       @include media-breakpoint-down(lg) {
         height: 14px;
         width: 14px;
-        top: 50%;
+        top: 60%;
         transform: translateY(-50%);
         bottom: 0;
       }
@@ -54,7 +54,7 @@
   .search {
     position: absolute;
     right: 0;
-    bottom: -10px;
+    bottom: 0;
     cursor: pointer;
     height: 20px;
     width: 20px;

@@ -52,7 +52,7 @@
     font-size: 15px;
     padding-bottom: 10px;
     border-bottom: 1px solid #947877;
-    margin: 0 40px 10px 40px;
+    margin: 0 50px 10px 50px;
   }
 
   .location {
@@ -60,11 +60,11 @@
     font-family: $ww-pt;
     font-weight: $ww-medium;
     font-size: 15px;
-    margin: 0 40px 0 40px;
+    margin: 0 50px 0 50px;
   }
 
   .gform-theme.gform-theme--foundation.gform-theme--framework form {
-    margin: 30px 40px;
+    margin: 30px 50px;
     .gfield_required {
       display: none;
     }
@@ -107,6 +107,11 @@
     fieldset.gfield--type-consent {
       display: flex;
       align-items: flex-end;
+      font-style: italic;
+
+      label {
+        font-size: 12px !important;
+      }
     }
 
     input[type="submit"] {

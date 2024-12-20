@@ -36,7 +36,6 @@
           font-family: $ww-pt;
           font-weight: $ww-bold;
           font-size: 32px;
-          margin-bottom: 20px;
 
           @include media-breakpoint-up(lg) {
             font-size: 40px;
@@ -44,6 +43,7 @@
         }
 
         form {
+          margin-top: 20px;
           position: relative;
 
           label {
@@ -85,14 +85,14 @@
         }
 
         img {
-          max-height: 35px;
+          max-height: 45px;
           margin-top: 10px;
         }
       }
 
       .close {
         position: absolute;
-        top: 42px;
+        top: 80px;
         right: -43px;
         cursor: pointer;
         width: fit-content;

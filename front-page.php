@@ -299,7 +299,7 @@ $partner_post_ids = [];
             </div>
             <div class="col-lg-3 podcasts">
                 <h3>Podcasts</h3>
-	            <div class="row content">
+	            <div class="content">
                     <?php
                     $acf_podcast_posts = get_field('podcast_posts', 'option') ?? [];
                     $podcast_ids = [];

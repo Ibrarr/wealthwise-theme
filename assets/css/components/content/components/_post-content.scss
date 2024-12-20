@@ -25,6 +25,7 @@
         font-family: $ww-pt;
         font-weight: $ww-medium;
         font-size: 15px;
+        line-height: 26px;
       }
     }
 
@@ -34,10 +35,15 @@
       font-weight: $ww-medium;
       font-style: italic;
       font-size: 20px;
+      line-height: 31px;
       margin: 0;
 
       svg {
         height: 60px;
+      }
+
+      @include media-breakpoint-down(lg) {
+        margin-bottom: 20px;
       }
     }
   }
@@ -55,6 +61,7 @@
         font-family: $ww-pt;
         font-weight: $ww-medium;
         font-size: 15px;
+        line-height: 26px;
       }
     }
 
@@ -90,6 +97,22 @@
           right: 100%;
           width: 10%;
           background: #ece6dd;
+
+          @include media-breakpoint-down(lg) {
+            width: 100%;
+          }
+        }
+
+        @include media-breakpoint-down(lg) {
+          &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 100%;
+            width: 100%;
+            background: #ece6dd;
+          }
         }
 
         p {

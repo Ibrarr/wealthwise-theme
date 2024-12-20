@@ -5,6 +5,15 @@
       border-bottom: 1px solid #d5d2d1;
     }
 
+    .featured {
+      .title {
+        @include media-breakpoint-up(lg) {
+          font-size: 32px;
+          line-height: 38px;
+        }
+      }
+    }
+
     h1 {
       color: $ww-gold;
       font-family: $ww-inter;
@@ -48,6 +57,10 @@
         display: block;
         position: absolute;
         bottom: 6px;
+      }
+
+      @include media-breakpoint-down(lg) {
+        display: none;
       }
     }
 

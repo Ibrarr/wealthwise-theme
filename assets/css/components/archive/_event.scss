@@ -53,6 +53,10 @@
         position: absolute;
         bottom: 6px;
       }
+
+      @include media-breakpoint-down(lg) {
+        display: none;
+      }
     }
 
     .main-event-card {

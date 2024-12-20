@@ -179,6 +179,17 @@
               }
             }
 
+            .gfield--type-consent {
+              label {
+                font-style: italic !important;
+                font-size: 12px !important;
+              }
+
+              input {
+                border-radius: 8px !important;
+              }
+            }
+
             input[type="submit"] {
               padding: 15px 30px;
               color: #ffffff;
@@ -212,11 +223,10 @@
         }
 
         .search {
-          padding-left: 40px;
-          padding-right: 40px;
-          padding-bottom: 40px;
+          padding: 20px 40px 40px;
           background: #e2d4c2;
           position: relative;
+
 
           form {
             position: relative;
@@ -244,7 +254,7 @@
 
           .sponsor {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             margin-top: 20px;
             margin-left: 20px;
 

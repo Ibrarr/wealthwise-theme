@@ -1,5 +1,5 @@
 .related-content {
-  border-top: 2px solid #cfc9c1;
+  border-top: 1px solid #cfc9c1;
   overflow: hidden;
 
   h3 {
@@ -11,6 +11,10 @@
     margin-bottom: 20px;
     text-align: center;
     text-transform: uppercase;
+
+    @include media-breakpoint-down(lg) {
+      font-size: 16px;
+    }
   }
 
   .standard-article-card {
