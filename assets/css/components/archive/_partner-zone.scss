@@ -34,7 +34,7 @@
 
       &:after {
         content: '';
-        border-top: 1px solid $ww-gold;
+        border-top: .5px solid $ww-gold;
         width: 100%;
         display: block;
         position: absolute;
@@ -43,7 +43,7 @@
 
       &:before {
         content: '';
-        border-top: 1px solid $ww-gold;
+        border-top: .5px solid $ww-gold;
         width: 100%;
         display: block;
         position: absolute;

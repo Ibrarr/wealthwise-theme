@@ -19031,7 +19031,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 }
 .archive.category .main h1:after, .archive.category .main .h1:after {
   content: "";
-  border-top: 1px solid #815f1f;
+  border-top: 0.5px solid #815f1f;
   width: 100%;
   display: block;
   position: absolute;
@@ -19039,7 +19039,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 }
 .archive.category .main h1:before, .archive.category .main .h1:before {
   content: "";
-  border-top: 1px solid #815f1f;
+  border-top: 0.5px solid #815f1f;
   width: 100%;
   display: block;
   position: absolute;
@@ -19939,7 +19939,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 }
 .post-type-archive-video .main h1:after, .post-type-archive-video .main .h1:after {
   content: "";
-  border-top: 1px solid #815f1f;
+  border-top: 0.5px solid #815f1f;
   width: 100%;
   display: block;
   position: absolute;
@@ -19947,7 +19947,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 }
 .post-type-archive-video .main h1:before, .post-type-archive-video .main .h1:before {
   content: "";
-  border-top: 1px solid #815f1f;
+  border-top: 0.5px solid #815f1f;
   width: 100%;
   display: block;
   position: absolute;
@@ -20797,7 +20797,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 }
 .post-type-archive-event .main h1:after, .post-type-archive-event .main .h1:after {
   content: "";
-  border-top: 1px solid #815f1f;
+  border-top: 0.5px solid #815f1f;
   width: 100%;
   display: block;
   position: absolute;
@@ -20805,7 +20805,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 }
 .post-type-archive-event .main h1:before, .post-type-archive-event .main .h1:before {
   content: "";
-  border-top: 1px solid #815f1f;
+  border-top: 0.5px solid #815f1f;
   width: 100%;
   display: block;
   position: absolute;
@@ -21482,7 +21482,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 }
 .post-type-archive-partner_content .main h1:after, .post-type-archive-partner_content .main .h1:after {
   content: "";
-  border-top: 1px solid #815f1f;
+  border-top: 0.5px solid #815f1f;
   width: 100%;
   display: block;
   position: absolute;
@@ -21490,7 +21490,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 }
 .post-type-archive-partner_content .main h1:before, .post-type-archive-partner_content .main .h1:before {
   content: "";
-  border-top: 1px solid #815f1f;
+  border-top: 0.5px solid #815f1f;
   width: 100%;
   display: block;
   position: absolute;
