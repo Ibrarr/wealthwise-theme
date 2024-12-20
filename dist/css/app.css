@@ -16127,7 +16127,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   }
 }
 @media (max-width: 991.98px) {
-  .single-post .post-content .rest-of-content .block-content .content:before {
+  .single-post .post-content .rest-of-content .block-content .content:after {
     content: "";
     position: absolute;
     top: 0;
