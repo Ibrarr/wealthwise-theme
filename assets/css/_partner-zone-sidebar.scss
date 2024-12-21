@@ -16,6 +16,7 @@
     margin-bottom: 20px !important;
     font-style: italic;
     font-family: $ww-pt !important;
+    text-transform: unset !important;
   }
 
   @import "standard-article-card";
@@ -27,9 +28,7 @@
 }
 
 .search {
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
+  padding: 10px 20px 20px;
   background: #f1eae3;
   position: relative;
 
@@ -58,7 +57,7 @@
 
   .sponsor {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 20px;
     margin-left: 20px;
 

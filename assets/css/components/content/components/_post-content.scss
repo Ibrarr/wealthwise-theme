@@ -29,14 +29,16 @@
       }
     }
 
-    .side-quote p {
-      color: $ww-gold;
-      font-family: $ww-pt;
-      font-weight: $ww-medium;
-      font-style: italic;
-      font-size: 20px;
-      line-height: 31px;
-      margin: 0;
+    .side-quote {
+      p {
+        color: $ww-gold;
+        font-family: $ww-pt;
+        font-weight: $ww-medium;
+        font-style: italic;
+        font-size: 20px;
+        line-height: 31px;
+        margin: 0;
+      }
 
       svg {
         height: 60px;

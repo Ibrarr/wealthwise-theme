@@ -18,7 +18,7 @@
                         <a href="<?php the_field( 'youtube', 'option' ); ?>" target="_blank" class="insta">
 			                <?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/youtube-footer.svg' ) ?>
                         </a>
-                        <a href="<?php the_field( 'instagram', 'option' ); ?>" target="_blank">
+                        <a href="<?php the_field( 'instagram', 'option' ); ?>" target="_blank" class="insta">
 			                <?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/instagram-footer.svg' ) ?>
                         </a>
                     </div>

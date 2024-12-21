@@ -59,7 +59,7 @@ get_header();
 									echo '<div class="col-lg-12 mb-4 featured-article-card">';
 									require get_template_directory() . '/template-parts/featured-article-card-block.php';
 									echo '</div>';
-									echo '<div class="row not-main">';
+									echo '<div class="row gx-1 not-main">';
 								} elseif ($post_count === 2) {
 									echo '<div class="col-lg-4 mb-4 standard-article-card second">';
 									require get_template_directory() . '/template-parts/standard-article-card-no-col.php';

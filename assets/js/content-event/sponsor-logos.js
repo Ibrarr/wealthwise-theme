@@ -10,10 +10,13 @@ document.addEventListener('DOMContentLoaded', function () {
         autoplay: true,
         arrows: false,
         pagination: false,
+        autoScroll: {
+            speed: 1,
+        },
         breakpoints: {
             768: {
                 perPage: 3,
             },
         },
-    }).mount();
+    }).mount({ AutoScroll });
 });

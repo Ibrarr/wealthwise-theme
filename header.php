@@ -27,6 +27,7 @@
             </div>
             <div class="mobile-menu">
                 <div class="content">
+	                <div class="logo"><a href="/"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/logos/logo.svg' ) ?></a></div>
                     <div class="cross"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/menu-cross.svg' ) ?></div>
 
                     <nav id="nav" role="navigation" itemscope

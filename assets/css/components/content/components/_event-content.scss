@@ -240,18 +240,23 @@
             }
 
             .open {
-              color: #ffffff;
-              background: $ww-brown;
-              padding: 0 20px;
-              border-radius: 25px;
-              display: none;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              svg {
+                height: 25px;
+              }
             }
 
             .closed {
-              color: $ww-brown;
-              border: 1px solid $ww-brown;
-              padding: 0 20px;
-              border-radius: 25px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              svg {
+                height: 25px;
+              }
             }
           }
 
@@ -503,18 +508,23 @@
           }
 
           .open {
-            color: #ffffff;
-            background: $ww-brown;
-            padding: 0 20px;
-            border-radius: 25px;
-            display: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            svg {
+              height: 25px;
+            }
           }
 
           .closed {
-            color: $ww-brown;
-            border: 1px solid $ww-brown;
-            padding: 0 20px;
-            border-radius: 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            svg {
+              height: 25px;
+            }
           }
         }
 

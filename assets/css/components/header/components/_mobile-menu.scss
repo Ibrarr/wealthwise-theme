@@ -36,7 +36,18 @@
     padding-top: 40px;
 
     @include media-breakpoint-down(lg) {
-      padding-top: 20px;
+      padding-top: 15px;
+    }
+
+    .logo {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      top: 25px;
+
+      svg {
+        width: 160px;
+      }
     }
 
     .cross {
@@ -45,6 +56,11 @@
       border-bottom: 1px solid #cfc9c1;
       cursor: pointer;
       padding-left: 40px;
+
+      @include media-breakpoint-down(lg) {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+      }
 
       svg {
         height: 18px;
@@ -186,7 +202,7 @@
               }
 
               input {
-                border-radius: 8px !important;
+                border-radius: 4px !important;
               }
             }
 

@@ -43,6 +43,7 @@
         display: block;
         position: absolute;
         top: 6px;
+        opacity: .4;
       }
 
       &:before {
@@ -52,6 +53,7 @@
         display: block;
         position: absolute;
         bottom: 6px;
+        opacity: .4;
       }
 
       @include media-breakpoint-down(lg) {

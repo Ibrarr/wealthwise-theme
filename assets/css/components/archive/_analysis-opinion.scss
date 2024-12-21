@@ -39,6 +39,7 @@
         display: block;
         position: absolute;
         top: 6px;
+        opacity: .4;
       }
 
       &:before {
@@ -48,6 +49,7 @@
         display: block;
         position: absolute;
         bottom: 6px;
+        opacity: .4;
       }
 
       @include media-breakpoint-down(lg) {
@@ -69,6 +71,10 @@
           background-color: rgba(0, 0, 0, 0.1);
           pointer-events: none;
           z-index: 1;
+        }
+
+        &:hover .title {
+          text-decoration: underline;
         }
 
         .image-wrapper {
@@ -135,13 +141,16 @@
     .not-main {
       padding-right: 0;
 
-      > div {
-        padding-right: 0;
-      }
+      //> div {
+      //  padding-right: 0;
+      //}
     }
 
 
     .second {
+      padding-right: 11px;
+      padding-left: 15px;
+
       @include media-breakpoint-up(lg) {
         border-right: 1px solid #d5d2d1;
       }
@@ -154,6 +163,9 @@
     }
 
     .other {
+      padding-right: 11px;
+      padding-left: 15px;
+
       @include media-breakpoint-up(lg) {
         a {
           display: flex;
