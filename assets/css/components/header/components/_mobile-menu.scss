@@ -48,6 +48,10 @@
       svg {
         width: 160px;
       }
+
+      @include media-breakpoint-up(lg) {
+        display: none;
+      }
     }
 
     .cross {

@@ -13650,6 +13650,11 @@ header .mobile-menu .content .logo {
 header .mobile-menu .content .logo svg {
   width: 160px;
 }
+@media (min-width: 992px) {
+  header .mobile-menu .content .logo {
+    display: none;
+  }
+}
 header .mobile-menu .content .cross {
   padding-bottom: 40px;
   margin-bottom: 40px;
