@@ -12,6 +12,53 @@
     .archive-standard-article-card {
       &:first-child {
         border-bottom: 1px solid #d5d2d1;
+
+        @include media-breakpoint-down(lg) {
+          .image-wrapper {
+            position: unset;
+
+            &:before {
+              content: none !important;
+            }
+
+            img {
+              position: absolute;
+              width: 100vw;
+              top: -10px;
+              left: 0;
+
+              @include media-breakpoint-down(md) {
+                top: 40px;
+              }
+            }
+          }
+
+          .content {
+            position: relative;
+            background: $ww-background;
+            padding-top: 10px;
+
+            &:before {
+              content: "";
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 100%;
+              width: 100%;
+              background: $ww-background;
+            }
+
+            &:after {
+              content: "";
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              right: 100%;
+              width: 100%;
+              background: $ww-background;
+            }
+          }
+        }
       }
 
       .excerpt {

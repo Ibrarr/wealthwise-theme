@@ -13,12 +13,15 @@ header {
     padding-top: 10px;
 
     @include media-breakpoint-down(lg) {
-      padding-top: 0px;
+      padding-top: 0;
+      padding-bottom: 5px;
     }
   }
 
   @include media-breakpoint-down(lg) {
-    padding-top: 0px;
+    padding-top: 0;
+    padding-bottom: 5px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   }
 
   @import "components/top-menu";

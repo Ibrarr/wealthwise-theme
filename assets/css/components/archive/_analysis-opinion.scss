@@ -99,12 +99,17 @@
           display: flex;
           flex-direction: column;
           justify-content: center;
-          padding: 40px;
+          padding-top: 40px;
+          padding-left: 40px;
+          padding-bottom: 40px;
           background: $ww-gold;
           height: 100%;
           position: relative;
+          word-wrap: break-word;
+          hyphens: auto;
 
           @include media-breakpoint-up(lg) {
+            padding-right: 40px;
             &:before {
               content: "";
               position: absolute;

@@ -15,6 +15,7 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<div class="container px-4">
+        <div class="border-top"></div>
 		<section class="post-header row">
             <div class="col-lg-8 offset-lg-2">
                 <p class="term"><?php echo $term_name; ?></p>

@@ -1,14 +1,26 @@
 .post-header {
   margin: 20px auto;
   max-width: 1024px;
+  position: relative;
 
   .term {
     @include term($ww-gold);
   }
 
   .title-share {
-    border-bottom: 1px solid $ww-grey;
+    border-bottom: 1px solid #cfc9c1;
     padding-bottom: 20px;
+
+    &:after {
+      content: '';
+      display: block;
+      border-bottom: 1px solid #cfc9c1;
+      width: 50%;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      margin-top: 10px;
+    }
 
     @include media-breakpoint-up(lg) {
       display: flex;

@@ -12,6 +12,69 @@
           line-height: 38px !important;
         }
       }
+
+      &:first-child {
+        @include media-breakpoint-down(lg) {
+          .image-wrapper {
+            position: unset !important;
+
+            &:before {
+              content: none !important;
+            }
+
+            button.play-button.podcast {
+              top: 39vw !important
+            }
+
+            @include media-breakpoint-down(sm) {
+              button.play-button.podcast {
+                top: 49vw !important
+              }
+            }
+
+            img {
+              position: absolute !important;
+              width: 100vw !important;
+              top: -30px;
+              left: 0;
+
+              @include media-breakpoint-down(md) {
+                top: -10px;
+              }
+
+              @include media-breakpoint-down(sm) {
+                top: 20px;
+              }
+            }
+          }
+
+          .content {
+            position: relative;
+            background: $ww-background;
+            padding-top: 10px;
+
+            &:before {
+              content: "";
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 100%;
+              width: 100%;
+              background: $ww-background;
+            }
+
+            &:after {
+              content: "";
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              right: 100%;
+              width: 100%;
+              background: $ww-background;
+            }
+          }
+        }
+      }
     }
 
     h1 {

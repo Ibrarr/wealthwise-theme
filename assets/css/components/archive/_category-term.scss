@@ -71,6 +71,53 @@
           line-height: 30px !important;
         }
       }
+
+      @include media-breakpoint-down(lg) {
+        .image-wrapper {
+          position: unset !important;
+
+          &:before {
+            content: none !important;
+          }
+
+          img {
+            position: absolute !important;
+            width: 100vw !important;
+            top: -30px;
+            left: 0;
+
+            @include media-breakpoint-down(md) {
+              top: 25px;
+            }
+          }
+        }
+
+        .content {
+          position: relative;
+          background: $ww-background;
+          padding-top: 10px;
+
+          &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 100%;
+            width: 100%;
+            background: $ww-background;
+          }
+
+          &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 100%;
+            width: 100%;
+            background: $ww-background;
+          }
+        }
+      }
     }
 
     @include media-breakpoint-up(lg) {

@@ -49,7 +49,7 @@
         width: 160px;
       }
 
-      @include media-breakpoint-up(lg) {
+      @include media-breakpoint-up  (lg) {
         display: none;
       }
     }
@@ -62,8 +62,8 @@
       padding-left: 40px;
 
       @include media-breakpoint-down(lg) {
-        padding-bottom: 20px;
-        margin-bottom: 20px;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
       }
 
       svg {

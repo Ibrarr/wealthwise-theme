@@ -210,10 +210,10 @@
         margin-top: 10px;
 
         .accordion {
-          border-bottom: 1px solid $ww-brown;
+          border-bottom: 1px solid #cfc9c1;
 
           &:first-child {
-            border-top: 1px solid $ww-brown;
+            border-top: 1px solid #cfc9c1;
           }
 
           h5 {
@@ -261,7 +261,7 @@
           }
 
           .accordion-content {
-            border-top: 1px solid $ww-brown;
+            border-top: 1px solid #cfc9c1;
             padding-top: 1rem;
             display: none;
 
@@ -272,6 +272,7 @@
                 color: $ww-grey;
                 font-family: $ww-pt;
                 font-weight: $ww-bold;
+                font-style: italic;
                 font-size: 18px;
                 margin-right: 20px;
                 @include media-breakpoint-down(lg) {
@@ -296,8 +297,8 @@
   }
 
   .sponsor-logos {
-    border-top: 1px solid $ww-brown;
-    border-bottom: 1px solid $ww-brown;
+    border-top: 1px solid #cfc9c1;
+    border-bottom: 1px solid #cfc9c1;
     margin-bottom: 50px;
 
     @include media-breakpoint-up(lg) {
@@ -329,14 +330,14 @@
     }
 
     .content-speakers-items {
-      border-top: 1px solid $ww-brown;
+      border-top: 1px solid #cfc9c1;
       margin-bottom: 30px;
       margin-top: 30px;
       padding: 30px 0;
       position: relative;
 
       @include media-breakpoint-up(lg) {
-        border-bottom: 1px solid $ww-brown;
+        border-bottom: 1px solid #cfc9c1;
       }
 
       @include media-breakpoint-down(lg) {
@@ -355,7 +356,7 @@
       .content-speakers-item {
 
         &:not(:first-child) {
-          border-top: 1px solid $ww-brown;
+          border-top: 1px solid #cfc9c1;
           margin-top: 30px;
           padding-top: 30px;
         }
@@ -478,10 +479,10 @@
       margin-top: 10px;
 
       .accordion {
-        border-bottom: 1px solid $ww-brown;
+        border-bottom: 1px solid #cfc9c1;
 
         &:first-child {
-          border-top: 1px solid $ww-brown;
+          border-top: 1px solid #cfc9c1;
         }
 
         h5 {
@@ -529,7 +530,7 @@
         }
 
         .accordion-content {
-          border-top: 1px solid $ww-brown;
+          border-top: 1px solid #cfc9c1;
           padding-top: 1rem;
           display: none;
         }

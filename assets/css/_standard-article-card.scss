@@ -30,6 +30,7 @@ a {
     margin-bottom: 10px;
     position: relative;
     height: fit-content;
+    aspect-ratio: 16 / 9;
 
     &:before {
       transition: $ww-transition-all;
