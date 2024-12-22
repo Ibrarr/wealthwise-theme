@@ -56,6 +56,10 @@
         a {
           text-decoration: none;
 
+          &:hover .title {
+            text-decoration: underline;
+          }
+
           .term {
             @include term($ww-gold);
             margin-bottom: 10px;

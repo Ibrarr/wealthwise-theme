@@ -15486,6 +15486,9 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 .home.page .event-podcast .events .small-event-card a {
   text-decoration: none;
 }
+.home.page .event-podcast .events .small-event-card a:hover .title {
+  text-decoration: underline;
+}
 .home.page .event-podcast .events .small-event-card a .event-card .title {
   color: #663E3E;
   font-family: "PT Serif", serif;
@@ -15523,6 +15526,9 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 }
 .home.page .event-podcast .podcasts .content .small-podcast-card a {
   text-decoration: none;
+}
+.home.page .event-podcast .podcasts .content .small-podcast-card a:hover .title {
+  text-decoration: underline;
 }
 .home.page .event-podcast .podcasts .content .small-podcast-card a .title {
   color: #181818;
@@ -15573,6 +15579,9 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 }
 .home.page .event-podcast .podcasts .content .word-to-wise a {
   text-decoration: none;
+}
+.home.page .event-podcast .podcasts .content .word-to-wise a:hover .title {
+  text-decoration: underline;
 }
 .home.page .event-podcast .podcasts .content .word-to-wise a .term {
   color: #815f1f;

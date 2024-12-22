@@ -1,6 +1,10 @@
 a {
   text-decoration: none;
 
+  &:hover .title {
+    text-decoration: underline;
+  }
+
   .event-card {
     .title {
       color: $ww-brown;

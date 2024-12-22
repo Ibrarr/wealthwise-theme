@@ -1,6 +1,10 @@
 a {
   text-decoration: none;
 
+  &:hover .title {
+    text-decoration: underline;
+  }
+
   .title {
     color: $ww-text;
     font-family: $ww-pt;
