@@ -15646,9 +15646,6 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 }
 .page-template-page-about .container.page-content section img {
   width: 100vw;
-  height: 450px;
-  -o-object-fit: cover;
-  object-fit: cover;
 }
 .page-template-page-about .container.page-content section .team, .page-template-page-about .container.page-content section .img {
   margin-top: 40px;
