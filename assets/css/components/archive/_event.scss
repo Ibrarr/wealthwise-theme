@@ -62,6 +62,34 @@
     }
 
     .main-event-card {
+      &:first-child {
+        position: relative;
+
+        @include media-breakpoint-down(lg) {
+          padding: 0;
+
+          &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 100%;
+            width: 100%;
+            background: #dddddd;
+          }
+
+          &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 100%;
+            width: 100%;
+            background: #dddddd;
+          }
+        }
+      }
+
       @import "../../main-event-card";
       margin-bottom: 20px;
 
