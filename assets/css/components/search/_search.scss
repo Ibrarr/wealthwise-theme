@@ -1,4 +1,4 @@
-.search.search-results {
+.search.search-results, .search.search-no-results {
 
   .top-search {
     .container {
@@ -117,6 +117,14 @@
   }
 
   .search-results {
+    p {
+      color: $ww-text;
+      font-family: $ww-pt;
+      font-weight: $ww-medium;
+      font-size: 14px;
+      line-height: 20px;
+    }
+
     .standard-article-card {
       @import "../../standard-article-card";
 
