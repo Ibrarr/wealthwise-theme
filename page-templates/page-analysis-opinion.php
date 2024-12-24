@@ -112,6 +112,7 @@ get_header();
 						?>
 					</div>
 				</div>
+                <?php if ($query->max_num_pages > 1): ?>
 				<div class="col-12">
                     <nav class="pagination">
 						<?php
@@ -141,6 +142,7 @@ get_header();
 						?>
                     </nav>
 				</div>
+                <?php endif; ?>
 			</div>
 		</div>
 	</section>
@@ -181,6 +183,7 @@ get_header();
 			endif;
 			wp_reset_postdata();
 			?>
+                <?php if ($query->max_num_pages > 1): ?>
                 <div class="col-12">
                     <nav class="pagination">
                         <?php
@@ -207,6 +210,7 @@ get_header();
                         ?>
                     </nav>
                 </div>
+                <?php endif; ?>
             </div>
 		</div>
 	</section>

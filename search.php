@@ -58,35 +58,37 @@ $query = new WP_Query($args);
 			wp_reset_postdata();
 			?>
 
-			<div class="col-12">
-				<nav class="pagination">
-					<?php
-					// Calculate total pages and current page
-					$total_pages = $query->max_num_pages;
-					$current_page = max(1, get_query_var('paged'));
+            <?php if ($query->max_num_pages > 1): ?>
+                <div class="col-12">
+                    <nav class="pagination">
+                        <?php
+                        // Calculate total pages and current page
+                        $total_pages = $query->max_num_pages;
+                        $current_page = max(1, get_query_var('paged'));
 
-					// Display left arrow
-					if ($current_page > 1) {
-						echo '<a href="' . get_pagenum_link($current_page - 1) . '" class="pagination-arrow">'
-						     . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-left.svg') . '</a>';
-					} else {
-						echo '<span class="pagination-arrow disabled">'
-						     . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-left.svg') . '</span>';
-					}
+                        // Display left arrow
+                        if ($current_page > 1) {
+                            echo '<a href="' . get_pagenum_link($current_page - 1) . '" class="pagination-arrow">'
+                                 . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-left.svg') . '</a>';
+                        } else {
+                            echo '<span class="pagination-arrow disabled">'
+                                 . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-left.svg') . '</span>';
+                        }
 
-					// Page X of Y
-					echo '<span class="pagination-text">Page ' . esc_html($current_page) . ' <span>of</span> ' . esc_html($total_pages) . '</span>';
+                        // Page X of Y
+                        echo '<span class="pagination-text">Page ' . esc_html($current_page) . ' <span>of</span> ' . esc_html($total_pages) . '</span>';
 
-					if ($current_page < $total_pages) {
-						echo '<a href="' . get_pagenum_link($current_page + 1) . '" class="pagination-arrow">'
-						     . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-right.svg') . '</a>';
-					} else {
-						echo '<span class="pagination-arrow disabled">'
-						     . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-right.svg') . '</span>';
-					}
-					?>
-				</nav>
-			</div>
+                        if ($current_page < $total_pages) {
+                            echo '<a href="' . get_pagenum_link($current_page + 1) . '" class="pagination-arrow">'
+                                 . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-right.svg') . '</a>';
+                        } else {
+                            echo '<span class="pagination-arrow disabled">'
+                                 . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-right.svg') . '</span>';
+                        }
+                        ?>
+                    </nav>
+                </div>
+            <?php endif; ?>
 		</div>
 	</div>
 </section>

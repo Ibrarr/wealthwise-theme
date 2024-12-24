@@ -10,7 +10,7 @@
 
   .main {
     h1 {
-      color: $ww-gold;
+      color: $ww-brown;
       font-family: $ww-inter;
       font-weight: $ww-medium;
       font-size: 24px;
@@ -38,7 +38,7 @@
 
       &:after {
         content: '';
-        border-top: .5px solid $ww-gold;
+        border-top: .5px solid $ww-brown;
         width: 100%;
         display: block;
         position: absolute;
@@ -48,7 +48,7 @@
 
       &:before {
         content: '';
-        border-top: .5px solid $ww-gold;
+        border-top: .5px solid $ww-brown;
         width: 100%;
         display: block;
         position: absolute;

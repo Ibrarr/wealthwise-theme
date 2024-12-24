@@ -1,12 +1,39 @@
 <?php
 get_header();
 
+$post_ids = [];
+
 $lead_post_top_id     = get_field('lead_post_top', 'option')->ID ?? null;
 $second_post_top_id   = get_field('second_post_top', 'option')->ID ?? null;
 $third_post_top_id    = get_field('third_post_top', 'option')->ID ?? null;
 $fourth_post_top_id   = get_field('fourth_post_top', 'option')->ID ?? null;
 
-$post_ids = [];
+if ($lead_post_top_id) {
+    $post_ids[] = $lead_post_top_id;
+}
+if ($second_post_top_id) {
+    $post_ids[] = $second_post_top_id;
+}
+if ($third_post_top_id) {
+    $post_ids[] = $third_post_top_id;
+}
+if ($fourth_post_top_id) {
+    $post_ids[] = $fourth_post_top_id;
+}
+
+// Collect IDs from `posts_second` field
+$acf_analysis_posts = get_field('posts_second', 'option') ?? [];
+if (!empty($acf_analysis_posts)) {
+    foreach ($acf_analysis_posts as $acf_post) {
+        if (is_a($acf_post, 'WP_Post')) {
+            $post_ids[] = $acf_post->ID;
+        }
+    }
+}
+
+// Remove duplicates
+$post_ids = array_unique($post_ids);
+
 $video_ids = [];
 $podcast_ids = [];
 $event_ids = [];
@@ -25,7 +52,6 @@ $partner_post_ids = [];
                     $term_name = get_the_terms(get_the_ID(), 'category')[0]->name;
                     require('template-parts/archive-standard-article-card.php');
                     wp_reset_postdata();
-                    $post_ids[] = $second_post_top_id;
                 }
 
                 if ($third_post_top_id) {
@@ -34,10 +60,10 @@ $partner_post_ids = [];
                     $term_name = get_the_terms(get_the_ID(), 'category')[0]->name;
                     require('template-parts/archive-standard-article-card.php');
                     wp_reset_postdata();
-                    $post_ids[] = $third_post_top_id;
                 }
 
-                $remaining_left = 2 - count($post_ids);
+                $remaining_left = 2 - count(array_filter([$second_post_top_id, $third_post_top_id]));
+
                 if ($remaining_left > 0) {
                     $left_query = new WP_Query(array(
                         'post_type'      => 'post',
@@ -67,7 +93,6 @@ $partner_post_ids = [];
                     $term_name = get_the_terms(get_the_ID(), 'category')[0]->name;
                     require('template-parts/archive-standard-article-card.php');
                     wp_reset_postdata();
-                    $post_ids[] = $lead_post_top_id;
                 }
 
                 if ($fourth_post_top_id) {
@@ -76,7 +101,6 @@ $partner_post_ids = [];
                     $term_name = get_the_terms(get_the_ID(), 'category')[0]->name;
                     require('template-parts/archive-standard-article-card.php');
                     wp_reset_postdata();
-                    $post_ids[] = $fourth_post_top_id;
                 }
 
                 $remaining_middle = 2 - count(array_intersect($post_ids, [$lead_post_top_id, $fourth_post_top_id]));

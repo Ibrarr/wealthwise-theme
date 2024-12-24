@@ -16178,6 +16178,11 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   -o-object-fit: cover;
   object-fit: cover;
 }
+@media (max-width: 991.98px) {
+  .single-post .header-image img {
+    height: 250px;
+  }
+}
 .single-post .post-content {
   max-width: 1024px;
   position: relative;
@@ -18086,9 +18091,6 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   background: #815f1f;
   height: 100%;
   position: relative;
-  word-wrap: break-word;
-  -ms-hyphens: auto;
-  hyphens: auto;
 }
 @media (min-width: 992px) {
   .page-template-page-analysis-opinion .main .featured-article-card a .content {
@@ -18117,15 +18119,9 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   color: #E2D4C2;
   font-family: "PT Serif", serif;
   font-weight: 700;
-  font-size: 34px;
   margin-bottom: 10px;
-  line-height: 38px;
-}
-@media (max-width: 991.98px) {
-  .page-template-page-analysis-opinion .main .featured-article-card a .title {
-    font-size: 32px;
-    line-height: 36px;
-  }
+  font-size: clamp(2rem, 1.4073rem + 0.9569vw, 2.125rem);
+  line-height: clamp(2.25rem, 1.6573rem + 0.9569vw, 2.375rem);
 }
 .page-template-page-analysis-opinion .main .not-main {
   padding-right: 0;
@@ -21193,7 +21189,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
   fill: #663E3E;
 }
 .post-type-archive-event .main h1, .post-type-archive-event .main .h1 {
-  color: #815f1f;
+  color: #663E3E;
   font-family: "Inter", sans-serif;
   font-weight: 500;
   font-size: 24px;
@@ -21219,7 +21215,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 }
 .post-type-archive-event .main h1:after, .post-type-archive-event .main .h1:after {
   content: "";
-  border-top: 0.5px solid #815f1f;
+  border-top: 0.5px solid #663E3E;
   width: 100%;
   display: block;
   position: absolute;
@@ -21228,7 +21224,7 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search .
 }
 .post-type-archive-event .main h1:before, .post-type-archive-event .main .h1:before {
   content: "";
-  border-top: 0.5px solid #815f1f;
+  border-top: 0.5px solid #663E3E;
   width: 100%;
   display: block;
   position: absolute;

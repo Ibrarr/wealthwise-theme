@@ -18,6 +18,10 @@ get_header();
                             'posts_per_page' => 6,
                             'post_status'    => 'publish',
                             'paged' => $paged,
+                            'meta_key'       => 'date',
+                            'orderby'        => 'meta_value',
+                            'order'          => 'ASC',
+                            'meta_type'      => 'DATE',
                         ));
 
                         if ($query->have_posts()) :
@@ -39,6 +43,7 @@ get_header();
 	                <?php require get_template_directory() . '/template-parts/partner-zone-sidebar.php'; ?>
                 </div>
                 </div>
+                <?php if ($query->max_num_pages > 1): ?>
                 <div class="col-12">
                     <nav class="pagination">
                         <?php
@@ -68,6 +73,7 @@ get_header();
                         ?>
                     </nav>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -101,6 +107,7 @@ get_header();
                 endif;
                 wp_reset_postdata();
                 ?>
+                <?php if ($query->max_num_pages > 1): ?>
                 <div class="col-12">
                     <nav class="pagination">
                         <?php
@@ -127,6 +134,7 @@ get_header();
                         ?>
                     </nav>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>

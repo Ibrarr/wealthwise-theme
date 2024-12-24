@@ -62,6 +62,7 @@ get_header();
                 endif;
                 ?>
             </div>
+            <?php if ($query->max_num_pages > 1): ?>
             <div class="col-12">
                 <nav class="pagination">
                     <?php
@@ -91,6 +92,7 @@ get_header();
                     ?>
                 </nav>
             </div>
+            <?php endif; ?>
         </div>
     </div>
 </section>
