@@ -18,7 +18,7 @@ get_header();
                             'posts_per_page' => 6,
                             'post_status'    => 'publish',
                             'paged' => $paged,
-                            'meta_key'       => 'date',
+                            'meta_key'       => 'start_date',
                             'orderby'        => 'meta_value',
                             'order'          => 'ASC',
                             'meta_type'      => 'DATE',
@@ -92,6 +92,10 @@ get_header();
                     'posts_per_page' => 12,
                     'post_status'    => 'publish',
                     'paged' => $paged,
+                    'meta_key'       => 'start_date',
+                    'orderby'        => 'meta_value',
+                    'order'          => 'ASC',
+                    'meta_type'      => 'DATE',
                 ));
 
                 if ($query->have_posts()) :

@@ -11,11 +11,20 @@ $term_name    = $terms[0]->name;
 
 $thumbnail_id = get_post_thumbnail_id( get_the_ID() );
 $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
+
+$start_date = get_field('start_date');
+$end_date = get_field('end_date');
 ?>
 <div class="event-registration-popup">
     <div class="close"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/menu-cross.svg' ) ?></div>
     <h3>Event registration</h3>
-    <p class="date">Date: <?php the_field( 'date' ); ?></p>
+	<?php
+	if ($start_date === $end_date) {
+		echo '<p class="date">Date: ' . $start_date . '</p>';
+	} else {
+		echo '<p class="date">Date: ' . date('jS', strtotime($start_date)) . ' - ' . $end_date . '</p>';
+	}
+	?>
     <p class="location">Location: <?php the_field( 'full_address' ); ?></p>
     <?php echo do_shortcode( '[gravityform id="' . get_field( 'event_signup_form' ) . '" title="false" description="false" ajax="true"]' ); ?>
     <img src="<?php the_post_thumbnail_url() ?>" alt="<?php echo esc_attr( get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true ) ); ?>"
@@ -27,7 +36,13 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
             <div class="info col-lg-5">
                 <p class="term">Event</p>
                 <h1 class="title"><?php the_title(); ?></h1>
-                <p class="date">Date: <?php the_field( 'date' ); ?></p>
+	            <?php
+	            if ($start_date === $end_date) {
+		            echo '<p class="date">Date: ' . $start_date . '</p>';
+	            } else {
+		            echo '<p class="date">Date: ' . date('jS', strtotime($start_date)) . ' - ' . $end_date . '</p>';
+	            }
+	            ?>
                 <p class="location">Location: <?php the_field( 'full_address' ); ?></p>
             </div>
             <div class="image col-lg-7">

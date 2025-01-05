@@ -36,7 +36,7 @@
 					'post_type'      => 'event',
 					'posts_per_page' => $remaining_events,
 					'post_status'    => 'publish',
-					'meta_key'       => 'date',
+					'meta_key'       => 'start_date',
 					'orderby'        => 'meta_value',
 					'order'          => 'ASC',
 					'meta_type'      => 'DATE',

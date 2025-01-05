@@ -4,8 +4,27 @@
     "fields": [
         {
             "key": "field_675768ac8814f",
-            "label": "Date",
-            "name": "date",
+            "label": "Start date",
+            "name": "start_date",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "jS F Y",
+            "return_format": "jS F Y",
+            "first_day": 1,
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_677a9313f0862",
+            "label": "End date",
+            "name": "end_date",
             "aria-label": "",
             "type": "date_picker",
             "instructions": "",
@@ -99,7 +118,9 @@
                 "id": ""
             },
             "choices": {
-                "1": "Newsletter sign-up"
+                "2": "Event form",
+                "1": "Newsletter sign-up",
+                "3": "Newsletter sign-up popup"
             },
             "default_value": false,
             "return_format": "value",
@@ -216,6 +237,7 @@
                     "collapsed": "",
                     "button_label": "Add Row",
                     "rows_per_page": 20,
+                    "parent_repeater": "field_67576aa16c85c",
                     "sub_fields": [
                         {
                             "key": "field_67576ada6c85f",
@@ -261,8 +283,7 @@
                             "append": "",
                             "parent_repeater": "field_67576acb6c85e"
                         }
-                    ],
-                    "parent_repeater": "field_67576aa16c85c"
+                    ]
                 }
             ]
         },
@@ -785,5 +806,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1733871581
+    "modified": 1736086382
 }
