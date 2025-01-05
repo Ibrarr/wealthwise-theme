@@ -3,6 +3,12 @@
   position: relative;
   margin: 10px auto auto;
 
+  h1, h2, h3, h4, h5, h6, h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong {
+    color: $ww-gold;
+    font-family: $ww-pt;
+    font-weight: $ww-bold;
+  }
+
   a {
     color: $ww-gold;
     font-family: $ww-pt;
@@ -51,11 +57,6 @@
   }
 
   .rest-of-content {
-    h1, h2, h3, h4, h5, h6 {
-      color: $ww-gold;
-      font-family: $ww-pt;
-      font-weight: $ww-bold;
-    }
 
     .regular-content {
       p {

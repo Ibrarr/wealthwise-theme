@@ -104,6 +104,27 @@
             "append": ""
         },
         {
+            "key": "field_677aa2a4fd4af",
+            "label": "Sat Nav address",
+            "name": "sat_nav_address",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_675769c188151",
             "label": "Event signup form",
             "name": "event_signup_form",
@@ -806,5 +827,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1736086382
+    "modified": 1736090294
 }

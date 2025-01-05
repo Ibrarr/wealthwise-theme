@@ -4494,7 +4494,6 @@ document.addEventListener('DOMContentLoaded', function () {
     perPage: 4,
     drag: 'free',
     focus: 'center',
-    autoplay: true,
     arrows: false,
     pagination: false,
     autoScroll: {

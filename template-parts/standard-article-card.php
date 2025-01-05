@@ -1,5 +1,5 @@
 <div class="col-lg-3 col-md-6 col-12 mb-4 standard-article-card">
-	<a href="<?php the_permalink(); ?>">
+	<a href="<?php the_permalink(); ?>" <?php if ($tax === 'partner') { echo 'target="_blank"';} ?>>
 		<div class="image-wrapper">
 			<?php
 			$thumbnail_id = get_post_thumbnail_id( $post->ID );

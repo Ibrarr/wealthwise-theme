@@ -120,7 +120,7 @@ $end_date = get_field('end_date');
 							if( $images ):
 								foreach( $images as $image ): ?>
                                     <li class="splide__slide">
-                                        <img src="<?php echo esc_url($image['sizes']['medium']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                                        <img src="<?php echo esc_url($image['sizes']['large']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
                                     </li>
 								<?php endforeach;
 							endif; ?>
@@ -171,7 +171,7 @@ $end_date = get_field('end_date');
             <div class="location col-lg-10 offset-lg-2">
                 <h3>Location</h3>
 	            <p><?php the_field( 'full_address' ); ?>, <?php the_field( 'postcode' ); ?></p>
-	            <p>For Sat Navs use: <?php the_field( 'postcode' ); ?></p>
+	            <p>For Sat Navs use: <?php the_field( 'sat_nav_address' ); ?></p>
                 <div class="img-container">
                     <img src="<?php the_field( 'map_location' ); ?>" alt="<?php the_field( 'postcode' ); ?>">
                 </div>
@@ -179,7 +179,7 @@ $end_date = get_field('end_date');
 
             <div class="faq col-lg-8 offset-lg-2">
                 <h3>Frequently asked questions</h3>
-                <p><?php the_field( 'contact_intro' ); ?></p>
+                <p><?php the_field( 'faq_intro' ); ?></p>
                 <div class="accordion-container">
 		            <?php
 		            if( have_rows('faq') ):

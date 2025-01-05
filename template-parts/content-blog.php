@@ -34,8 +34,17 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
                         </div>
                     </div>
                     <div class="author">
-                        <p>By <?php the_author(); ?> - <?php the_date('jS F Y'); ?></p>
+                        <p>By <?php the_author(); ?> -
+			                <?php
+			                if (get_the_modified_date() !== get_the_date()) {
+				                echo 'Updated ' . get_the_modified_date('jS F Y');
+			                } else {
+				                echo get_the_date('jS F Y');
+			                }
+			                ?>
+                        </p>
                     </div>
+
                 </div>
             </div>
 		</section>
@@ -109,7 +118,7 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
 	                       ?>
                            <div class="inline-quote col-lg-8 offset-lg-2">
                                <?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/quote-two.svg' ) ?>
-                               <p><?php echo $quote; ?>“</p>
+                               <p><?php echo $quote; ?>”</p>
                            </div>
                        <?php
 			           endif;

@@ -10,7 +10,8 @@
 					$post = get_post($post_id);
 					setup_postdata($post);
 
-					$terms = get_the_terms($post->ID, 'partner');
+                    $tax = 'partner';
+					$terms = get_the_terms($post->ID, $tax);
 					$term_name = $terms ? $terms[0]->name : '';
 
 					require('standard-article-card.php');

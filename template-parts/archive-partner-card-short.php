@@ -1,5 +1,5 @@
 <div class="mb-4 archive-partner-card-short">
-	<a href="<?php the_permalink(); ?>">
+	<a href="<?php the_permalink(); ?>" target="_blank">
 		<div class="content">
             <p class="title"><?php the_title(); ?></p>
             <p class="term"><?php echo $term_name; ?></p>
