@@ -1,6 +1,62 @@
 <?php
+function get_custom_event_query($paged) {
+	$today = date('Y-m-d');
+
+	// First query: Future events
+	$future_events = new WP_Query(array(
+		'post_type' => 'event',
+		'posts_per_page' => -1, // Retrieve all future events
+		'post_status' => 'publish',
+		'meta_key' => 'start_date',
+		'orderby' => 'meta_value',
+		'order' => 'ASC',
+		'meta_type' => 'DATE',
+		'meta_query' => array(
+			array(
+				'key' => 'start_date',
+				'value' => $today,
+				'compare' => '>=', // Events on or after today
+				'type' => 'DATE',
+			),
+		),
+	));
+
+	// Second query: Past events
+	$past_events = new WP_Query(array(
+		'post_type' => 'event',
+		'posts_per_page' => -1, // Retrieve all past events
+		'post_status' => 'publish',
+		'meta_key' => 'start_date',
+		'orderby' => 'meta_value',
+		'order' => 'ASC',
+		'meta_type' => 'DATE',
+		'meta_query' => array(
+			array(
+				'key' => 'start_date',
+				'value' => $today,
+				'compare' => '<', // Events before today
+				'type' => 'DATE',
+			),
+		),
+	));
+
+	// Combine results: Future first, then past
+	$events = array_merge($future_events->posts, $past_events->posts);
+
+	// Create a new WP_Query object for pagination
+	return new WP_Query(array(
+		'post_type' => 'event',
+		'posts_per_page' => 6, // Adjust to your desired pagination
+		'post_status' => 'publish',
+		'paged' => $paged,
+		'post__in' => wp_list_pluck($events, 'ID'), // Order by merged IDs
+		'orderby' => 'post__in',
+	));
+}
+
 $term = get_queried_object();
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+$query = get_custom_event_query($paged);
 $partner_post_ids = [];
 get_header();
 ?>
@@ -13,17 +69,6 @@ get_header();
                 <div class="col-lg-9">
                     <div class="row">
                         <?php
-                        $query = new WP_Query(array(
-                            'post_type' => 'event',
-                            'posts_per_page' => 6,
-                            'post_status'    => 'publish',
-                            'paged' => $paged,
-                            'meta_key'       => 'start_date',
-                            'orderby'        => 'meta_value',
-                            'order'          => 'ASC',
-                            'meta_type'      => 'DATE',
-                        ));
-
                         if ($query->have_posts()) :
                         $post_count = 0;
                         while ($query->have_posts()) : $query->the_post();
@@ -87,17 +132,6 @@ get_header();
             <h1><span>Events</span></h1>
             <div class="row posts">
                 <?php
-                $query = new WP_Query(array(
-                    'post_type' => 'event',
-                    'posts_per_page' => 12,
-                    'post_status'    => 'publish',
-                    'paged' => $paged,
-                    'meta_key'       => 'start_date',
-                    'orderby'        => 'meta_value',
-                    'order'          => 'ASC',
-                    'meta_type'      => 'DATE',
-                ));
-
                 if ($query->have_posts()) :
                     $post_count = 0;
                     while ($query->have_posts()) : $query->the_post();

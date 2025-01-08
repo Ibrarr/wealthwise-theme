@@ -167,4 +167,5 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
             </div>
         </section>
 	</div>
+	<?php require get_template_directory() . '/template-parts/section-partner-zone-only-four.php'; ?>
 </article>
