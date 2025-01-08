@@ -249,6 +249,37 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_677dbd4115328": {
+                    "key": "layout_677dbd4115328",
+                    "name": "small_inline_quote",
+                    "label": "Small inline quote",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_677dbd4115329",
+                            "label": "Quote",
+                            "name": "quote",
+                            "aria-label": "",
+                            "type": "textarea",
+                            "instructions": "",
+                            "required": 1,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 0,
+                            "rows": "",
+                            "placeholder": "",
+                            "new_lines": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -274,5 +305,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1733692528
+    "modified": 1736293715
 }

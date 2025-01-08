@@ -121,6 +121,14 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
                                <p><?php echo $quote; ?>”</p>
                            </div>
                        <?php
+
+                       elseif( get_row_layout() == 'small_inline_quote' ):
+				           $quote = get_sub_field('quote');
+				           ?>
+                           <div class="small-inline-quote col-lg-8 offset-lg-2">
+                               <p>“<?php echo $quote; ?>”</p>
+                           </div>
+			           <?php
 			           endif;
 		           endwhile;
 	           endif;

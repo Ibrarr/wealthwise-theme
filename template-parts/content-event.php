@@ -172,6 +172,9 @@ $end_date = get_field('end_date');
                 <h3>Location</h3>
 	            <p><?php the_field( 'full_address' ); ?>, <?php the_field( 'postcode' ); ?></p>
 	            <p>For Sat Navs use: <?php the_field( 'sat_nav_address' ); ?></p>
+	            <?php if (get_field( 'what3words' )) { ?>
+	                <p>What3words: <?php the_field( 'what3words' ); ?></p>
+	            <?php } ?>
                 <div class="img-container">
                     <img src="<?php the_field( 'map_location' ); ?>" alt="<?php the_field( 'postcode' ); ?>">
                 </div>

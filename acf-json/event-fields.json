@@ -125,6 +125,27 @@
             "append": ""
         },
         {
+            "key": "field_677db7e8c8dde",
+            "label": "What3words",
+            "name": "what3words",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_675769c188151",
             "label": "Event signup form",
             "name": "event_signup_form",
@@ -827,5 +848,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1736090294
+    "modified": 1736292357
 }

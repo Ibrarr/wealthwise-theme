@@ -1,4 +1,4 @@
-<a href="<?php the_permalink(); ?>">
+<a href="<?php the_permalink(); ?>" <?php if ($tax === 'partner') { echo 'target="_blank"';} ?>>
     <div class="image-wrapper">
         <?php
         $thumbnail_id = get_post_thumbnail_id( $post->ID );

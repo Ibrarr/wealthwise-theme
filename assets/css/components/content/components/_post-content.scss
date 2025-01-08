@@ -1,7 +1,7 @@
 .post-content {
   max-width: 1024px;
   position: relative;
-  margin: 10px auto auto;
+  margin: 34px auto auto;
 
   h1, h2, h3, h4, h5, h6, h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong {
     color: $ww-gold;
@@ -148,6 +148,7 @@
       svg {
         height: 65px;
         margin-right: 20px;
+        margin-top: -12px;
       }
 
       p {
@@ -156,6 +157,18 @@
         font-weight: $ww-medium;
         font-style: italic;
         font-size: 17px;
+        width: fit-content;
+      }
+    }
+
+    .small-inline-quote {
+      p {
+        color: #585858;
+        font-family: $ww-pt;
+        font-weight: $ww-bold;
+        font-style: italic;
+        font-size: 24px;
+        line-height: 28px;
         width: fit-content;
       }
     }

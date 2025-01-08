@@ -7,7 +7,7 @@ $args = array(
 	's' => $term,
 	'posts_per_page' => 8,
 	'paged' => $paged,
-	'post_type' => ['post', 'video'],
+	'post_type' => ['post', 'video', 'event', 'partner_content'],
 );
 $query = new WP_Query($args);
 ?>
@@ -45,10 +45,27 @@ $query = new WP_Query($args);
 			<?php
 			if ($query->have_posts()) :
 				while ($query->have_posts()) : $query->the_post();
-					$terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
-					$term_name = $terms[0]->name;
+					$post_type = get_post_type();
+
+					// Determine the template and taxonomy
+					if (in_array($post_type, ['post', 'video'])) {
+						$template = '/template-parts/standard-article-card-no-col.php';
+						$tax = ($post_type === 'video') ? 'type' : 'category';
+					} elseif ($post_type === 'event') {
+						$template = '/template-parts/main-event-card-no-col.php';
+						$tax = 'category';
+					} elseif ($post_type === 'partner_content') {
+						$template = '/template-parts/standard-article-card-no-col.php';
+						$tax = 'partner';
+					}
+
+					// Get terms
+					$terms = get_the_terms(get_the_ID(), $tax);
+					$term_name = $terms ? $terms[0]->name : '';
+
+					// Render the card
 					echo '<div class="col-lg-3 mb-4 standard-article-card">';
-					require get_template_directory() . '/template-parts/standard-article-card-no-col.php';
+					require get_template_directory() . $template;
 					echo '</div>';
 				endwhile;
 			else :

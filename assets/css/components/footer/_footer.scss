@@ -181,4 +181,22 @@ footer {
       }
     }
   }
+
+  .text-owl {
+    @include media-breakpoint-up(lg) {
+      display: flex;
+
+      p {
+        margin-right: 100px;
+      }
+    }
+
+    img {
+      width: 40px;
+
+      @include media-breakpoint-down(lg) {
+        margin-top: 20px;
+      }
+    }
+  }
 }
