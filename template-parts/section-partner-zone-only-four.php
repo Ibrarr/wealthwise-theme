@@ -112,6 +112,7 @@ foreach ($partner_positions as $partner_id) {
 					// Fetch partner taxonomy details
 					$terms = get_the_terms($post->ID, 'partner');
 					$term_name = $terms ? $terms[0]->name : '';
+					$tax = 'partner';
 
 					// Include the card template for display
 					require('standard-article-card.php');
