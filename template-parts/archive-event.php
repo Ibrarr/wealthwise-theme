@@ -46,7 +46,7 @@ function get_custom_event_query($paged) {
 	// Create a new WP_Query object for pagination
 	return new WP_Query(array(
 		'post_type' => 'event',
-		'posts_per_page' => 6, // Adjust to your desired pagination
+		'posts_per_page' => -1, // Adjust to your desired pagination
 		'post_status' => 'publish',
 		'paged' => $paged,
 		'post__in' => wp_list_pluck($events, 'ID'), // Order by merged IDs
