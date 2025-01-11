@@ -103,6 +103,7 @@ function event_post_type() {
 		'description'         => __( 'Post Type Description', 'ww' ),
 		'labels'              => $labels,
 		'supports'            => array( 'title', 'thumbnail', 'excerpt' ),
+		'taxonomies'          => array( 'category' ),
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,

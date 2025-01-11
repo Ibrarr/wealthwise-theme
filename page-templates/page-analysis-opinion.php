@@ -101,6 +101,8 @@ get_header();
 
 								if ($remaining_count < 4) {
 									echo '<div class="col-lg-3 mb-4 standard-article-card">';
+									$terms     = get_the_terms(get_the_ID(), 'category');
+									$term_name = $terms[0]->name;
 									require get_template_directory() . '/template-parts/standard-article-card-no-col.php';
 									echo '</div>';
 									$remaining_count++;

@@ -16,6 +16,8 @@
 						$post_ids[] = $post->ID;
 						$choice_post_ids[] = $post->ID;
 
+						$terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+						$term_name = $terms[0]->name;
 						require('standard-article-card.php');
 						wp_reset_postdata();
 
@@ -30,7 +32,7 @@
 
 			if ($remaining_posts > 0) {
 				$choice_query = new WP_Query(array(
-					'post_type'      => 'post',
+					'post_type'      => array( 'video', 'post' ),
 					'posts_per_page' => $remaining_posts,
 					'post_status'    => 'publish',
 					'post__not_in'   => $post_ids,
@@ -47,6 +49,9 @@
 					while ($choice_query->have_posts()) : $choice_query->the_post();
 						$post_ids[] = get_the_ID();
 						$choice_post_ids[] = get_the_ID();
+
+						$terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+						$term_name = $terms[0]->name;
 						require('standard-article-card.php');
 					endwhile;
 				endif;
@@ -118,7 +123,7 @@
 				?>
 				<div class="sponsor">
 					<span>Sponsored by:</span>
-					<img src="<?php the_field('sponsor_logo_dark', 'option'); ?>" alt="sponsor-logo">
+					<img src="<?php the_field('choice_words_sponsor_logo', 'option'); ?>" alt="sponsor-logo">
 				</div>
 			</div>
 		</div>

@@ -55,6 +55,32 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_6782a96ad960c",
+            "label": "Choice words sponsor logo",
+            "name": "choice_words_sponsor_logo",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        },
+        {
             "key": "field_67600f5c8d5c2",
             "label": "Newsletter form",
             "name": "newsletter_form",
@@ -69,8 +95,9 @@
                 "id": ""
             },
             "choices": {
-                "2": "event",
-                "1": "Newsletter sign-up"
+                "2": "Event form",
+                "1": "Newsletter sign-up",
+                "3": "Newsletter sign-up popup"
             },
             "default_value": false,
             "return_format": "value",
@@ -96,8 +123,9 @@
                 "id": ""
             },
             "choices": {
-                "2": "event",
-                "1": "Newsletter sign-up"
+                "2": "Event form",
+                "1": "Newsletter sign-up",
+                "3": "Newsletter sign-up popup"
             },
             "default_value": false,
             "return_format": "value",
@@ -161,6 +189,27 @@
             "default_value": "",
             "allow_in_bindings": 0,
             "placeholder": ""
+        },
+        {
+            "key": "field_6782a50056fe8",
+            "label": "Enable newsletter",
+            "name": "enable_newsletter",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "allow_in_bindings": 0,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
         }
     ],
     "location": [
@@ -181,5 +230,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1734389806
+    "modified": 1736616323
 }

@@ -47,7 +47,7 @@
                                 <p>Newsletter sign-up</p>
 		                        <?php echo do_shortcode( '[gravityform id="' . get_field( 'newsletter_form', 'option' ) . '" title="false" description="false" ajax="true"]' ); ?>
                             </div>
-                            <div class="search inline">
+                            <div class="search-menu">
                                 <br>
                                 <form action="/" method="get">
                                     <input type="text" name="s" id="searchbox" placeholder="Search" value="<?php the_search_query(); ?>" />
@@ -86,9 +86,11 @@
             </div>
         </div>
     </div>
-    <div class="newsletter-popup">
-        <div class="close"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/menu-cross.svg' ) ?></div>
-        <h3>Sign-up<br><span>to receive our Newsletters</span></h3>
-	    <?php echo do_shortcode( '[gravityform id="' . get_field( 'newsletter_form_popup', 'option' ) . '" title="false" description="false" ajax="true"]' ); ?>
-    </div>
+    <?php if (get_field( 'enable_newsletter', 'option' )) { ?>
+        <div class="newsletter-popup">
+            <div class="close"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/menu-cross.svg' ) ?></div>
+            <h3>Sign-up<br><span>to receive our Newsletters</span></h3>
+            <?php echo do_shortcode( '[gravityform id="' . get_field( 'newsletter_form_popup', 'option' ) . '" title="false" description="false" ajax="true"]' ); ?>
+        </div>
+    <?php } ?>
     <main id="content" role="main">

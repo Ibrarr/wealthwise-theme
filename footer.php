@@ -51,7 +51,7 @@
 		        ) ); ?>
             </nav>
             <div class="text-owl">
-                <p>© <?php echo date("Y"); ?> wealthwise media. Wealthwise is a financial news website aimed at wealth managers , investment IFAs and other professional fund pickers and asset allocators in the UK and Channel Islands. No news, articles or content may be reproduced in part or in full without express permission of Fintel group plc. <span>Brand development, website design & build by Today Creative</span></p>
+                <p>© <?php echo date("Y"); ?> wealthwise media. Wealthwise is a financial news website aimed at wealth managers , investment IFAs and other professional fund pickers and asset allocators in the UK and Channel Islands. No news, articles or content may be reproduced in part or in full without express permission of Fintel group plc. <a href="https://www.todaycreative.co.uk/" target="_blank">Brand development, website design & build by Today Creative</a></p>
                 <img src="<?php echo WW_TEMPLATE_URI . '/assets/images/gifs/owl-footer.gif'; ?>" alt="Owl Footer">
             </div>
         </div>
