@@ -24,7 +24,8 @@ get_header();
                         }
 
                         if ($pinned_post && is_a($pinned_post, 'WP_Post')) {
-                            $pinned_post_id = $pinned_post->ID;
+                            $$pinned_post_id = $pinned_post->ID;
+                            $post_ids[] = $pinned_post_id;
                             global $post;
                             $post = $pinned_post;
 
@@ -41,10 +42,10 @@ get_header();
                         $query = new WP_Query(array(
                             'post_type'      => 'post',
                             'category_name'  => 'analysis,opinion',
-                            'posts_per_page' => 8,
+                            'posts_per_page' => 4,
                             'post_status'    => 'publish',
                             'paged'          => $paged,
-                            'post__not_in'   => $pinned_post_id ? [$pinned_post_id] : [],
+                            'post__not_in'   => $post_ids,
                         ));
 
 						if ($query->have_posts()) :
@@ -52,6 +53,7 @@ get_header();
 
 							while ($query->have_posts()) : $query->the_post();
 								$post_count++;
+                                $post_ids[] = get_the_ID();
 								$terms     = get_the_terms(get_the_ID(), 'category');
 								$term_name = $terms[0]->name;
 
@@ -92,8 +94,17 @@ get_header();
 						<?php
 						$remaining_count = 0;
 
-						if ($query->have_posts()) :
+                        $query = new WP_Query(array(
+                            'post_type'      => 'post',
+                            'category_name'  => 'analysis,opinion',
+                            'posts_per_page' => 4,
+                            'post_status'    => 'publish',
+                            'post__not_in'   => $post_ids,
+                        ));
+
+                        if ($query->have_posts()) :
 							while ($query->have_posts()) : $query->the_post();
+                                $post_ids[] = get_the_ID();
 								$post_count++;
 								if ($post_count <= 4) {
 									continue;
