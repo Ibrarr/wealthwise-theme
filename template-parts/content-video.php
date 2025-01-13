@@ -9,8 +9,17 @@ $taxonomy     = 'type';
 $terms        = get_the_terms( get_the_ID(), $taxonomy );
 $term_name    = $terms[0]->name;
 
+$cat_terms    = get_the_terms(get_the_ID(), 'category');
+$cat_term_name = $cat_terms[0]->name ?? '';
+
 $thumbnail_id = get_post_thumbnail_id( get_the_ID() );
 $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
+
+if ($term_name === 'Video' && $cat_term_name === 'Choice words') {
+    $term_to_show = 'Choice words';
+} else {
+    $term_to_show = $term_name;
+}
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -18,7 +27,7 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
         <div class="border-top"></div>
 		<section class="post-header row">
             <div class="col-lg-8 offset-lg-2">
-                <p class="term"><?php echo $term_name; ?></p>
+                <p class="term"><?php echo $term_to_show; ?></p>
                 <div class="title-share">
                     <h1 class="title"><?php the_title(); ?></h1>
                     <div class="share">

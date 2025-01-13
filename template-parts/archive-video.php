@@ -30,6 +30,9 @@ get_header();
 									echo '<div class="col-lg-6 mb-4 standard-article-card featured">';
 									$terms     = get_the_terms(get_the_ID(), 'type');
 									$term_name = $terms[0]->name ?? '';
+
+                                    $cat_terms    = get_the_terms(get_the_ID(), 'category');
+                                    $cat_term_name = $cat_terms[0]->name ?? '';
 									require get_template_directory() . '/template-parts/standard-video-card-no-col.php';
 									echo '</div>';
 
