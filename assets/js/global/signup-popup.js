@@ -1,4 +1,9 @@
 jQuery(document).ready(function ($) {
+    // Check if the .newsletter-popup element exists
+    if (!$('.newsletter-popup').length) {
+        return; // Exit if .newsletter-popup does not exist
+    }
+
     // Function to set a cookie
     function setCookie(name, value, days) {
         var expires = "";
