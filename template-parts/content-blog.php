@@ -6,8 +6,22 @@
 
 $post_type    = 'post';
 $taxonomy     = 'category';
-$terms        = get_the_terms( get_the_ID(), $taxonomy );
-$term_name    = $terms[0]->name;
+$terms = get_the_terms( get_the_ID(), $taxonomy );
+
+// Check if Yoast SEO's primary category exists
+$primary_term_id = null;
+if ( class_exists( 'WPSEO_Primary_Term' ) ) {
+    $primary_term = new WPSEO_Primary_Term( $taxonomy, get_the_ID() );
+    $primary_term_id = $primary_term->get_primary_term();
+}
+
+// Set the term name based on the primary category or default to the first term
+if ( $primary_term_id ) {
+    $primary_term_object = get_term( $primary_term_id );
+    $term_name = $primary_term_object->name;
+} else {
+    $term_name = $terms[0]->name;
+}
 
 $thumbnail_id = get_post_thumbnail_id( get_the_ID() );
 $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
