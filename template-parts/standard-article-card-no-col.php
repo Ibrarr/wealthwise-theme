@@ -3,6 +3,12 @@
         <?php
         $thumbnail_id = get_post_thumbnail_id( $post->ID );
         $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
+
+        if ($term_name === 'Video' && $is_choice_words) {
+            $term_to_show = 'Choice words';
+        } else {
+            $term_to_show = $term_name;
+        }
         ?>
 
         <?php if ($term_name === 'Video' || $term_name === 'Podcast') { ?>
@@ -20,7 +26,7 @@
              srcset="<?php echo esc_attr( $image_srcset ); ?>" sizes="(min-width: 391px) 1024px, 100vw">
     </div>
     <div class="content">
-        <p class="term"><?php echo $term_name; ?></p>
+        <p class="term"><?php echo $term_to_show; ?></p>
         <p class="title"><?php the_title(); ?></p>
         <p class="excerpt"><?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?></p>
     </div>

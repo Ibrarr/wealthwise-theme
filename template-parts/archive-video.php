@@ -31,8 +31,18 @@ get_header();
 									$terms     = get_the_terms(get_the_ID(), 'type');
 									$term_name = $terms[0]->name ?? '';
 
-                                    $cat_terms    = get_the_terms(get_the_ID(), 'category');
-                                    $cat_term_name = $cat_terms[0]->name ?? '';
+                                    $cat_terms = get_the_terms(get_the_ID(), 'category');
+                                    $is_choice_words = false; // Initialize the variable as false
+
+                                    if ($cat_terms && !is_wp_error($cat_terms)) {
+                                        foreach ($cat_terms as $cat_term) {
+                                            if ($cat_term->name === 'Choice words') {
+                                                $is_choice_words = true;
+                                                break;
+                                            }
+                                        }
+                                    }
+
 									require get_template_directory() . '/template-parts/standard-video-card-no-col.php';
 									echo '</div>';
 
@@ -63,6 +73,18 @@ get_header();
 									echo '<div class="col-lg-6 mb-4 standard-article-card featured">';
 									$terms     = get_the_terms(get_the_ID(), 'type');
 									$term_name = $terms[0]->name ?? '';
+
+                                    $cat_terms = get_the_terms(get_the_ID(), 'category');
+                                    $is_choice_words = false; // Initialize the variable as false
+
+                                    if ($cat_terms && !is_wp_error($cat_terms)) {
+                                        foreach ($cat_terms as $cat_term) {
+                                            if ($cat_term->name === 'Choice words') {
+                                                $is_choice_words = true;
+                                                break;
+                                            }
+                                        }
+                                    }
 									require get_template_directory() . '/template-parts/standard-video-card-no-col.php';
 									echo '</div>';
 								}
@@ -86,6 +108,18 @@ get_header();
 								echo '<div class="col-lg-4 mb-4 standard-article-card second-row">';
 								$terms     = get_the_terms(get_the_ID(), 'type');
 								$term_name = $terms[0]->name ?? '';
+
+                                $cat_terms = get_the_terms(get_the_ID(), 'category');
+                                $is_choice_words = false; // Initialize the variable as false
+
+                                if ($cat_terms && !is_wp_error($cat_terms)) {
+                                    foreach ($cat_terms as $cat_term) {
+                                        if ($cat_term->name === 'Choice words') {
+                                            $is_choice_words = true;
+                                            break;
+                                        }
+                                    }
+                                }
 								require get_template_directory() . '/template-parts/standard-video-card-no-col.php';
 								echo '</div>';
 							}
@@ -117,6 +151,18 @@ get_header();
 								echo '<div class="col-lg-3 mb-4 standard-article-card">';
 								$terms     = get_the_terms(get_the_ID(), 'type');
 								$term_name = $terms[0]->name ?? '';
+
+                                $cat_terms = get_the_terms(get_the_ID(), 'category');
+                                $is_choice_words = false; // Initialize the variable as false
+
+                                if ($cat_terms && !is_wp_error($cat_terms)) {
+                                    foreach ($cat_terms as $cat_term) {
+                                        if ($cat_term->name === 'Choice words') {
+                                            $is_choice_words = true;
+                                            break;
+                                        }
+                                    }
+                                }
 								require get_template_directory() . '/template-parts/standard-article-card-no-col.php';
 								echo '</div>';
 							}
@@ -180,6 +226,18 @@ get_header();
 						echo '<div class="col-lg-3 mb-4 standard-article-card">';
 						$terms     = get_the_terms(get_the_ID(), 'type');
 						$term_name = $terms[0]->name ?? '';
+
+                        $cat_terms = get_the_terms(get_the_ID(), 'category');
+                        $is_choice_words = false; // Initialize the variable as false
+
+                        if ($cat_terms && !is_wp_error($cat_terms)) {
+                            foreach ($cat_terms as $cat_term) {
+                                if ($cat_term->name === 'Choice words') {
+                                    $is_choice_words = true;
+                                    break;
+                                }
+                            }
+                        }
 						require get_template_directory() . '/template-parts/standard-article-card-no-col.php';
 						echo '</div>';
 					}

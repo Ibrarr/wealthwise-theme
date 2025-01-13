@@ -4,7 +4,7 @@
         $thumbnail_id = get_post_thumbnail_id( $post->ID );
         $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
 
-        if ($term_name === 'Video' && $cat_term_name === 'Choice words') {
+        if ($term_name === 'Video' && $is_choice_words) {
             $term_to_show = 'Choice words';
         } else {
             $term_to_show = $term_name;
