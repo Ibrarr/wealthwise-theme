@@ -60,7 +60,7 @@ $end_date = get_field('end_date');
                         <div class="share-tooltip">
                             <a class="mail-icon"
                                href="mailto:?subject=<?php echo rawurlencode( get_the_title() ); ?>&body=Check out this <?php echo $term_name; ?> post from Wealthwise <?php echo rawurlencode( get_permalink() ); ?>"
-                               target="_blank"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/email-share.svg' ) ?> Copy Link</a>
+                               target="_blank"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/email-share.svg' ) ?> Email this article</a>
                             <a class="linkedin-icon" rel="nofollow"
                                href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo rawurlencode( get_permalink() ); ?>&title=<?php echo rawurlencode( get_the_title() ); ?>"
                                target="_blank"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/linkedin-share.svg' ) ?> Share on LinkedIn</a>
@@ -76,7 +76,7 @@ $end_date = get_field('end_date');
                     <div class="share-tooltip">
                         <a class="mail-icon"
                            href="mailto:?subject=<?php echo rawurlencode( get_the_title() ); ?>&body=Check out this <?php echo $term_name; ?> post from Wealthwise <?php echo rawurlencode( get_permalink() ); ?>"
-                           target="_blank"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/email-share.svg' ) ?> Copy Link</a>
+                           target="_blank"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/email-share.svg' ) ?> Email this article</a>
                         <a class="linkedin-icon" rel="nofollow"
                            href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo rawurlencode( get_permalink() ); ?>&title=<?php echo rawurlencode( get_the_title() ); ?>"
                            target="_blank"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/linkedin-share.svg' ) ?> Share on LinkedIn</a>

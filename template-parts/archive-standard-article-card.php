@@ -7,7 +7,7 @@
 			?>
 
             <?php if ($term_name === 'Video' || $term_name === 'Podcast') { ?>
-                <button class="play-button" aria-label="Play Video">
+                <button class="play-button <?php echo strtolower($term_name) ?>" aria-label="Play Video">
                     <?php
                     if ($term_name === 'Video') {
                         echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/video.svg' );

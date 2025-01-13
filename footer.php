@@ -30,6 +30,8 @@
 		                <?php wp_nav_menu( array(
 			                'theme_location' => 'main-menu',
 		                ) ); ?>
+                        <a href="/word-to-the-wise/">Word to the wise</a>
+                        <a href="/choice-words/">Choice words</a>
                     </nav>
                 </div>
                 <div class="col-lg-2">
@@ -51,7 +53,7 @@
 		        ) ); ?>
             </nav>
             <div class="text-owl">
-                <p>© <?php echo date("Y"); ?> wealthwise media. Wealthwise is a financial news website aimed at wealth managers , investment IFAs and other professional fund pickers and asset allocators in the UK and Channel Islands. No news, articles or content may be reproduced in part or in full without express permission of Fintel group plc. <a href="https://www.todaycreative.co.uk/" target="_blank">Brand development, website design & build by Today Creative</a></p>
+                <p>Copyright © <?php echo date("Y"); ?> Wealthwise Media. All rights reserved.</p>
                 <img src="<?php echo WW_TEMPLATE_URI . '/assets/images/gifs/owl-footer.gif'; ?>" alt="Owl Footer">
             </div>
         </div>

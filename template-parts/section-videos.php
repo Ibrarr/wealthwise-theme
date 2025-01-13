@@ -39,7 +39,15 @@
 					'posts_per_page' => $remaining_videos,
 					'post_status'    => 'publish',
 					'post__not_in'   => $video_ids,
-				));
+                    'tax_query' => array(
+                        array(
+                            'taxonomy' => 'category',
+                            'field'    => 'name',
+                            'terms'    => 'Choice words',
+                            'operator' => 'NOT IN',
+                        ),
+                    ),
+                ));
 
 				if ($videos_query->have_posts()) :
 					while ($videos_query->have_posts()) : $videos_query->the_post();

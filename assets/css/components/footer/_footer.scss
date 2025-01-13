@@ -185,6 +185,7 @@ footer {
   .text-owl {
     @include media-breakpoint-up(lg) {
       display: flex;
+      justify-content: space-between;
 
       p {
         margin-right: 100px;

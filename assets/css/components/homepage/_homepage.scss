@@ -4,5 +4,20 @@
   @import "../archive/components/partner-zone";
   @import "../archive/components/videos";
   @import "../archive/components/choice-words";
+  .choice-words {
+    background: #eee4db;
+
+    .row {
+      border-bottom: none;
+    }
+  }
+
+  .videos {
+    background: none;
+
+    .row {
+      border-bottom: 1px solid #d5d2d1;
+    }
+  }
   @import "components/event-podcast";
 }

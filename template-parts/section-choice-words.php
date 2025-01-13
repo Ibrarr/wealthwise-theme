@@ -16,8 +16,7 @@
 						$post_ids[] = $post->ID;
 						$choice_post_ids[] = $post->ID;
 
-						$terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
-						$term_name = $terms[0]->name;
+                        $term_name = get_the_terms(get_the_ID(), 'category')[0]->name;
 						require('standard-article-card.php');
 						wp_reset_postdata();
 
@@ -50,8 +49,7 @@
 						$post_ids[] = get_the_ID();
 						$choice_post_ids[] = get_the_ID();
 
-						$terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
-						$term_name = $terms[0]->name;
+                        $term_name = get_the_terms(get_the_ID(), 'category')[0]->name;
 						require('standard-article-card.php');
 					endwhile;
 				endif;

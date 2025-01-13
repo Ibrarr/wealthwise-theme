@@ -192,7 +192,7 @@
         },
         {
             "key": "field_6782a50056fe8",
-            "label": "Enable newsletter",
+            "label": "Enable newsletter pop up",
             "name": "enable_newsletter",
             "aria-label": "",
             "type": "true_false",
@@ -230,5 +230,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1736616323
+    "modified": 1736794713
 }

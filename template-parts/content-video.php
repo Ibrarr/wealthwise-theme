@@ -26,7 +26,7 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
                         <div class="share-tooltip">
                             <a class="mail-icon"
                                href="mailto:?subject=<?php echo rawurlencode( get_the_title() ); ?>&body=Check out this <?php echo $term_name; ?> from Wealthwise <?php echo rawurlencode( get_permalink() ); ?>"
-                               target="_blank"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/email-share.svg' ) ?> Copy Link</a>
+                               target="_blank"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/email-share.svg' ) ?> Email this article</a>
                             <a class="linkedin-icon" rel="nofollow"
                                href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo rawurlencode( get_permalink() ); ?>&title=<?php echo rawurlencode( get_the_title() ); ?>"
                                target="_blank"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/linkedin-share.svg' ) ?> Share on LinkedIn</a>
@@ -67,10 +67,16 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
                 document.addEventListener('DOMContentLoaded', function () {
                     const videoCover = document.querySelector('.video-cover');
                     const embedContainer = document.querySelector('.embed-container');
+                    const termName = '<?php echo strtolower($term_name); ?>'; // Get the term name from PHP
 
                     if (videoCover && embedContainer) {
                         videoCover.addEventListener('click', function () {
                             const videoSrc = '<?php echo esc_js($base_src); ?>&autoplay=1';
+
+                            // Adjust padding-bottom if term_name is 'Podcast'
+                            if (termName === 'podcast') {
+                                embedContainer.style.paddingBottom = '20%';
+                            }
 
                             // Create iframe dynamically
                             const iframe = document.createElement('iframe');
@@ -79,7 +85,7 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
                             iframe.allowFullscreen = true;
                             iframe.allow = 'autoplay';
 
-                            embedContainer.innerHTML = '';
+                            embedContainer.innerHTML = ''; // Clear existing content
                             embedContainer.appendChild(iframe);
                         });
                     }

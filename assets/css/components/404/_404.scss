@@ -1,0 +1,43 @@
+.error404 {
+  .page-content section {
+    padding-top: 100px;
+    padding-bottom: 300px;
+
+    h1 {
+      color: $ww-text;
+      font-family: $ww-pt;
+      font-weight: $ww-bold;
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-align: center;
+
+      @include media-breakpoint-up(lg) {
+        font-size: 40px;
+      }
+    }
+
+    form {
+      margin-top: 40px;
+      position: relative;
+
+      label {
+        width: 100%;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        border: none;
+        border-radius: 25px;
+        padding: 8px 20px;
+        font-family: $ww-pt;
+      }
+
+      input[type="image"] {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+      }
+    }
+  }
+}

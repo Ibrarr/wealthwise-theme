@@ -49,7 +49,8 @@ $partner_post_ids = [];
                 if ($second_post_top_id) {
                     $post = get_post($second_post_top_id);
                     setup_postdata($post);
-                    $term_name = get_the_terms(get_the_ID(), 'category')[0]->name;
+                    $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                    $term_name = $terms[0]->name;
                     require('template-parts/archive-standard-article-card.php');
                     wp_reset_postdata();
                 }
@@ -57,7 +58,8 @@ $partner_post_ids = [];
                 if ($third_post_top_id) {
                     $post = get_post($third_post_top_id);
                     setup_postdata($post);
-                    $term_name = get_the_terms(get_the_ID(), 'category')[0]->name;
+                    $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                    $term_name = $terms[0]->name;
                     require('template-parts/archive-standard-article-card.php');
                     wp_reset_postdata();
                 }
@@ -66,7 +68,7 @@ $partner_post_ids = [];
 
                 if ($remaining_left > 0) {
                     $left_query = new WP_Query(array(
-                        'post_type'      => 'post',
+                        'post_type'      => array( 'video', 'post' ),
                         'posts_per_page' => $remaining_left,
                         'post_status'    => 'publish',
                         'post__not_in'   => $post_ids,
@@ -75,7 +77,8 @@ $partner_post_ids = [];
                     if ($left_query->have_posts()) :
                         while ($left_query->have_posts()) : $left_query->the_post();
                             $post_ids[] = get_the_ID();
-                            $term_name = get_the_terms(get_the_ID(), 'category')[0]->name;
+                            $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                            $term_name = $terms[0]->name;
                             require('template-parts/archive-standard-article-card.php');
                         endwhile;
                     endif;
@@ -90,7 +93,8 @@ $partner_post_ids = [];
                 if ($lead_post_top_id) {
                     $post = get_post($lead_post_top_id);
                     setup_postdata($post);
-                    $term_name = get_the_terms(get_the_ID(), 'category')[0]->name;
+                    $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                    $term_name = $terms[0]->name;
                     require('template-parts/archive-standard-article-card.php');
                     wp_reset_postdata();
                 }
@@ -98,7 +102,8 @@ $partner_post_ids = [];
                 if ($fourth_post_top_id) {
                     $post = get_post($fourth_post_top_id);
                     setup_postdata($post);
-                    $term_name = get_the_terms(get_the_ID(), 'category')[0]->name;
+                    $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                    $term_name = $terms[0]->name;
                     require('template-parts/archive-standard-article-card.php');
                     wp_reset_postdata();
                 }
@@ -106,7 +111,7 @@ $partner_post_ids = [];
                 $remaining_middle = 2 - count(array_intersect($post_ids, [$lead_post_top_id, $fourth_post_top_id]));
                 if ($remaining_middle > 0) {
                     $middle_query = new WP_Query(array(
-                        'post_type'      => 'post',
+                        'post_type'      => array( 'video', 'post' ),
                         'posts_per_page' => $remaining_middle,
                         'post_status'    => 'publish',
                         'post__not_in'   => $post_ids,
@@ -115,7 +120,8 @@ $partner_post_ids = [];
                     if ($middle_query->have_posts()) :
                         while ($middle_query->have_posts()) : $middle_query->the_post();
                             $post_ids[] = get_the_ID();
-                            $term_name = get_the_terms(get_the_ID(), 'category')[0]->name;
+                            $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                            $term_name = $terms[0]->name;
                             require('template-parts/archive-standard-article-card.php');
                         endwhile;
                     endif;
@@ -200,9 +206,9 @@ $partner_post_ids = [];
 
 <?php require get_template_directory() . '/template-parts/section-partner-zone.php'; ?>
 
-<?php require get_template_directory() . '/template-parts/section-videos.php'; ?>
-
 <?php require get_template_directory() . '/template-parts/section-choice-words.php'; ?>
+
+<?php require get_template_directory() . '/template-parts/section-videos.php'; ?>
 
 <section class="event-podcast">
     <div class="container px-4">

@@ -15399,6 +15399,18 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search-m
 .home.page .choice-words .video-choice .sponsor img {
   max-width: 200px;
 }
+.home.page .choice-words {
+  background: #eee4db;
+}
+.home.page .choice-words .row {
+  border-bottom: none;
+}
+.home.page .videos {
+  background: none;
+}
+.home.page .videos .row {
+  border-bottom: 1px solid #d5d2d1;
+}
 .home.page .event-podcast {
   padding: 15px 0;
 }
@@ -15745,6 +15757,46 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search-m
 }
 .page-template-default .container.page-content section .gform-newsletter-form_wrapper form.gform-newsletter-form [data-js-spinner-id] {
   display: none !important;
+}
+
+.error404 .page-content section {
+  padding-top: 100px;
+  padding-bottom: 300px;
+}
+.error404 .page-content section h1, .error404 .page-content section .h1 {
+  color: #181818;
+  font-family: "PT Serif", serif;
+  font-weight: 700;
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+@media (min-width: 992px) {
+  .error404 .page-content section h1, .error404 .page-content section .h1 {
+    font-size: 40px;
+  }
+}
+.error404 .page-content section form {
+  margin-top: 40px;
+  position: relative;
+}
+.error404 .page-content section form label {
+  width: 100%;
+}
+.error404 .page-content section form input[type=text] {
+  width: 100%;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 20px;
+  font-family: "PT Serif", serif;
+}
+.error404 .page-content section form input[type=image] {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  right: 20px;
 }
 
 .search.search-results .top-search .container .row.search-box, .search.search-no-results .top-search .container .row.search-box {
@@ -23612,6 +23664,9 @@ footer .second p span {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
   }
   footer .text-owl p {
     margin-right: 100px;

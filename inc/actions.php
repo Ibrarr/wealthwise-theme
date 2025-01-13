@@ -102,6 +102,8 @@ function custom_404_redirect( $template ) {
 	return $template;
 }
 
+
+
 /**
  * Redirect searches to search page
  */
