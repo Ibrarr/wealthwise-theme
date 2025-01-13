@@ -19628,6 +19628,18 @@ header .mobile-menu .content .secondary-menu .search-newsletter-switch .search-m
 .page-template-page-analysis-opinion .choice-words .video-choice .sponsor img {
   max-width: 200px;
 }
+.page-template-page-analysis-opinion .choice-words {
+  background: #eee4db;
+}
+.page-template-page-analysis-opinion .choice-words .row {
+  border-bottom: none;
+}
+.page-template-page-analysis-opinion .videos {
+  background: none;
+}
+.page-template-page-analysis-opinion .videos .row {
+  border-bottom: 1px solid #d5d2d1;
+}
 .page-template-page-analysis-opinion .recommended h3, .page-template-page-analysis-opinion .recommended .h3 {
   color: #815f1f;
   font-family: "Inter", sans-serif;

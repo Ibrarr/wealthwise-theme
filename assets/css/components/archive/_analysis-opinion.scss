@@ -298,5 +298,20 @@
   @import "components/partner-zone";
   @import "components/videos";
   @import "components/choice-words";
+  .choice-words {
+    background: #eee4db;
+
+    .row {
+      border-bottom: none;
+    }
+  }
+
+  .videos {
+    background: none;
+
+    .row {
+      border-bottom: 1px solid #d5d2d1;
+    }
+  }
   @import "components/recommended";
 }

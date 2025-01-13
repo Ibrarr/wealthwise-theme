@@ -149,9 +149,9 @@ get_header();
 
     <?php require get_template_directory() . '/template-parts/section-partner-zone.php'; ?>
 
-    <?php require get_template_directory() . '/template-parts/section-videos.php'; ?>
-
     <?php require get_template_directory() . '/template-parts/section-choice-words.php'; ?>
+
+    <?php require get_template_directory() . '/template-parts/section-videos.php'; ?>
 
     <?php require get_template_directory() . '/template-parts/section-recommended.php'; ?>
 <?php } else { ?>
