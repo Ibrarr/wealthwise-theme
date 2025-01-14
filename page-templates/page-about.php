@@ -21,8 +21,15 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
     <section>
         <div class="row img">
             <div class="col-lg-10">
-                <img src="<?php the_post_thumbnail_url() ?>" alt="<?php echo esc_attr( get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true ) ); ?>"
-                     srcset="<?php echo esc_attr( $image_srcset ); ?>" sizes="(min-width: 391px) 1024px, 100vw">
+                <img
+                        src="<?php the_post_thumbnail_url(); ?>"
+                        alt="<?php echo esc_attr( get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true ) ); ?>"
+                        srcset="<?php echo wp_get_attachment_image_srcset( get_post_thumbnail_id() ); ?>"
+                        sizes="(min-width: 1200px) 1200px,
+           (min-width: 768px) 768px,
+           (min-width: 576px) 576px,
+           100vw">
+
             </div>
         </div>
     </section>

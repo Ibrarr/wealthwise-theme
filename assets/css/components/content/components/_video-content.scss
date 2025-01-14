@@ -3,6 +3,13 @@
   position: relative;
   margin: 40px auto auto;
 
+  a {
+    color: $ww-gold;
+    font-family: $ww-pt;
+    font-weight: $ww-bold;
+    font-size: 15px;
+  }
+
   h1, h2, h3, h4, h5, h6 {
     color: $ww-gold;
     font-family: $ww-pt;
