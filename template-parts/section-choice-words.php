@@ -16,8 +16,8 @@
 						$post_ids[] = $post->ID;
 						$choice_post_ids[] = $post->ID;
 
-                        $term_name = get_the_terms(get_the_ID(), 'category')[0]->name;
-						require('standard-article-card.php');
+                        $term_name = get_the_terms(get_the_ID(), 'type')[0]->name;
+						require('standard-article-card-choice-word.php');
 						wp_reset_postdata();
 
 						if (count($choice_post_ids) >= 3) {
@@ -49,8 +49,8 @@
 						$post_ids[] = get_the_ID();
 						$choice_post_ids[] = get_the_ID();
 
-                        $term_name = get_the_terms(get_the_ID(), 'category')[0]->name;
-						require('standard-article-card.php');
+                        $term_name = get_the_terms(get_the_ID(), 'type')[0]->name;
+						require('standard-article-card-choice-word.php');
 					endwhile;
 				endif;
 				wp_reset_postdata();
