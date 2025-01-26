@@ -46,14 +46,16 @@
     </div>
     <div class="second">
         <div class="container px-4">
-            <nav id="nav" role="navigation" itemscope
-                 itemtype="https://schema.org/SiteNavigationElement">
-		        <?php wp_nav_menu( array(
-			        'theme_location' => 'footer-menu',
-		        ) ); ?>
-            </nav>
             <div class="text-owl">
-                <p>Copyright © <?php echo date("Y"); ?> Wealthwise Media. All rights reserved.</p>
+                <div>
+                    <nav id="nav" role="navigation" itemscope
+                         itemtype="https://schema.org/SiteNavigationElement">
+		                <?php wp_nav_menu( array(
+			                'theme_location' => 'footer-menu',
+		                ) ); ?>
+                    </nav>
+                    <p>Copyright © <?php echo date("Y"); ?> Wealthwise Media. All rights reserved.</p>
+                </div>
                 <img src="<?php echo WW_TEMPLATE_URI . '/assets/images/gifs/owl-footer.gif'; ?>" alt="Owl Footer">
             </div>
         </div>

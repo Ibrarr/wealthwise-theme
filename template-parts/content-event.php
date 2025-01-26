@@ -93,7 +93,7 @@ $end_date = get_field('end_date');
 		                    while( have_rows('agenda') ) : the_row();
 			                    $heading = get_sub_field('heading');
 			                    echo '<div class="accordion">';
-                                    echo '<h5>'.$heading.' <span class="open" style="display: none;">'.file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/event-minus.svg' ).'</span> <span class="closed">'.file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/event-plus.svg' ).'</span></h5>';
+                                    echo '<h5>'.$heading.' <span class="open" style="display: none;">'.file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/event-plus.svg' ).'</span> <span class="closed">'.file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/event-minus.svg' ).'</span></h5>';
                                     echo '<div class="accordion-content">';
                                         if( have_rows('item') ):
                                             while( have_rows('item') ) : the_row();
@@ -190,7 +190,7 @@ $end_date = get_field('end_date');
 				            $heading = get_sub_field('question');
 				            $answer = get_sub_field('answer');
 				            echo '<div class="accordion">';
-				            echo '<h5>'.$heading.' <span class="open" style="display: none;">'.file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/event-minus.svg' ).'</span> <span class="closed">'.file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/event-plus.svg' ).'</span></h5>';
+				            echo '<h5>'.$heading.' <span class="open" style="display: none;">'.file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/event-plus.svg' ).'</span> <span class="closed">'.file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/event-minus.svg' ).'</span></h5>';
 				            echo '<div class="accordion-content">';
 				            echo '<p>'.$answer.'</p>';
 				            echo '</div>';

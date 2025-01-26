@@ -350,14 +350,14 @@ $partner_post_ids = [];
 
                                 wp_reset_postdata();
 
-                                if (count($podcast_ids) >= 2) {
+                                if (count($podcast_ids) >= 1) {
                                     break;
                                 }
                             }
                         }
                     }
 
-                    $remaining_podcasts = 2 - count($podcast_ids);
+                    $remaining_podcasts = 1 - count($podcast_ids);
 
                     if ($remaining_podcasts > 0) {
                         $fallback_podcast_query = new WP_Query(array(
@@ -399,12 +399,17 @@ $partner_post_ids = [];
 
                             $post_ids[] = $post->ID;
 
+	                        $thumbnail_id = get_post_thumbnail_id( $post->ID );
+	                        $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
                             ?>
                             <a href="<?php the_permalink(); ?>">
                                 <p class="term">Word to the wise</p>
                                 <p class="title"><?php the_title(); ?></p>
-                                <p class="click-here">Click here</p>
-                                <div class="two-owls"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/two-owls.svg' ); ?></div>
+                                <p class="excerpt"><?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?></p>
+                                <div class="image-wrapper">
+                                    <img src="<?php the_post_thumbnail_url() ?>" alt="<?php the_title(); ?>"
+                                         srcset="<?php echo esc_attr( $image_srcset ); ?>" sizes="(min-width: 391px) 1024px, 100vw">
+                                </div>
                             </a>
                             <?php
                             wp_reset_postdata();

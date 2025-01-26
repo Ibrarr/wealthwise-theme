@@ -1,7 +1,7 @@
 <section class="videos">
 	<div class="container px-4">
 		<div class="row">
-			<h3>Videos</h3>
+			<h3>Partner Videos</h3>
 			<?php
 			$acf_videos_posts = get_field('videos_section', 'option') ?? [];
 			$video_ids = [];

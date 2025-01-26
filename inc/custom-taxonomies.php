@@ -53,6 +53,7 @@ function video_type_taxonomy() {
 	// Register predefined terms
 	wp_insert_term( 'Video', 'type' );
 	wp_insert_term( 'Podcast', 'type' );
+	wp_insert_term( 'Partner Video', 'type' );
 }
 
 /**

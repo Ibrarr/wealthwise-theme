@@ -186,6 +186,7 @@ footer {
     @include media-breakpoint-up(lg) {
       display: flex;
       justify-content: space-between;
+      align-items: flex-end;
 
       p {
         margin-right: 100px;
@@ -194,6 +195,7 @@ footer {
 
     img {
       width: 40px;
+      height: 45px;
 
       @include media-breakpoint-down(lg) {
         margin-top: 20px;
