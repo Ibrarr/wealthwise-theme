@@ -49,59 +49,137 @@ if ($term_name === 'Partner Video' && $cat_term_name === 'Choice words') {
             <div class="embed-container">
 				<?php
 				$iframe = get_field('video');
-
 				preg_match('/src="(.+?)"/', $iframe, $matches);
 				$src = $matches[1];
 
+				// Build the base YouTube URL with common parameters.
 				$base_src = add_query_arg(array(
 					'controls' => 1,
 					'hd'       => 1,
 					'autohide' => 1,
 				), $src);
 				?>
-
                 <div class="video-cover" style="background-image: url('<?php the_post_thumbnail_url() ?>');">
                     <button class="play-button" aria-label="Play Video">
-                        <?php
-                        if ($term_name === 'Partner Video') {
-	                        echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/video.svg' );
-                        } else {
-	                        echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/podcast.svg' );
-                        }
-                        ?>
+						<?php
+						if ($term_name === 'Partner Video') {
+							echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/video.svg' );
+						} else {
+							echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/podcast.svg' );
+						}
+						?>
                     </button>
                 </div>
             </div>
             <script>
                 document.addEventListener('DOMContentLoaded', function () {
-                    const videoCover = document.querySelector('.video-cover');
-                    const embedContainer = document.querySelector('.embed-container');
-                    const termName = '<?php echo strtolower($term_name); ?>'; // Get the term name from PHP
 
+                    // Converts a string timestamp like "1:30" or "01:02:30" to seconds.
+                    function parseTimestamp(timestampStr) {
+                        var parts = timestampStr.split(':');
+                        var seconds = 0;
+                        if (parts.length === 2) { // mm:ss
+                            seconds = parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
+                        } else if (parts.length === 3) { // hh:mm:ss
+                            seconds = parseInt(parts[0], 10) * 3600 +
+                                parseInt(parts[1], 10) * 60 +
+                                parseInt(parts[2], 10);
+                        } else {
+                            seconds = parseInt(timestampStr, 10);
+                        }
+                        return seconds;
+                    }
+
+                    // Loads the video into the embed container.
+                    // If a startSeconds value is provided, it is appended to the YouTube URL.
+                    function loadVideo(startSeconds) {
+                        var videoSrc = '<?php echo esc_js($base_src); ?>';
+                        if (startSeconds !== undefined && startSeconds !== null) {
+                            videoSrc += '&start=' + startSeconds;
+                        }
+                        videoSrc += '&autoplay=1';
+
+                        // Adjust padding-bottom if termName is 'podcast'.
+                        if (termName === 'podcast') {
+                            embedContainer.style.paddingBottom = '20%';
+                        }
+
+                        // Create the iframe element dynamically.
+                        var iframe = document.createElement('iframe');
+                        iframe.src = videoSrc;
+                        iframe.frameBorder = '0';
+                        iframe.allowFullscreen = true;
+                        iframe.allow = 'autoplay';
+
+                        // Clear existing content and insert the iframe.
+                        embedContainer.innerHTML = '';
+                        embedContainer.appendChild(iframe);
+                    }
+
+                    var videoCover = document.querySelector('.video-cover');
+                    var embedContainer = document.querySelector('.embed-container');
+                    var termName = '<?php echo strtolower($term_name); ?>';
+
+                    // Check if the URL hash contains a timestamp (e.g. "#timestamp-1:30")
+                    var initialStartSeconds = null;
+                    if (window.location.hash && window.location.hash.indexOf('#timestamp-') === 0) {
+                        var timestampStr = window.location.hash.replace('#timestamp-', '');
+                        initialStartSeconds = parseTimestamp(timestampStr);
+                    }
+
+                    // When the video cover is clicked, load the video
+                    // using the timestamp from the URL hash if present.
                     if (videoCover && embedContainer) {
                         videoCover.addEventListener('click', function () {
-                            const videoSrc = '<?php echo esc_js($base_src); ?>&autoplay=1';
-
-                            // Adjust padding-bottom if term_name is 'Podcast'
-                            if (termName === 'podcast') {
-                                embedContainer.style.paddingBottom = '20%';
-                            }
-
-                            // Create iframe dynamically
-                            const iframe = document.createElement('iframe');
-                            iframe.src = videoSrc;
-                            iframe.frameBorder = '0';
-                            iframe.allowFullscreen = true;
-                            iframe.allow = 'autoplay';
-
-                            embedContainer.innerHTML = ''; // Clear existing content
-                            embedContainer.appendChild(iframe);
+                            loadVideo(initialStartSeconds);
                         });
                     }
+
+                    // Listen for hash changes (in case a user clicks a timestamp link after page load)
+                    window.addEventListener('hashchange', function () {
+                        if (window.location.hash && window.location.hash.indexOf('#timestamp-') === 0) {
+                            var timestampStr = window.location.hash.replace('#timestamp-', '');
+                            var newStartSeconds = parseTimestamp(timestampStr);
+                            loadVideo(newStartSeconds);
+
+                            // Scroll smoothly to the .post-header element.
+                            var header = document.querySelector('.post-header');
+                            if (header) {
+                                header.scrollIntoView({ behavior: 'smooth' });
+                            }
+                        }
+                    });
+
+                    // Additionally, capture clicks on any links with a '#timestamp-' hash.
+                    document.querySelectorAll('a[href^="#timestamp-"]').forEach(function(anchor) {
+                        anchor.addEventListener('click', function(e) {
+                            e.preventDefault(); // Prevent default jump behavior.
+                            var hash = this.getAttribute('href');
+                            if (hash.indexOf('#timestamp-') === 0) {
+                                var timestampStr = hash.replace('#timestamp-', '');
+                                var newStartSeconds = parseTimestamp(timestampStr);
+                                loadVideo(newStartSeconds);
+
+                                // Scroll smoothly to the .post-header element.
+                                var header = document.querySelector('.post-header');
+                                if (header) {
+                                    header.scrollIntoView({ behavior: 'smooth' });
+                                }
+
+                                // Update the URL hash in the browser history without triggering a jump.
+                                window.history.pushState(null, null, hash);
+                            }
+                        });
+                    });
+
+                    // If you prefer the video to auto-load when a timestamp is present,
+                    // uncomment the following lines:
+                    // if (initialStartSeconds !== null) {
+                    //     loadVideo(initialStartSeconds);
+                    // }
                 });
             </script>
         </section>
-
 
 		<section class="post-content">
 			<div class="row">
