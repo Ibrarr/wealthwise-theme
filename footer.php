@@ -31,7 +31,6 @@
 			                'theme_location' => 'main-menu',
 		                ) ); ?>
                         <a href="/word-to-the-wise/">Word to the wise</a>
-                        <a href="/choice-words/">Choice words</a>
                     </nav>
                 </div>
                 <div class="col-lg-2">

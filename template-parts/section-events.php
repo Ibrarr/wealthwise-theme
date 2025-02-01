@@ -1,7 +1,7 @@
 <section class="events">
-	<div class="container px-4">
-		<div class="row">
-			<h3>Events</h3>
+    <div class="container px-4">
+        <div class="row">
+            <h3>Events</h3>
 			<?php
 			$acf_event_posts = get_field('event_posts_archive', 'option') ?? [];
 			$event_archive_ids = [];
@@ -34,6 +34,7 @@
 			if ($remaining_events > 0) {
 				$fallback_event_query = new WP_Query(array(
 					'post_type'      => 'event',
+					'post__not_in'   => $event_archive_ids, // Exclude already displayed events
 					'posts_per_page' => $remaining_events,
 					'post_status'    => 'publish',
 					'meta_key'       => 'start_date',
@@ -55,6 +56,6 @@
 				wp_reset_postdata();
 			}
 			?>
-		</div>
-	</div>
+        </div>
+    </div>
 </section>
