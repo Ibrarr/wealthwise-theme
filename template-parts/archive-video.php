@@ -171,13 +171,35 @@ get_header();
 						?>
                     </div>
                 </div>
-				<?php if ($bottom_row_query->max_num_pages > 1): ?>
+				<?php
+                $total_videos = wp_count_posts('video')->publish;
+
+				// Count the posts already shown on page 1 (featured, second row, and bottom row)
+				// (Assuming $video_ids holds the IDs of all posts displayed above – normally 2 + 3 + 4 = 9)
+				$displayed_posts = count($video_ids);
+
+				// Set how many posts will be shown on subsequent pages (in your "else" block, you use 12)
+				$posts_per_page = 12;
+
+				// Calculate how many additional pages are needed for the remaining posts
+				if ($total_videos > $displayed_posts) {
+					$remaining_posts = $total_videos - $displayed_posts;
+					$additional_pages = ceil($remaining_posts / $posts_per_page);
+				} else {
+					$additional_pages = 0;
+				}
+
+				// Total pages = first page + additional pages
+				$total_pages = 1 + $additional_pages;
+
+				// Get the current page (should be 1 on the first page)
+				$current_page = max(1, get_query_var('paged'));
+
+				if ($total_pages > 1): ?>
                     <div class="col-12">
                         <nav class="pagination">
 							<?php
-							$total_pages = $bottom_row_query->max_num_pages;
-							$current_page = max(1, get_query_var('paged'));
-
+							// Previous page arrow (disabled on first page)
 							if ($current_page > 1) {
 								echo '<a href="' . get_pagenum_link($current_page - 1) . '" class="pagination-arrow">'
 								     . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-left.svg') . '</a>';
@@ -188,6 +210,7 @@ get_header();
 
 							echo '<span class="pagination-text">Page ' . esc_html($current_page) . ' <span>of</span> ' . esc_html($total_pages) . '</span>';
 
+							// Next page arrow (only active if there are additional pages)
 							if ($current_page < $total_pages) {
 								echo '<a href="' . get_pagenum_link($current_page + 1) . '" class="pagination-arrow">'
 								     . file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/arrow-right.svg') . '</a>';
