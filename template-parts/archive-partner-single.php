@@ -25,7 +25,7 @@ get_header();
                         }
                         ?>
                     </div>
-                    <p><?php echo $term->description ?></p>
+	                <?php echo term_description(); ?>
                 </div>
             </div>
         </div>

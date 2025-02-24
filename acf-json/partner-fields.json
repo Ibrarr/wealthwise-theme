@@ -9,7 +9,7 @@
             "aria-label": "",
             "type": "url",
             "instructions": "",
-            "required": 0,
+            "required": 1,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -49,7 +49,7 @@
         },
         {
             "key": "field_67597b72cfc8c",
-            "label": "Parnter",
+            "label": "Partner",
             "name": "parnter",
             "aria-label": "",
             "type": "taxonomy",
@@ -92,5 +92,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1733917759
+    "modified": 1740427428
 }
