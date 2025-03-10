@@ -121,7 +121,11 @@
 				?>
 				<div class="sponsor">
 					<span>Sponsored by:</span>
-					<img src="<?php the_field('choice_words_sponsor_logo', 'option'); ?>" alt="sponsor-logo">
+					<?php if (get_field( 'choice_words_sponsor_logo_link', 'option' )) { ?>
+                        <a href="<?php the_field( 'choice_words_sponsor_logo_link', 'option' ); ?>" target="_blank"><img src="<?php the_field( 'choice_words_sponsor_logo', 'option' ); ?>" alt="sponsor-logo"></a>
+					<?php } else { ?>
+                        <img src="<?php the_field( 'choice_words_sponsor_logo', 'option' ); ?>" alt="sponsor-logo">
+					<?php } ?>
 				</div>
 			</div>
 		</div>

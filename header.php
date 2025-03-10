@@ -55,7 +55,11 @@
                                 </form>
                                 <div class="sponsor">
                                     <span>Sponsored by:</span>
-                                    <img src="<?php the_field( 'sponsor_logo_dark', 'option' ); ?>" alt="sponsor-logo">
+	                                <?php if (get_field( 'sponsor_logo_link', 'option' )) { ?>
+                                        <a href="<?php the_field( 'sponsor_logo_link', 'option' ); ?>" target="_blank"><img src="<?php the_field( 'sponsor_logo_dark', 'option' ); ?>" alt="sponsor-logo"></a>
+	                                <?php } else { ?>
+                                        <img src="<?php the_field( 'sponsor_logo_dark', 'option' ); ?>" alt="sponsor-logo">
+	                                <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +83,11 @@
                 <div class="col-lg-2">
                     <div class="sponsor">
                         <span>Sponsored by:</span>
-                        <img src="<?php the_field( 'sponsor_logo_light', 'option' ); ?>" alt="sponsor-logo">
+	                    <?php if (get_field( 'sponsor_logo_link', 'option' )) { ?>
+                            <a href="<?php the_field( 'sponsor_logo_link', 'option' ); ?>" target="_blank"><img src="<?php the_field( 'sponsor_logo_light', 'option' ); ?>" alt="sponsor-logo"></a>
+	                    <?php } else { ?>
+                            <img src="<?php the_field( 'sponsor_logo_light', 'option' ); ?>" alt="sponsor-logo">
+	                    <?php } ?>
                     </div>
                 </div>
                 <div class="close"><?php echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/menu-cross.svg' ) ?></div>
