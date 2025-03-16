@@ -112,6 +112,53 @@ $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
                            </div>
                        <?php
 
+                       elseif( get_row_layout() == 'table' ):
+				           $intro = get_sub_field('intro');
+				           ?>
+                           <div class="table-content col-lg-10 offset-lg-2">
+                               <div class="content">
+                                   <h3><?php echo $intro; ?></h3>
+
+                                   <table>
+                                       <thead>
+                                       <tr>
+	                                       <?php if( have_rows('table_header') ): ?>
+		                                       <?php while( have_rows('table_header') ): the_row();
+			                                       $column_one = get_sub_field('column_one');
+			                                       $column_two = get_sub_field('column_two');
+			                                       $column_three = get_sub_field('column_three');
+			                                       $column_four = get_sub_field('column_four');
+			                                       ?>
+                                                   <th><?php echo $column_one; ?></th>
+                                                   <th><?php echo $column_two; ?> <br> <i>(Close)</i></th>
+                                                   <th><?php echo $column_three; ?> <br> <i>(Close)</i></th>
+                                                   <th><?php echo $column_four; ?></th>
+		                                       <?php endwhile; ?>
+	                                       <?php endif; ?>
+                                       </tr>
+                                       </thead>
+                                       <tbody>
+                                           <?php if( have_rows('table_content') ): ?>
+                                               <?php while( have_rows('table_content') ): the_row();
+                                                   $column_one = get_sub_field('column_one');
+                                                   $column_two = get_sub_field('column_two');
+                                                   $column_three = get_sub_field('column_three');
+                                                   $column_four = get_sub_field('column_four');
+                                                   ?>
+                                                   <tr>
+                                                       <td><a href="<?php echo $column_one['url']; ?>" target="_blank"><?php echo $column_one['title']; ?></a></td>
+                                                       <td><?php echo $column_two; ?></td>
+                                                       <td><?php echo $column_three; ?></td>
+                                                       <td><?php echo $column_four; ?></td>
+                                                   </tr>
+                                               <?php endwhile; ?>
+                                           <?php endif; ?>
+                                       </tbody>
+                                   </table>
+                               </div>
+                           </div>
+			           <?php
+
                        elseif( get_row_layout() == 'two_image' ):
 				           $image_one = get_sub_field('image_one');
 				           $image_two = get_sub_field('image_two');
