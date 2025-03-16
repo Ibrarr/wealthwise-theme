@@ -15,7 +15,7 @@ $cat_term_name = $cat_terms[0]->name ?? '';
 $thumbnail_id = get_post_thumbnail_id( get_the_ID() );
 $image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
 
-if ($term_name === 'Partner Video' && $cat_term_name === 'Choice words') {
+if ($term_name === 'Partner Video' && $cat_term_name === 'Choice words' || $term_name === 'Video' && $cat_term_name === 'Choice words') {
     $term_to_show = 'Choice words';
 } else {
     $term_to_show = $term_name;
@@ -62,7 +62,7 @@ if ($term_name === 'Partner Video' && $cat_term_name === 'Choice words') {
                 <div class="video-cover" style="background-image: url('<?php the_post_thumbnail_url() ?>');">
                     <button class="play-button" aria-label="Play Video">
 						<?php
-						if ($term_name === 'Partner Video') {
+						if ($term_name === 'Partner Video' || $term_name === 'Video') {
 							echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/video.svg' );
 						} else {
 							echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/podcast.svg' );

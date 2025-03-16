@@ -6,10 +6,10 @@
 			$image_srcset = wp_get_attachment_image_srcset( $thumbnail_id );
 			?>
 
-            <?php if ($term_name === 'Partner Video' || $term_name === 'Podcast') { ?>
+            <?php if ($term_name === 'Partner Video' || $term_name === 'Podcast' || $term_name === 'Video') { ?>
                 <button class="play-button <?php echo strtolower($term_name) ?>" aria-label="Play Video">
                     <?php
-                    if ($term_name === 'Partner Video') {
+                    if ($term_name === 'Partner Video' || $term_name === 'Video') {
                         echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/video.svg' );
                     } else {
                         echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/podcast.svg' );
