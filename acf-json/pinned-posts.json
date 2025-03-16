@@ -525,7 +525,8 @@
                 "id": ""
             },
             "post_type": [
-                "post"
+                "post",
+                "video"
             ],
             "post_status": [
                 "publish"
@@ -815,5 +816,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1736798128
+    "modified": 1742143445
 }

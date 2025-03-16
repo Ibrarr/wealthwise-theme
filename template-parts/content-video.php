@@ -67,6 +67,7 @@ if ($term_name === 'Partner Video' && $cat_term_name === 'Choice words' || $term
 						} else {
 							echo file_get_contents( WW_TEMPLATE_DIR . '/assets/images/icons/podcast.svg' );
 						}
+                        
 						?>
                     </button>
                 </div>
