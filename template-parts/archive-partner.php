@@ -14,10 +14,6 @@ $query = get_terms(array(
     ),
 ));
 
-// Split terms into two sections
-$first_section = array_slice($query, 0, 6); // First 6 terms
-$second_section = array_slice($query, 6);  // Remaining terms
-
 $partner_post_ids = [];
 get_header();
 ?>
@@ -26,41 +22,6 @@ get_header();
     <div class="container px-4">
         <h1><span>Partner Zone</span></h1>
         <div class="row">
-            <div class="col-lg-9">
-                <div class="row">
-                    <?php
-                    foreach ($first_section as $partner) {
-                        ?>
-                        <div class="col-lg-4 mb-4 standard-article-card">
-                            <a href="<?php echo esc_url(get_term_link($partner)); ?>">
-                                <div class="image-wrapper">
-                                    <?php
-                                    $logo_id = get_term_meta($partner->term_id, 'logo', true);
-                                    if ($logo_id) {
-                                        $image_srcset = wp_get_attachment_image_srcset($logo_id);
-                                        $image_url = wp_get_attachment_url($logo_id);
-                                        ?>
-                                        <img src="<?php echo esc_url($image_url); ?>"
-                                             alt="<?php echo esc_attr($partner->name); ?>"
-                                             srcset="<?php echo esc_attr($image_srcset); ?>"
-                                             sizes="(min-width: 391px) 1024px, 100vw">
-                                        <?php
-                                    }
-                                    ?>
-                                </div>
-                                <p class="term"><?php echo esc_html($partner->name); ?></p>
-                                <p class="title"><?php echo esc_html(get_term_meta($partner->term_id, 'archive_heading', true)); ?></p>
-                                <p class="excerpt"><?php echo esc_html(wp_trim_words(get_term_meta($partner->term_id, 'archive_description', true))); ?></p>
-                            </a>
-                        </div>
-                        <?php
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="col-lg-3 partner-zone-side">
-	            <?php require get_template_directory() . '/template-parts/partner-zone-sidebar.php'; ?>
-            </div>
             <div class="col-12">
                 <div class="row bottom-row">
                     <?php
@@ -76,7 +37,7 @@ get_header();
                         ),
                     ));
 
-                    foreach ($second_section as $partner) {
+                    foreach ($query as $partner) {
                         ?>
                         <div class="col-lg-3 mb-4 standard-article-card">
                             <a href="<?php echo esc_url(get_term_link($partner)); ?>">
