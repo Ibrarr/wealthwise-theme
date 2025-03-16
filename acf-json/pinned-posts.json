@@ -549,7 +549,7 @@
         },
         {
             "key": "field_67618481e84d0",
-            "label": "Choice words videos",
+            "label": "Choice words text links",
             "name": "choice_words_videos",
             "aria-label": "",
             "type": "relationship",
@@ -816,5 +816,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1742143445
+    "modified": 1742148902
 }

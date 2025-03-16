@@ -1,10 +1,11 @@
 <section class="choice-words">
-	<div class="container px-4">
-		<div class="row">
-			<h3>Choice Words</h3>
+    <div class="container px-4">
+        <div class="row">
+            <h3>Choice Words</h3>
 			<?php
 			$acf_choice_posts = get_field('choice_words_posts', 'option') ?? [];
 			$choice_post_ids = [];
+			$post_ids = []; // Initialise post_ids array to track all posts
 
 			if (!empty($acf_choice_posts)) {
 				foreach ($acf_choice_posts as $acf_post) {
@@ -16,7 +17,7 @@
 						$post_ids[] = $post->ID;
 						$choice_post_ids[] = $post->ID;
 
-                        $term_name = get_the_terms(get_the_ID(), 'type')[0]->name;
+						$term_name = get_the_terms(get_the_ID(), 'type')[0]->name;
 						require('standard-article-card-choice-word.php');
 						wp_reset_postdata();
 
@@ -49,7 +50,7 @@
 						$post_ids[] = get_the_ID();
 						$choice_post_ids[] = get_the_ID();
 
-                        $term_name = get_the_terms(get_the_ID(), 'type')[0]->name;
+						$term_name = get_the_terms(get_the_ID(), 'type')[0]->name;
 						require('standard-article-card-choice-word.php');
 					endwhile;
 				endif;
@@ -57,11 +58,12 @@
 			}
 			?>
 
-			<div class="col-lg-3 col-md-6 col-12 mb-4 video-choice">
-				<p class="heading-term">More choice words videos</p>
+            <div class="col-lg-3 col-md-6 col-12 mb-4 video-choice">
+                <p class="heading-term">More choice words videos</p>
 				<?php
 				$acf_choice_videos = get_field('choice_words_videos', 'option') ?? [];
 				$choice_video_ids = [];
+				$video_ids = $post_ids; // Use existing post_ids array to track all shown posts
 
 				if (!empty($acf_choice_videos)) {
 					foreach ($acf_choice_videos as $acf_video) {
@@ -70,13 +72,19 @@
 							$post = $acf_video;
 							setup_postdata($post);
 
+							// Skip this video if it's already been shown in the main section
+							if (in_array($post->ID, $post_ids)) {
+								wp_reset_postdata();
+								continue;
+							}
+
 							$video_ids[] = $post->ID;
 							$choice_video_ids[] = $post->ID;
 
 							?>
-							<a href="<?php the_permalink(); ?>">
-								<p class="title"><span>Watch: </span><?php the_title(); ?></p>
-							</a>
+                            <a href="<?php the_permalink(); ?>">
+                                <p class="title"><span>Watch: </span><?php the_title(); ?></p>
+                            </a>
 							<?php
 							wp_reset_postdata();
 
@@ -87,7 +95,6 @@
 					}
 				}
 
-
 				$remaining_videos = 3 - count($choice_video_ids);
 
 				if ($remaining_videos > 0) {
@@ -95,7 +102,7 @@
 						'post_type'      => 'video',
 						'posts_per_page' => $remaining_videos,
 						'post_status'    => 'publish',
-						'post__not_in'   => $video_ids,
+						'post__not_in'   => $video_ids, // This will now include all posts shown so far
 						'tax_query' => array(
 							array(
 								'taxonomy' => 'category',
@@ -110,24 +117,24 @@
 							$video_ids[] = get_the_ID();
 							$choice_video_ids[] = get_the_ID();
 							?>
-							<a href="<?php the_permalink(); ?>">
-								<p class="title"><span>Watch: </span><?php the_title(); ?></p>
-							</a>
+                            <a href="<?php the_permalink(); ?>">
+                                <p class="title"><span>Watch: </span><?php the_title(); ?></p>
+                            </a>
 						<?php
 						endwhile;
 					endif;
 					wp_reset_postdata();
 				}
 				?>
-				<div class="sponsor">
-					<span>Sponsored by:</span>
+                <div class="sponsor">
+                    <span>Sponsored by:</span>
 					<?php if (get_field( 'choice_words_sponsor_logo_link', 'option' )) { ?>
                         <a href="<?php the_field( 'choice_words_sponsor_logo_link', 'option' ); ?>" target="_blank"><img src="<?php the_field( 'choice_words_sponsor_logo', 'option' ); ?>" alt="sponsor-logo"></a>
 					<?php } else { ?>
                         <img src="<?php the_field( 'choice_words_sponsor_logo', 'option' ); ?>" alt="sponsor-logo">
 					<?php } ?>
-				</div>
-			</div>
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
