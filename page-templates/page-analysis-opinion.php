@@ -3,9 +3,9 @@
 Template Name: Analysis & Opinion Archive
 */
 $paged = get_query_var('paged') ? get_query_var('paged') : 1;
-// Page 1 layout will have different post count than subsequent pages
-$first_section_count = 4; // Posts in first section
-$bottom_row_count = 4; // Posts in bottom row
+
+// Set consistent values for the structure
+$first_page_posts = 8; // Total posts on first page (1 featured + 3 not-main + 4 bottom)
 $posts_per_page = 12; // Posts per page for page 2+ (consistent for pagination)
 $post_ids = [];
 $partner_post_ids = [];
@@ -19,7 +19,7 @@ $count_query = new WP_Query(array(
 	'fields'         => 'ids', // Only get post IDs for efficiency
 ));
 $total_posts = $count_query->post_count;
-$total_pages = ceil($total_posts / $posts_per_page);
+$total_pages = ceil(($total_posts - $first_page_posts + $posts_per_page) / $posts_per_page);
 
 get_header();
 ?>
@@ -52,11 +52,15 @@ get_header();
 							echo '<div class="col-lg-12 mb-4 featured-article-card">';
 							require get_template_directory() . '/template-parts/featured-article-card-block.php';
 							echo '</div>';
-							echo '<div class="row not-main">';
+							echo '<div class="row gx-1 not-main">';
 							wp_reset_postdata();
 						}
 
-						// Get posts for the first page display (featured section)
+						// Get posts for the first page display (featured + not-main row)
+						// If there's a pinned post, we need to get 3 more posts for the not-main row
+						// If no pinned post, we need to get 4 posts (1 featured + 3 for not-main)
+						$first_section_count = $pinned_post_id ? 3 : 4;
+
 						$query = new WP_Query(array(
 							'post_type'      => 'post',
 							'category_name'  => 'analysis,opinion',
@@ -66,7 +70,7 @@ get_header();
 						));
 
 						if ($query->have_posts()) :
-						$post_count = $pinned_post_id ? 1 : 0;
+						$post_count = $pinned_post_id ? 0 : 0; // Start at 0 in both cases
 
 						while ($query->have_posts()) : $query->the_post();
 							$post_count++;
@@ -79,16 +83,16 @@ get_header();
 								require get_template_directory() . '/template-parts/featured-article-card-block.php';
 								echo '</div>';
 								echo '<div class="row gx-1 not-main">';
-							} elseif ($post_count === 2) {
+							} elseif (($post_count === 2 && !$pinned_post_id) || ($post_count === 1 && $pinned_post_id)) {
 								echo '<div class="col-lg-4 mb-4 standard-article-card second">';
 								require get_template_directory() . '/template-parts/standard-article-card-no-col.php';
 								echo '</div>';
-							} elseif ($post_count === 3) {
+							} elseif (($post_count === 3 && !$pinned_post_id) || ($post_count === 2 && $pinned_post_id)) {
 								echo '<div class="col-lg-8 mb-4 other">';
 								echo '<div class="standard-article-card">';
 								require get_template_directory() . '/template-parts/standard-article-card-no-col.php';
 								echo '</div>';
-							} elseif ($post_count === 4) {
+							} elseif (($post_count === 4 && !$pinned_post_id) || ($post_count === 3 && $pinned_post_id)) {
 								echo '<div class="standard-article-card">';
 								require get_template_directory() . '/template-parts/standard-article-card-no-col.php';
 								echo '</div>';
@@ -96,6 +100,16 @@ get_header();
 								echo '</div>';
 							}
 						endwhile;
+
+						// Close the not-main row if it wasn't closed
+						if (($post_count < 4 && !$pinned_post_id) || ($post_count < 3 && $pinned_post_id)) {
+							if ($post_count >= 1) { // Only close divs if we've started them
+								if (($post_count >= 3 && !$pinned_post_id) || ($post_count >= 2 && $pinned_post_id)) {
+									echo '</div>'; // Close the "other" div if needed
+								}
+								echo '</div>'; // Close the not-main row
+							}
+						}
 						?>
                     </div>
 					<?php
@@ -177,13 +191,16 @@ get_header();
             <h1><span>Analysis & Opinion</span></h1>
             <div class="row posts">
 				<?php
-				// Get posts for pages 2 and beyond
+				// Calculate the correct offset to ensure no posts are skipped
+				// First page shows 8 posts in total (1 featured + 3 not-main + 4 bottom)
+				$offset = $first_page_posts + ($paged - 2) * $posts_per_page;
+
 				$query = new WP_Query(array(
 					'post_type'      => 'post',
 					'category_name'  => 'analysis,opinion',
 					'posts_per_page' => $posts_per_page,
 					'post_status'    => 'publish',
-					'paged'          => $paged,
+					'offset'         => $offset,
 				));
 
 				if ($query->have_posts()) :
