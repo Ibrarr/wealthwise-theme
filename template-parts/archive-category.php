@@ -7,7 +7,8 @@ $partner_post_ids = [];
 // Define consistent post counts
 $main_section_count = 5; // Posts in main section (including pinned post if present)
 $bottom_row_count = 4; // Posts in bottom row
-$posts_per_page = 12; // Posts per page for page 2+ (consistent for pagination)
+$first_page_count = 9; // Total posts on first page (5+4)
+$posts_per_page = 12; // Posts per page for page 2+
 
 // Count total posts for accurate pagination
 $count_query = new WP_Query(array(
@@ -18,12 +19,20 @@ $count_query = new WP_Query(array(
 	'fields'         => 'ids', // Only get post IDs for efficiency
 ));
 $total_posts = $count_query->post_count;
-$total_pages = ceil($total_posts / $posts_per_page);
+
+// Fix pagination calculation - adjust for first page showing 9 posts
+if ($total_posts <= $first_page_count) {
+	$total_pages = 1;
+} else {
+	$remaining_posts = $total_posts - $first_page_count;
+	$total_pages = 1 + ceil($remaining_posts / $posts_per_page);
+}
 
 get_header();
 ?>
 
 <?php if ($paged === 1) { ?>
+    <!-- First page layout -->
     <section class="main">
         <div class="container px-4">
             <h1><span><?php echo $term->name ?></span></h1>
@@ -43,10 +52,16 @@ get_header();
 							$post_ids[] = $pinned_post_id;
 						}
 
+						// Adjust the main section count if we have a pinned post
+						$adjusted_main_section_count = $main_section_count;
+						if ($pinned_post_id) {
+							$adjusted_main_section_count = $main_section_count - 1;
+						}
+
 						$query = new WP_Query(array(
 							'post_type'      => 'post',
 							'category_name'  => $term->slug,
-							'posts_per_page' => $main_section_count,
+							'posts_per_page' => $adjusted_main_section_count,
 							'post_status'    => 'publish',
 							'post__not_in'   => $post_ids,
 						));
@@ -117,11 +132,13 @@ get_header();
                     <div class="col-12">
                         <div class="row bottom-row">
 							<?php
-							// Always show exactly 4 posts in the bottom row
+							// Calculate how many more posts we need to reach the first_page_count
+							$remaining_posts_needed = $first_page_count - count($post_ids);
+
 							$query = new WP_Query(array(
 								'post_type'      => 'post',
 								'category_name'  => $term->slug,
-								'posts_per_page' => $bottom_row_count,
+								'posts_per_page' => $remaining_posts_needed,
 								'post_status'    => 'publish',
 								'post__not_in'   => $post_ids,
 							));
@@ -176,17 +193,29 @@ get_header();
 
 	<?php require get_template_directory() . '/template-parts/section-recommended.php'; ?>
 <?php } else { ?>
+    <!-- Page 2+ layout -->
     <section class="main rest-of-pages">
         <div class="container px-4">
             <h1><span><?php echo $term->name ?></span></h1>
             <div class="row posts">
 				<?php
+				// Get IDs of all posts to skip (those shown on page 1)
+				$first_page_ids_query = new WP_Query(array(
+					'post_type'      => 'post',
+					'category_name'  => $term->slug,
+					'posts_per_page' => $first_page_count,
+					'post_status'    => 'publish',
+					'fields'         => 'ids',
+				));
+				$skip_ids = $first_page_ids_query->posts;
+
+				// Now get posts for page 2+, excluding those on page 1
 				$query = new WP_Query(array(
-					'post_type' => 'post',
-					'category_name' => $term->slug,
+					'post_type'      => 'post',
+					'category_name'  => $term->slug,
 					'posts_per_page' => $posts_per_page,
 					'post_status'    => 'publish',
-					'paged' => $paged,
+					'post__not_in'   => $skip_ids,
 				));
 
 				if ($query->have_posts()) :

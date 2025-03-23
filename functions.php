@@ -37,3 +37,5 @@ require WW_INC_PATH . '/shortcodes.php';
 
 // Ajax Calls
 require WW_INC_PATH . '/ajax-calls.php';
+
+require WW_INC_PATH . '/category-pagination.php';
