@@ -8,8 +8,8 @@
     fill: $ww-brown;
   }
 
-  .main {
-    h1 {
+  .main, .past-events {
+    h1, h2 {
       color: $ww-brown;
       font-family: $ww-inter;
       font-weight: $ww-medium;
@@ -61,8 +61,12 @@
       }
     }
 
-    .main-event-card {
-      &:first-child {
+    h2 {
+      display: block !important;
+    }
+
+    .main-event-card, .past-event-card {
+      &:first-child:not(.past-event-card) {
         position: relative;
 
         @include media-breakpoint-down(lg) {
