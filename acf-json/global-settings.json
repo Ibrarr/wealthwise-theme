@@ -3,24 +3,6 @@
     "title": "Global settings",
     "fields": [
         {
-            "key": "field_67cf44b448d01",
-            "label": "Sponsor logo link",
-            "name": "sponsor_logo_link",
-            "aria-label": "",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "allow_in_bindings": 0,
-            "placeholder": ""
-        },
-        {
             "key": "field_675ede24f5fb5",
             "label": "Sponsor logo dark",
             "name": "sponsor_logo_dark",
@@ -73,24 +55,6 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_67cf44c848d02",
-            "label": "Choice words sponsor logo link",
-            "name": "choice_words_sponsor_logo_link",
-            "aria-label": "",
-            "type": "url",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "default_value": "",
-            "allow_in_bindings": 0,
-            "placeholder": ""
-        },
-        {
             "key": "field_6782a96ad960c",
             "label": "Choice words sponsor logo",
             "name": "choice_words_sponsor_logo",
@@ -131,15 +95,9 @@
                 "id": ""
             },
             "choices": {
+                "2": "Event form",
                 "1": "Newsletter sign-up",
-                "3": "Newsletter sign-up popup",
-                "6": "The Wealth Forum Channel Islands Jersey",
-                "5": "The Wealth Forum Dublin The Merrion Hotel",
-                "4": "The Wealth Forum June Coworth Park Ascot",
-                "2": "The Wealth Forum March Coworth Park Ascot",
-                "9": "The Wealth Forum North Rudding Park Harrogate",
-                "8": "The Wealth Forum November Coworth Park Ascot",
-                "7": "The Wealth Forum South West The Royal Crescent Bath"
+                "3": "Newsletter sign-up popup"
             },
             "default_value": false,
             "return_format": "value",
@@ -148,7 +106,9 @@
             "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_6760b022de201",
@@ -165,15 +125,9 @@
                 "id": ""
             },
             "choices": {
+                "2": "Event form",
                 "1": "Newsletter sign-up",
-                "3": "Newsletter sign-up popup",
-                "6": "The Wealth Forum Channel Islands Jersey",
-                "5": "The Wealth Forum Dublin The Merrion Hotel",
-                "4": "The Wealth Forum June Coworth Park Ascot",
-                "2": "The Wealth Forum March Coworth Park Ascot",
-                "9": "The Wealth Forum North Rudding Park Harrogate",
-                "8": "The Wealth Forum November Coworth Park Ascot",
-                "7": "The Wealth Forum South West The Royal Crescent Bath"
+                "3": "Newsletter sign-up popup"
             },
             "default_value": false,
             "return_format": "value",
@@ -182,7 +136,9 @@
             "allow_in_bindings": 0,
             "ui": 0,
             "ajax": 0,
-            "placeholder": ""
+            "placeholder": "",
+            "create_options": 0,
+            "save_options": 0
         },
         {
             "key": "field_67609724eb024",
@@ -258,6 +214,116 @@
             "ui_on_text": "",
             "ui_off_text": "",
             "ui": 1
+        },
+        {
+            "key": "field_68c4237a09e5e",
+            "label": "Contact image",
+            "name": "global_contact_image",
+            "aria-label": "",
+            "type": "image",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "library": "all",
+            "min_width": "",
+            "min_height": "",
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": "",
+            "allow_in_bindings": 0,
+            "preview_size": "medium"
+        },
+        {
+            "key": "field_68c4240709e5f",
+            "label": "Contact name",
+            "name": "global_contact_name",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_68c4241d09e60",
+            "label": "Contact job title",
+            "name": "global_contact_job_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_68c4242609e61",
+            "label": "Contact email",
+            "name": "global_contact_email",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_68c4242d09e62",
+            "label": "Contact phone",
+            "name": "global_contact_phone",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -278,5 +344,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1741636825
+    "modified": 1757684806
 }

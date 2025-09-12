@@ -206,15 +206,41 @@ $end_date = get_field('end_date');
                 <p><?php the_field( 'contact_intro' ); ?></p>
                 <div class="contact-person">
                     <div class="img-container">
-                        <img src="<?php the_field( 'contact_image' ); ?>" alt="<?php the_field( 'contact_name' ); ?>">
+                        <img src="<?php the_field( 'global_contact_image', 'option' ); ?>" alt="<?php the_field( 'global_contact_name', 'option' ); ?>">
                     </div>
                     <div class="speaker-info">
-                        <p class="name"><?php the_field( 'contact_name' ); ?></p>
-                        <p class="job-title"><?php the_field( 'contact_job_title' ); ?></p>
-                        <p class="email"><a href="mailto:<?php the_field( 'contact_email' ); ?>"><?php the_field( 'contact_email' ); ?></a></p>
-                        <p class="phone"><a href="tel:<?php the_field( 'contact_phone' ); ?>"><?php the_field( 'contact_phone' ); ?></a></p>
+                        <p class="name"><?php the_field( 'global_contact_name', 'option' ); ?></p>
+                        <p class="job-title"><?php the_field( 'global_contact_job_title', 'option' ); ?></p>
+                        <p class="email"><a href="mailto:<?php the_field( 'global_contact_email', 'option' ); ?>"><?php the_field( 'global_contact_email', 'option' ); ?></a></p>
+                        <p class="phone"><a href="tel:<?php the_field( 'global_contact_phone', 'option' ); ?>"><?php the_field( 'global_contact_phone', 'option' ); ?></a></p>
                     </div>
                 </div>
+                <br>
+                <?php
+                if ( have_rows('additional_contacts') ):
+                    while ( have_rows('additional_contacts') ) : the_row();
+                        $contact_image     = get_sub_field('contact_image');
+                        $contact_name      = get_sub_field('contact_name');
+                        $contact_job_title = get_sub_field('contact_job_title');
+                        $contact_email     = get_sub_field('contact_email');
+                        $contact_phone     = get_sub_field('contact_phone');
+                        ?>
+                        <div class="contact-person">
+                            <div class="img-container">
+                                <img src="<?php echo $contact_image; ?>" alt="<?php echo $contact_name; ?>">
+                            </div>
+                            <div class="speaker-info">
+                                <p class="name"><?php echo $contact_name; ?></p>
+                                <p class="job-title"><?php echo $contact_job_title; ?></p>
+                                <p class="email"><a href="mailto:<?php echo $contact_email; ?>"><?php echo $contact_email; ?></a></p>
+                                <p class="phone"><a href="tel:<?php echo $contact_phone; ?>"><?php echo $contact_phone; ?></a></p>
+                            </div>
+                        </div>
+                        <br>
+                    <?php
+                    endwhile;
+                endif;
+                ?>
             </div>
 		</section>
 
