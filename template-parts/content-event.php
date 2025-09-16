@@ -20,9 +20,9 @@ $end_date = get_field('end_date');
     <h3>Event registration</h3>
 	<?php
 	if ($start_date === $end_date) {
-		echo '<p class="date">Date: ' . $start_date . '</p>';
+		echo '<p class="date">Date: ' . date('jS F Y', strtotime($start_date)) . '</p>';
 	} else {
-		echo '<p class="date">Date: ' . date('jS', strtotime($start_date)) . ' - ' . $end_date . '</p>';
+		echo '<p class="date">Date: ' . date('jS', strtotime($start_date)) . ' - ' . date('jS F Y', strtotime($end_date)) . '</p>';
 	}
 	?>
     <p class="location">Location: <?php the_field( 'full_address' ); ?></p>
@@ -38,9 +38,9 @@ $end_date = get_field('end_date');
                 <h1 class="title"><?php the_title(); ?></h1>
 	            <?php
 	            if ($start_date === $end_date) {
-		            echo '<p class="date">Date: ' . $start_date . '</p>';
+		            echo '<p class="date">Date: ' . date('jS F Y', strtotime($start_date)) . '</p>';
 	            } else {
-		            echo '<p class="date">Date: ' . date('jS', strtotime($start_date)) . ' - ' . $end_date . '</p>';
+		            echo '<p class="date">Date: ' . date('jS', strtotime($start_date)) . ' - ' . date('jS F Y', strtotime($end_date)) . '</p>';
 	            }
 	            ?>
                 <p class="location">Location: <?php the_field( 'full_address' ); ?></p>

@@ -4,8 +4,8 @@
     "fields": [
         {
             "key": "field_675768ac8814f",
-            "label": "Date",
-            "name": "date",
+            "label": "Start Date",
+            "name": "start_date",
             "aria-label": "",
             "type": "date_picker",
             "instructions": "",
@@ -16,11 +16,31 @@
                 "class": "",
                 "id": ""
             },
-            "display_format": "jS F Y",
+            "display_format": "F j, Y",
             "return_format": "jS F Y",
             "first_day": 1,
-            "allow_in_bindings": 0,
-            "default_to_current_date": 0
+            "default_to_current_date": 0,
+            "allow_in_bindings": 0
+        },
+        {
+            "key": "field_68c9740b3b5fb",
+            "label": "End Date",
+            "name": "end_date",
+            "aria-label": "",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "F j, Y",
+            "return_format": "jS F Y",
+            "first_day": 1,
+            "default_to_current_date": 0,
+            "allow_in_bindings": 0
         },
         {
             "key": "field_675769ac88150",
@@ -668,7 +688,7 @@
             "aria-label": "",
             "type": "repeater",
             "instructions": "",
-            "required": 1,
+            "required": 0,
             "conditional_logic": 0,
             "wrapper": {
                 "width": "",
@@ -819,5 +839,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1757684516
+    "modified": 1758033173
 }
