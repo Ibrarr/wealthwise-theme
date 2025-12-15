@@ -198,37 +198,62 @@ get_header();
         <div class="container px-4">
             <h1><span><?php echo $term->name ?></span></h1>
             <div class="row posts">
-				<?php
-				// Get IDs of all posts to skip (those shown on page 1)
-				$first_page_ids_query = new WP_Query(array(
-					'post_type'      => 'post',
-					'category_name'  => $term->slug,
-					'posts_per_page' => $first_page_count,
-					'post_status'    => 'publish',
-					'fields'         => 'ids',
-				));
-				$skip_ids = $first_page_ids_query->posts;
+                <?php
+                // Rebuild skip IDs properly, including pinned post
+                $pinned_post = get_field('pinned_post', $term);
+                $pinned_post_id = null;
 
-				// Now get posts for page 2+, excluding those on page 1
-				$query = new WP_Query(array(
-					'post_type'      => 'post',
-					'category_name'  => $term->slug,
-					'posts_per_page' => $posts_per_page,
-					'post_status'    => 'publish',
-					'post__not_in'   => $skip_ids,
-				));
+                if ($pinned_post && is_array($pinned_post)) {
+                    $pinned_post = reset($pinned_post);
+                }
 
-				if ($query->have_posts()) :
-					while ($query->have_posts()) : $query->the_post();
-						$terms = get_the_terms(get_the_ID(), 'category');
-						$term_name = $terms[0]->name;
-						echo '<div class="col-lg-3 mb-4 standard-article-card">';
-						require get_template_directory() . '/template-parts/standard-article-card-no-col.php';
-						echo '</div>';
-					endwhile;
-				endif;
-				wp_reset_postdata();
-				?>
+                if ($pinned_post && is_a($pinned_post, 'WP_Post')) {
+                    $pinned_post_id = $pinned_post->ID;
+                }
+
+                // Get the posts that would appear on page 1 (excluding pinned if present)
+                $posts_to_skip = $pinned_post_id ? ($first_page_count - 1) : $first_page_count;
+
+                $first_page_ids_query = new WP_Query(array(
+                    'post_type'      => 'post',
+                    'category_name'  => $term->slug,
+                    'posts_per_page' => $posts_to_skip,
+                    'post_status'    => 'publish',
+                    'fields'         => 'ids',
+                    'post__not_in'   => $pinned_post_id ? array($pinned_post_id) : array(),
+                ));
+
+                $skip_ids = $first_page_ids_query->posts;
+
+                // Add pinned post to skip list
+                if ($pinned_post_id) {
+                    $skip_ids[] = $pinned_post_id;
+                }
+
+                // Calculate offset for current page (page 2 = offset 0, page 3 = offset 12, etc.)
+                $offset = ($paged - 2) * $posts_per_page;
+
+                // Now get posts for this page, excluding page 1 posts with proper offset
+                $query = new WP_Query(array(
+                    'post_type'      => 'post',
+                    'category_name'  => $term->slug,
+                    'posts_per_page' => $posts_per_page,
+                    'post_status'    => 'publish',
+                    'post__not_in'   => $skip_ids,
+                    'offset'         => $offset,
+                ));
+
+                if ($query->have_posts()) :
+                    while ($query->have_posts()) : $query->the_post();
+                        $terms = get_the_terms(get_the_ID(), 'category');
+                        $term_name = $terms[0]->name;
+                        echo '<div class="col-lg-3 mb-4 standard-article-card">';
+                        require get_template_directory() . '/template-parts/standard-article-card-no-col.php';
+                        echo '</div>';
+                    endwhile;
+                endif;
+                wp_reset_postdata();
+                ?>
                 <div class="col-12">
                     <nav class="pagination">
 						<?php
