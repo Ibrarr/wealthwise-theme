@@ -55,6 +55,24 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_695cf1cb29c58",
+            "label": "Sponsor logo link",
+            "name": "sponsor_logo_link",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_6782a96ad960c",
             "label": "Choice words sponsor logo",
             "name": "choice_words_sponsor_logo",
@@ -81,6 +99,24 @@
             "preview_size": "medium"
         },
         {
+            "key": "field_695cf1e729c59",
+            "label": "Choice Words sponsor logo link",
+            "name": "choice_words_sponsor_logo_link",
+            "aria-label": "",
+            "type": "url",
+            "instructions": "",
+            "required": 1,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
+        },
+        {
             "key": "field_67600f5c8d5c2",
             "label": "Newsletter form",
             "name": "newsletter_form",
@@ -95,9 +131,26 @@
                 "id": ""
             },
             "choices": {
-                "2": "Event form",
+                "29": "Boutiques 2 Sept 26",
+                "34": "Bristol Lunch",
+                "30": "Channel Islands 1st October 2026",
+                "25": "Channel Islands 4th June 2026",
+                "28": "Dublin 17th September 2026",
+                "36": "Dublin Lunch",
+                "27": "Edinburgh 16th September 2026",
+                "35": "Edinburgh Lunch",
+                "37": "Fixed Income lunch",
+                "18": "MPS Event",
                 "1": "Newsletter sign-up",
-                "3": "Newsletter sign-up popup"
+                "3": "Newsletter sign-up popup",
+                "20": "Property Lunch Form",
+                "33": "Real Assets Briefing 2026",
+                "19": "The Wealth Forum North York 14-15th May",
+                "32": "The Wealth Forum November Coworth Park Ascot 26",
+                "31": "The Wealth Forum South west 15-16th October",
+                "15": "The Wealth Forum Spring, Coworth Park, Ascot 26",
+                "24": "The Wealth Forum Summer: Coworth Park, Ascot 26",
+                "16": "Wealthwise Boutiques Feb 26"
             },
             "default_value": false,
             "return_format": "value",
@@ -125,9 +178,26 @@
                 "id": ""
             },
             "choices": {
-                "2": "Event form",
+                "29": "Boutiques 2 Sept 26",
+                "34": "Bristol Lunch",
+                "30": "Channel Islands 1st October 2026",
+                "25": "Channel Islands 4th June 2026",
+                "28": "Dublin 17th September 2026",
+                "36": "Dublin Lunch",
+                "27": "Edinburgh 16th September 2026",
+                "35": "Edinburgh Lunch",
+                "37": "Fixed Income lunch",
+                "18": "MPS Event",
                 "1": "Newsletter sign-up",
-                "3": "Newsletter sign-up popup"
+                "3": "Newsletter sign-up popup",
+                "20": "Property Lunch Form",
+                "33": "Real Assets Briefing 2026",
+                "19": "The Wealth Forum North York 14-15th May",
+                "32": "The Wealth Forum November Coworth Park Ascot 26",
+                "31": "The Wealth Forum South west 15-16th October",
+                "15": "The Wealth Forum Spring, Coworth Park, Ascot 26",
+                "24": "The Wealth Forum Summer: Coworth Park, Ascot 26",
+                "16": "Wealthwise Boutiques Feb 26"
             },
             "default_value": false,
             "return_format": "value",
@@ -344,5 +414,6 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1757684806
+    "display_title": "",
+    "modified": 1767698942
 }
