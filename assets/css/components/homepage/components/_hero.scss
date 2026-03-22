@@ -4,6 +4,11 @@
     padding-bottom: 20px;
   }
 
+  .right .zone-header {
+    border-top: 1px solid #d5d2d1;
+    padding-top: 20px;
+  }
+
   .left {
     @include media-breakpoint-up(lg) {
         border-right: 1px solid #d5d2d1;
@@ -87,14 +92,19 @@
       }
 
       @include media-breakpoint-up(lg) {
-        &:last-child {
+        &:not(:first-child) {
           a {
             display: flex;
             flex-direction: row-reverse;
           }
 
+          .image-wrapper {
+            width: 50%;
+          }
+
           .content {
             margin-right: 40px;
+            width: 50%;
           }
         }
       }
@@ -105,9 +115,16 @@
 
       @import "../../../standard-article-card";
     }
+
+    @import "../../inline-search";
   }
 
   .right {
+    @import "../../../standard-article-card";
     @import "../../../partner-zone-sidebar";
+
+    @include media-breakpoint-down(lg) {
+      margin-top: 20px;
+    }
   }
 }

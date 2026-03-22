@@ -7,6 +7,9 @@ $lead_post_top_id     = get_field('lead_post_top', 'option')->ID ?? null;
 $second_post_top_id   = get_field('second_post_top', 'option')->ID ?? null;
 $third_post_top_id    = get_field('third_post_top', 'option')->ID ?? null;
 $fourth_post_top_id   = get_field('fourth_post_top', 'option')->ID ?? null;
+$fifth_post_top_id   = get_field('fifth_post_top', 'option')->ID ?? null;
+$sixth_post_top_id   = get_field('sixth_post_top', 'option')->ID ?? null;
+$video_post_top_id   = get_field('video_post_top', 'option')->ID ?? null;
 
 if ($lead_post_top_id) {
     $post_ids[] = $lead_post_top_id;
@@ -20,6 +23,16 @@ if ($third_post_top_id) {
 if ($fourth_post_top_id) {
     $post_ids[] = $fourth_post_top_id;
 }
+if ($fifth_post_top_id) {
+    $post_ids[] = $fifth_post_top_id;
+}
+if ($sixth_post_top_id) {
+    $post_ids[] = $sixth_post_top_id;
+}
+if ($video_post_top_id) {
+    $post_ids[] = $video_post_top_id;
+}
+
 
 // Collect IDs from `posts_second` field
 $acf_analysis_posts = get_field('posts_second', 'option') ?? [];
@@ -64,7 +77,16 @@ $partner_post_ids = [];
                     wp_reset_postdata();
                 }
 
-                $remaining_left = 2 - count(array_filter([$second_post_top_id, $third_post_top_id]));
+                if ($fourth_post_top_id) {
+                    $post = get_post($fourth_post_top_id);
+                    setup_postdata($post);
+                    $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                    $term_name = $terms[0]->name;
+                    require('template-parts/archive-standard-article-card.php');
+                    wp_reset_postdata();
+                }
+
+                $remaining_left = 2 - count(array_filter([$second_post_top_id, $third_post_top_id, $fourth_post_top_id]));
 
                 if ($remaining_left > 0) {
                     $left_query = new WP_Query(array(
@@ -99,8 +121,8 @@ $partner_post_ids = [];
                     wp_reset_postdata();
                 }
 
-                if ($fourth_post_top_id) {
-                    $post = get_post($fourth_post_top_id);
+                if ($fifth_post_top_id) {
+                    $post = get_post($fifth_post_top_id);
                     setup_postdata($post);
                     $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
                     $term_name = $terms[0]->name;
@@ -108,7 +130,16 @@ $partner_post_ids = [];
                     wp_reset_postdata();
                 }
 
-                $remaining_middle = 2 - count(array_intersect($post_ids, [$lead_post_top_id, $fourth_post_top_id]));
+                if ($sixth_post_top_id) {
+                    $post = get_post($sixth_post_top_id);
+                    setup_postdata($post);
+                    $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                    $term_name = $terms[0]->name;
+                    require('template-parts/archive-standard-article-card.php');
+                    wp_reset_postdata();
+                }
+
+                $remaining_middle = 3 - count(array_intersect($post_ids, [$lead_post_top_id, $fifth_post_top_id, $sixth_post_top_id]));
                 if ($remaining_middle > 0) {
                     $middle_query = new WP_Query(array(
                         'post_type'      => array( 'video', 'post' ),
@@ -128,9 +159,56 @@ $partner_post_ids = [];
                     wp_reset_postdata();
                 }
                 ?>
+                <!-- Sponsor Search Box -->
+                <div class="search inline">
+                    <br>
+                    <div class="search-box">
+                        <span>Search</span>
+                        <div class="icon"><?php echo file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/search.svg'); ?></div>
+                    </div>
+                    <div class="sponsor">
+                        <span>Sponsored by:</span>
+                        <?php if (get_field( 'sponsor_logo_link', 'option' )) { ?>
+                            <a href="<?php the_field( 'sponsor_logo_link', 'option' ); ?>" target="_blank"><img src="<?php the_field( 'sponsor_logo_dark', 'option' ); ?>" alt="sponsor-logo"></a>
+                        <?php } else { ?>
+                            <img src="<?php the_field( 'sponsor_logo_dark', 'option' ); ?>" alt="sponsor-logo">
+                        <?php } ?>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-3 right">
-                <?php require get_template_directory() . '/template-parts/partner-zone-sidebar.php'; ?>
+                <?php
+                if ($video_post_top_id) {
+                    $post = get_post($video_post_top_id);
+                    setup_postdata($post);
+                    $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                    $term_name = $terms[0]->name;
+                    require('template-parts/archive-standard-article-card.php');
+                    wp_reset_postdata();
+                }
+
+                $remaining_end = 1 - count(array_intersect($post_ids, [$video_post_top_id]));
+                if ($remaining_end > 0) {
+                    $end_query = new WP_Query(array(
+                        'post_type'      => array( 'video' ),
+                        'posts_per_page' => $remaining_end,
+                        'post_status'    => 'publish',
+                        'post__not_in'   => $post_ids,
+                    ));
+
+                    if ($end_query->have_posts()) :
+                        while ($end_query->have_posts()) : $end_query->the_post();
+                            $post_ids[] = get_the_ID();
+                            $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                            $term_name = $terms[0]->name;
+                            require('template-parts/archive-standard-article-card.php');
+                        endwhile;
+                    endif;
+                    wp_reset_postdata();
+                }
+
+                require get_template_directory() . '/template-parts/partner-zone-sidebar-homepage.php';
+                ?>
             </div>
         </div>
     </div>
