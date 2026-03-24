@@ -90,7 +90,7 @@ $partner_post_ids = [];
 
                 if ($remaining_left > 0) {
                     $left_query = new WP_Query(array(
-                        'post_type'      => array( 'video', 'post' ),
+                        'post_type'      => array( 'post' ),
                         'posts_per_page' => $remaining_left,
                         'post_status'    => 'publish',
                         'post__not_in'   => $post_ids,
@@ -143,7 +143,7 @@ $partner_post_ids = [];
                 $remaining_middle = 3 - count(array_intersect($post_ids, [$lead_post_top_id, $fifth_post_top_id, $sixth_post_top_id]));
                 if ($remaining_middle > 0) {
                     $middle_query = new WP_Query(array(
-                        'post_type'      => array( 'video', 'post' ),
+                        'post_type'      => array( 'post' ),
                         'posts_per_page' => $remaining_middle,
                         'post_status'    => 'publish',
                         'post__not_in'   => $post_ids,
