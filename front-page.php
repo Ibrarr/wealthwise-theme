@@ -86,7 +86,7 @@ $partner_post_ids = [];
                     wp_reset_postdata();
                 }
 
-                $remaining_left = 2 - count(array_filter([$second_post_top_id, $third_post_top_id, $fourth_post_top_id]));
+                $remaining_left = 3 - count(array_filter([$second_post_top_id, $third_post_top_id, $fourth_post_top_id]));
 
                 if ($remaining_left > 0) {
                     $left_query = new WP_Query(array(
@@ -94,6 +94,7 @@ $partner_post_ids = [];
                         'posts_per_page' => $remaining_left,
                         'post_status'    => 'publish',
                         'post__not_in'   => $post_ids,
+                        'category_name'  => 'analysis',
                     ));
 
                     if ($left_query->have_posts()) :
@@ -194,6 +195,14 @@ $partner_post_ids = [];
                         'posts_per_page' => $remaining_end,
                         'post_status'    => 'publish',
                         'post__not_in'   => $post_ids,
+                        'tax_query'      => array(
+                            array(
+                                'taxonomy' => 'type',
+                                'field'    => 'name',
+                                'terms'    => 'Podcast',
+                                'operator' => 'NOT IN',
+                            ),
+                        ),
                     ));
 
                     if ($end_query->have_posts()) :
@@ -282,7 +291,7 @@ $partner_post_ids = [];
     </div>
 </section>
 
-<?php require get_template_directory() . '/template-parts/section-partner-zone.php'; ?>
+<?php require get_template_directory() . '/template-parts/section-partner-zone-homepage.php'; ?>
 
 <?php require get_template_directory() . '/template-parts/section-choice-words.php'; ?>
 

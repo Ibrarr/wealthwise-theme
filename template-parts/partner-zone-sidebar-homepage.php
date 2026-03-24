@@ -6,6 +6,7 @@ $position_fields = array(
 	'second_position_partner',
 	'third_position_partner',
 	'fourth_position_partner',
+	'fifth_position_on_the_homepage_sidebar',
 	'fifth_position_partner',
 	'sixth_position_partner',
 	'seventh_position_partner',
