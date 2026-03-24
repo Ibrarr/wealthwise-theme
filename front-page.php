@@ -5,7 +5,7 @@ $post_ids = [];
 
 $lead_post_top_id     = get_field('lead_post_top', 'option')->ID ?? null;
 $second_post_top_id   = get_field('second_post_top', 'option')->ID ?? null;
-$third_post_top_id    = get_field('third_post_top', 'option')->ID ?? null;
+$third_post_top_id    = get_field('thirdd_post_top', 'option')->ID ?? null;
 $fourth_post_top_id   = get_field('fourth_post_top', 'option')->ID ?? null;
 $fifth_post_top_id   = get_field('fifth_post_top', 'option')->ID ?? null;
 $sixth_post_top_id   = get_field('sixth_post_top', 'option')->ID ?? null;
