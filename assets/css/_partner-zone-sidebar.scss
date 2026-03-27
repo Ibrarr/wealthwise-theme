@@ -8,7 +8,7 @@
 }
 
 .archive-partner-card-short {
-  &:nth-child(-n+6) {
+  &:not(:last-child) {
     border-bottom: 1px solid #d5d2d1;
   }
 

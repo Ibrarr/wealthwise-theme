@@ -6,7 +6,6 @@ $position_fields = array(
 	'second_position_partner',
 	'third_position_partner',
 	'fourth_position_partner',
-	'fifth_position_on_the_homepage_sidebar',
 	'fifth_position_partner',
 	'sixth_position_partner',
 	'seventh_position_partner',
@@ -97,7 +96,7 @@ foreach ($partner_positions as $partner_id) {
 }
 
 // Step 6: Display posts for positions 1–4
-for ($i = 0; $i <5; $i++) {
+for ($i = 0; $i <4; $i++) {
 	$post_id = $partner_post_ids[$i];
 	if ($post_id) {
 		$post = get_post($post_id);

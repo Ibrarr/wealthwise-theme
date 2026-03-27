@@ -3,8 +3,8 @@
 		<div class="row">
 			<h3>Partner zone</h3>
 			<?php
-			// Display posts for positions 6–9
-			for ($i = 5; $i < 9; $i++) {
+			// Display posts for positions 5–8
+			for ($i = 4; $i < 8; $i++) {
 				$post_id = $partner_post_ids[$i];
 				if ($post_id) {
 					$post = get_post($post_id);
