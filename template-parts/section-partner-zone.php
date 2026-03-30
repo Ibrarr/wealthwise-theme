@@ -1,24 +1,12 @@
-<section class="partner-zone">
-	<div class="container px-4">
-		<div class="row">
-			<h3>Partner zone</h3>
-			<?php
-			// Display posts for positions 5–8
-			for ($i = 4; $i < 8; $i++) {
-				$post_id = $partner_post_ids[$i];
-				if ($post_id) {
-					$post = get_post($post_id);
-					setup_postdata($post);
-
-                    $tax = 'partner';
-					$terms = get_the_terms($post->ID, $tax);
-					$term_name = $terms ? $terms[0]->name : '';
-
-					require('standard-article-card.php');
-				}
-			}
-			wp_reset_postdata();
-			?>
-		</div>
-	</div>
-</section>
+<?php
+if ( apply_filters( 'litespeed_esi_status', false ) ) {
+    echo apply_filters(
+        'litespeed_esi_url',
+        'partner_zone_section',
+        'Partner zone section',
+        array( implode( ',', $partner_post_ids ) )
+    );
+} else {
+    require get_template_directory() . '/template-parts/section-partner-zone-content.php';
+}
+?>

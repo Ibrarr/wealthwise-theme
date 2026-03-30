@@ -216,7 +216,7 @@ $partner_post_ids = [];
                     wp_reset_postdata();
                 }
 
-                require get_template_directory() . '/template-parts/partner-zone-sidebar-homepage.php';
+                require get_template_directory() . '/template-parts/partner-zone-sidebar.php';
                 ?>
             </div>
         </div>
@@ -291,7 +291,7 @@ $partner_post_ids = [];
     </div>
 </section>
 
-<?php require get_template_directory() . '/template-parts/section-partner-zone-homepage.php'; ?>
+<?php require get_template_directory() . '/template-parts/section-partner-zone.php'; ?>
 
 <?php require get_template_directory() . '/template-parts/section-choice-words.php'; ?>
 

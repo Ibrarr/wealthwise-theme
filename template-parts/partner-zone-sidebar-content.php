@@ -96,7 +96,7 @@ foreach ($partner_positions as $partner_id) {
 }
 
 // Step 6: Display posts for positions 1–4
-for ($i = 0; $i <4; $i++) {
+for ($i = 0; $i < 4; $i++) {
 	$post_id = $partner_post_ids[$i];
 	if ($post_id) {
 		$post = get_post($post_id);
@@ -110,3 +110,19 @@ for ($i = 0; $i <4; $i++) {
 }
 wp_reset_postdata();
 ?>
+<!-- Sponsor Search Box -->
+<div class="search inline">
+	<br>
+	<div class="search-box">
+		<span>Search</span>
+		<div class="icon"><?php echo file_get_contents(WW_TEMPLATE_DIR . '/assets/images/icons/search.svg'); ?></div>
+	</div>
+	<div class="sponsor">
+		<span>Sponsored by:</span>
+		<?php if (get_field( 'sponsor_logo_link', 'option' )) { ?>
+            <a href="<?php the_field( 'sponsor_logo_link', 'option' ); ?>" target="_blank"><img src="<?php the_field( 'sponsor_logo_dark', 'option' ); ?>" alt="sponsor-logo"></a>
+		<?php } else { ?>
+            <img src="<?php the_field( 'sponsor_logo_dark', 'option' ); ?>" alt="sponsor-logo">
+		<?php } ?>
+	</div>
+</div>
