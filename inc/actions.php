@@ -129,17 +129,19 @@ function disable_content_editor_on_post() {
  * Excludes these template parts from page cache
  */
 
-// Section - partner zone (uses $partner_post_ids from parent)
+// Section - partner zone
 add_action( 'litespeed_esi_load-partner_zone_section', 'esi_render_partner_zone_section' );
 function esi_render_partner_zone_section( $params ) {
     do_action( 'litespeed_control_set_nocache' );
-    $partner_post_ids = isset( $params[0] ) ? array_filter( explode( ',', $params[0] ) ) : array();
+    $partner_post_ids = isset( $params[0] ) ? explode( ',', $params[0] ) : array();
+    chdir( get_template_directory() . '/template-parts' );
     require get_template_directory() . '/template-parts/section-partner-zone-content.php';
 }
 
-// Sidebar - partner zone (self-contained, no params needed)
+// Sidebar - partner zone
 add_action( 'litespeed_esi_load-partner_zone_sidebar', 'esi_render_partner_zone_sidebar' );
 function esi_render_partner_zone_sidebar() {
     do_action( 'litespeed_control_set_nocache' );
+    chdir( get_template_directory() . '/template-parts' );
     require get_template_directory() . '/template-parts/partner-zone-sidebar-content.php';
 }
