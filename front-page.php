@@ -216,7 +216,7 @@ $partner_post_ids = [];
                     wp_reset_postdata();
                 }
 
-                require get_template_directory() . '/template-parts/partner-zone-sidebar.php';
+                require get_template_directory() . '/template-parts/partner-zone-sidebar-homepage.php';
                 ?>
             </div>
         </div>
