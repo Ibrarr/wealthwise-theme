@@ -17,7 +17,36 @@
     .archive-standard-article-card {
       &:first-child {
         border-bottom: 1px solid #d5d2d1;
+      }
 
+      .excerpt {
+        display: block !important;
+      }
+
+      @import "../../../standard-article-card";
+    }
+  }
+
+  // Mobile-only featured lead. On desktop the lead lives in the middle column;
+  // when the layout stacks it is pulled to the top and given the full-bleed
+  // banner treatment that the left column's first card used to have.
+  .mobile-lead {
+    @include media-breakpoint-up(lg) {
+      display: none;
+    }
+
+    .archive-standard-article-card {
+      @import "../../../standard-article-card";
+
+      border-bottom: 1px solid #d5d2d1;
+
+      .excerpt {
+        display: block !important;
+      }
+
+      // Scoped under :first-child to mirror the original left-column banner's
+      // specificity, so it overrides the base card image styling.
+      &:first-child {
         @include media-breakpoint-down(lg) {
           .image-wrapper {
             position: unset;
@@ -65,12 +94,6 @@
           }
         }
       }
-
-      .excerpt {
-        display: block !important;
-      }
-
-      @import "../../../standard-article-card";
     }
   }
 

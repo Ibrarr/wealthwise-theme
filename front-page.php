@@ -56,6 +56,13 @@ $partner_post_ids = [];
 <section class="hero">
     <div class="container px-4">
         <div class="row">
+            <?php
+            // Render the LEFT column into a buffer first. It runs its own fallback
+            // queries and appends to $post_ids, which we need *before* resolving the
+            // lead (the lead is only set in ACF on some sites; elsewhere it is the
+            // first post the middle column falls back to).
+            ob_start();
+            ?>
             <!-- LEFT COLUMN -->
             <div class="col-lg-3 left">
                 <?php
@@ -109,16 +116,62 @@ $partner_post_ids = [];
                 }
                 ?>
             </div>
+            <?php
+            $left_column_html = ob_get_clean();
+
+            // Resolve the lead post: the ACF lead when set, otherwise the first post
+            // the middle column would fall back to (latest post not already used).
+            $lead_id = $lead_post_top_id;
+            if (!$lead_id) {
+                $lead_lookup = new WP_Query(array(
+                    'post_type'      => array( 'post' ),
+                    'posts_per_page' => 1,
+                    'post_status'    => 'publish',
+                    'post__not_in'   => $post_ids,
+                ));
+                if ($lead_lookup->have_posts()) {
+                    $lead_lookup->the_post();
+                    $lead_id = get_the_ID();
+                    wp_reset_postdata();
+                }
+            }
+            if ($lead_id && !in_array($lead_id, $post_ids)) {
+                $post_ids[] = $lead_id;
+            }
+
+            // Lead at the very top, shown only when the columns stack (mobile/tablet).
+            // It takes over the full-bleed banner treatment in that position.
+            if ($lead_id) {
+                $post = get_post($lead_id);
+                setup_postdata($post);
+                $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
+                $term_name = $terms[0]->name;
+                ?>
+                <div class="col-12 d-lg-none mobile-lead">
+                    <?php require('template-parts/archive-standard-article-card.php'); ?>
+                </div>
+                <?php
+                wp_reset_postdata();
+            }
+
+            // Left column, rendered above, output here in its normal position.
+            echo $left_column_html;
+            ?>
 
             <!-- MIDDLE COLUMN -->
             <div class="col-lg-6 middle">
                 <?php
-                if ($lead_post_top_id) {
-                    $post = get_post($lead_post_top_id);
+                // Lead in its desktop position. Hidden when stacked because it is shown at the top there.
+                if ($lead_id) {
+                    $post = get_post($lead_id);
                     setup_postdata($post);
                     $terms     = get_the_terms(get_the_ID(), (get_post_type() === 'video') ? 'type' : 'category');
                     $term_name = $terms[0]->name;
-                    require('template-parts/archive-standard-article-card.php');
+                    ?>
+                    <div class="d-none d-lg-block">
+                        <?php require('template-parts/archive-standard-article-card.php'); ?>
+                    </div>
+                    <?php
                     wp_reset_postdata();
                 }
 
@@ -140,7 +193,8 @@ $partner_post_ids = [];
                     wp_reset_postdata();
                 }
 
-                $remaining_middle = 3 - count(array_intersect($post_ids, [$lead_post_top_id, $fifth_post_top_id, $sixth_post_top_id]));
+                // Lead is rendered separately above, so the middle only needs two more cards.
+                $remaining_middle = 2 - count(array_intersect($post_ids, [$fifth_post_top_id, $sixth_post_top_id]));
                 if ($remaining_middle > 0) {
                     $middle_query = new WP_Query(array(
                         'post_type'      => array( 'post' ),
